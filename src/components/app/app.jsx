@@ -1,10 +1,15 @@
 import React from "react";
 import Main from "../main/main";
+import PropTypes from "prop-types";
 
-const App = () => {
+const App = (props) => {
   return (
-    <Main />
+    <Main poster={props.poster} />
   );
+};
+
+App.propTypes = {
+  poster: PropTypes.object.isRequired,
 };
 
 export default App;

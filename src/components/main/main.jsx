@@ -1,6 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const Main = () => {
+const Main = (props) => {
+  const {posterName, posterGenre, posterDate} = props.poster;
+
   return <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -45,10 +48,10 @@ const Main = () => {
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+            <h2 className="movie-card__title">{posterName}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">Drama</span>
-              <span className="movie-card__year">2014</span>
+              <span className="movie-card__genre">{posterGenre}</span>
+              <span className="movie-card__year">{posterDate}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -477,6 +480,13 @@ const Main = () => {
       </footer>
     </div>
   </React.Fragment>;
+};
+
+Main.propTypes = {
+  poster: PropTypes.object.isRequired,
+  posterName: PropTypes.string.isRequired,
+  posterGenre: PropTypes.string.isRequired,
+  posterDate: PropTypes.string.isRequired,
 };
 
 export default Main;
