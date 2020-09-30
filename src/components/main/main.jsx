@@ -484,9 +484,6 @@ const Main = (props) => {
 
 Main.propTypes = {
   poster: PropTypes.object.isRequired,
-  posterName: PropTypes.string.isRequired,
-  posterGenre: PropTypes.string.isRequired,
-  posterDate: PropTypes.string.isRequired,
 };
 
 export default Main;
