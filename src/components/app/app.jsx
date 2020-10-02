@@ -1,10 +1,38 @@
 import React from "react";
-import Main from "../main/main";
 import PropTypes from "prop-types";
+import {Switch, Route, BrowserRouter} from "react-router-dom";
+
+import MainScreen from "../main-screen/main-screen";
+import SignInScreen from "../sign-in-screen/sign-in-screen";
+import MyListScreen from "../my-list-screen/my-list-screen";
+import AddReviewScreen from "../add-review-screen/add-review-screen";
+import MovieScreen from "../movie-screen/movie-screen";
+import PlayerScreen from "../player-screen/player-screen";
 
 const App = (props) => {
   return (
-    <Main poster={props.poster} />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <MainScreen poster={props.poster} />
+        </Route>
+        <Route exact path="/login">
+          <SignInScreen />
+        </Route>
+        <Route exact path="/mylist">
+          <MyListScreen />
+        </Route>
+        <Route exact path="/review">
+          <AddReviewScreen />
+        </Route>
+        <Route exact path="/movie">
+          <MovieScreen />
+        </Route>
+        <Route exact path="/player">
+          <PlayerScreen />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 };
 
@@ -13,3 +41,5 @@ App.propTypes = {
 };
 
 export default App;
+
+// строка 25. Не работает такой путь: <Route exact path="/films/:id/review">
