@@ -22,13 +22,13 @@ const App = (props) => {
         <Route exact path="/mylist">
           <MyListScreen />
         </Route>
-        <Route exact path="/review">
+        <Route exact path="/films/:id">
           <AddReviewScreen />
         </Route>
-        <Route exact path="/movie">
+        <Route exact path="/films/:id/review">
           <MovieScreen />
         </Route>
-        <Route exact path="/player">
+        <Route exact path="/player/:id">
           <PlayerScreen />
         </Route>
       </Switch>
@@ -41,5 +41,3 @@ App.propTypes = {
 };
 
 export default App;
-
-// строка 25. Не работает такой путь: <Route exact path="/films/:id/review">

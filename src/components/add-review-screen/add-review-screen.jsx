@@ -1,10 +1,6 @@
 import React from "react";
 
 const AddReviewScreen = () => {
-  // если вставить в инпут на 61 строке, то не срабатывает:
-  // <input className="rating__input" id="star-4" type="radio" name="rating" value="4" {getChecked}/>
-  // const getChecked = (arg) => arg ? 'checked' : '';
-
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
