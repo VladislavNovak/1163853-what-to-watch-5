@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Main = (props) => {
+const MainScreen = (props) => {
   const {posterName, posterGenre, posterDate} = props.poster;
 
   return <React.Fragment>
@@ -60,7 +60,7 @@ const Main = (props) => {
                 type="button"
               >
                 <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
+                  <use xlinkHref="#play-s" />
                 </svg>
                 <span>Play</span>
               </button>
@@ -69,7 +69,7 @@ const Main = (props) => {
                 type="button"
               >
                 <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
+                  <use xlinkHref="#add" />
                 </svg>
                 <span>My list</span>
               </button>
@@ -482,8 +482,8 @@ const Main = (props) => {
   </React.Fragment>;
 };
 
-Main.propTypes = {
+MainScreen.propTypes = {
   poster: PropTypes.object.isRequired,
 };
 
-export default Main;
+export default MainScreen;
