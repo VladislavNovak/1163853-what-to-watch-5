@@ -14,7 +14,10 @@ const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainScreen poster={props.poster} />
+          <MainScreen
+            poster={props.poster}
+            films={props.films}
+          />
         </Route>
         <Route exact path="/login">
           <SignInScreen />
@@ -38,6 +41,7 @@ const App = (props) => {
 
 App.propTypes = {
   poster: PropTypes.object.isRequired,
+  films: PropTypes.array.isRequired,
 };
 
 export default App;
