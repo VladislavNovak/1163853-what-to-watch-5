@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CardsScreen from "../cards-screen/cards-screen";
+import CardsListScreen from "../cards-list-screen/cards-list-screen";
+import GenresListScreen from "../genres-list-screen/genres-list-screen";
 
 const MainScreen = (props) => {
   const {posterName, posterGenre, posterDate} = props.poster;
   const films = props.films;
+  const genre = props.genre;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -85,60 +87,8 @@ const MainScreen = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <ul className="catalog__genres-list">
-          <li className="catalog__genres-item catalog__genres-item--active">
-            <a href="#" className="catalog__genres-link">
-              All genres
-            </a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">
-              Comedies
-            </a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">
-              Crime
-            </a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">
-              Documentary
-            </a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">
-              Dramas
-            </a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">
-              Horror
-            </a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">
-              Kids & Family
-            </a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">
-              Romance
-            </a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">
-              Sci-Fi
-            </a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">
-              Thrillers
-            </a>
-          </li>
-        </ul>
-
-        {<CardsScreen films={films} />}
+        {<GenresListScreen genre={genre} />}
+        {<CardsListScreen films={films} />}
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">
@@ -167,6 +117,7 @@ const MainScreen = (props) => {
 MainScreen.propTypes = {
   poster: PropTypes.object.isRequired,
   films: PropTypes.array.isRequired,
+  genre: PropTypes.object.isRequired,
 };
 
 export default MainScreen;

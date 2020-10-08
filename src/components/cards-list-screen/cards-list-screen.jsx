@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import CardScreen from "../card-screen/card-screen";
 
-class CardsScreen extends PureComponent {
+class CardsListScreen extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -30,8 +30,8 @@ class CardsScreen extends PureComponent {
   }
 }
 
-CardsScreen.propTypes = {
+CardsListScreen.propTypes = {
   films: PropTypes.array.isRequired,
 };
 
-export default CardsScreen;
+export default CardsListScreen;

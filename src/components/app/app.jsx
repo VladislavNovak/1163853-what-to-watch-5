@@ -17,6 +17,7 @@ const App = (props) => {
           <MainScreen
             poster={props.poster}
             films={props.films}
+            genre={props.genre}
           />
         </Route>
         <Route exact path="/login">
@@ -42,6 +43,7 @@ const App = (props) => {
 App.propTypes = {
   poster: PropTypes.object.isRequired,
   films: PropTypes.array.isRequired,
+  genre: PropTypes.object.isRequired,
 };
 
 export default App;

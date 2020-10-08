@@ -17,6 +17,10 @@ export default class Genre {
     }
   }
 
+  getValues() {
+    return Object.values(this.listOfGenres);
+  }
+
   // получаем все значения [array], кроме `All_genres`
   getValuesWithoutAll() {
     return Object.values(this.listOfGenres).filter((genre) => genre !== this.listOfGenres.ALL_GENRES);

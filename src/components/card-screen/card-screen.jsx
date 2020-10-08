@@ -5,7 +5,7 @@ const CardScreen = (props) => {
   const {id, poster, title, onMouseOverHandler, onMouseLeaveHandler} = props;
 
   return (
-    <article className="small-movie-card catalog__movies-card" onMouseOver={() => onMouseOverHandler(id)} onMouseLeave={() =>onMouseLeaveHandler(id)}>
+    <article key={id} className="small-movie-card catalog__movies-card" onMouseOver={() => onMouseOverHandler(id)} onMouseLeave={() =>onMouseLeaveHandler(id)}>
       <div className="small-movie-card__image">
         <img
           src={poster}
