@@ -4,7 +4,7 @@ import {shuffle} from "./utils";
 export default class Genre {
   constructor() {
     this.listOfGenres = {
-      ALL_GENRES: `All_genres`,
+      ALL_GENRES: `All genres`,
       COMEDIES: `Comedies`,
       CRIME: `Crime`,
       DOCUMENTARY: `Documentary`,
