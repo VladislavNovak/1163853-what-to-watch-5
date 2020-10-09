@@ -16,7 +16,7 @@ const FilmScreen = (props) => {
         <img src={poster} alt={title} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">
-        <Link to={`/films/:` + id} className="small-movie-card__link">
+        <Link to={`/films/` + id} className="small-movie-card__link">
           {title}
         </Link>
       </h3>
