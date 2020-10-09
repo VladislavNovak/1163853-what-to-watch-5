@@ -14,7 +14,7 @@ export default class Genre {
       ROMANCE: `Romance`,
       SCI: `Sci-Fi`,
       THRILLER: `Thriller`,
-    }
+    };
   }
 
   getValues() {

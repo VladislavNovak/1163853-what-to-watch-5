@@ -15,6 +15,6 @@ const GenreScreen = (props) => {
 
 GenreScreen.propTypes = {
   genreValueItem: PropTypes.string.isRequired,
-}
+};
 
 export default GenreScreen;

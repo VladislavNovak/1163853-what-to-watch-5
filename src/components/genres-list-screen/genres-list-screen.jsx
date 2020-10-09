@@ -12,7 +12,7 @@ class GenresListScreen extends PureComponent {
   render() {
     const genresValueList = this.props.genre.getValues();
 
-    return(
+    return (
       <ul className="catalog__genres-list">
         {genresValueList.map((genreValueItem) => <GenreScreen key={genreValueItem} genreValueItem={genreValueItem} />)}
       </ul>
@@ -27,6 +27,6 @@ class GenresListScreen extends PureComponent {
 GenresListScreen.propTypes = {
   genre: PropTypes.object.isRequired,
   genresValueList: PropTypes.array,
-}
+};
 
 export default GenresListScreen;

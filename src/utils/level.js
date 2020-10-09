@@ -7,7 +7,7 @@ export default class Level {
       GOOD: `Good`,
       VERY_GOOD: `Very good`,
       AWESOME: `Awesome`,
-    }
+    };
   }
 
   // возвращает строку из в зависимости от переданного диапазона
@@ -26,5 +26,5 @@ export default class Level {
     }
 
     return level;
-  };
+  }
 }
