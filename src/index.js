@@ -6,12 +6,7 @@ import Review from "./mocks/review";
 import Genre from "./utils/genre";
 import {generateInstances} from "./utils/utils";
 
-const poster = {
-  posterName: `The Grand Budapest Hotel`,
-  posterGenre: `Drama`,
-  posterDate: `2014`
-};
-
+const poster = generateInstances(Film, 1)[0];
 const films = generateInstances(Film, 8);
 const reviews = generateInstances(Review, 8);
 const genre = new Genre();

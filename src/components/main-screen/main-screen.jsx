@@ -4,17 +4,14 @@ import FilmsListScreen from "../films-list-screen/films-list-screen";
 import GenresListScreen from "../genres-list-screen/genres-list-screen";
 
 const MainScreen = (props) => {
-  const {posterName, posterGenre, posterDate} = props.poster;
+  const poster = props.poster;
   const films = props.films;
   const genre = props.genre;
 
   return <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
-        <img
-          src="img/bg-the-grand-budapest-hotel.jpg"
-          alt="The Grand Budapest Hotel"
-        />
+        <img src={poster.posterBig} alt={poster.title} />
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -43,19 +40,14 @@ const MainScreen = (props) => {
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img
-              src="img/the-grand-budapest-hotel-poster.jpg"
-              alt="The Grand Budapest Hotel poster"
-              width="218"
-              height="327"
-            />
+            <img src={poster.poster} alt={poster.title + `poster`} width="218" height="327" />
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{posterName}</h2>
+            <h2 className="movie-card__title">{poster.title}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{posterGenre}</span>
-              <span className="movie-card__year">{posterDate}</span>
+              <span className="movie-card__genre">{poster.genre}</span>
+              <span className="movie-card__year">{poster.released}</span>
             </p>
 
             <div className="movie-card__buttons">

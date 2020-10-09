@@ -20,21 +20,23 @@ const App = (props) => {
             genre={props.genre}
           />
         </Route>
-        <Route exact path="/login">
-          <SignInScreen />
-        </Route>
-        <Route exact path="/mylist">
-          <MyListScreen />
-        </Route>
-        <Route exact path="/films/:id">
-          <OverviewScreen/>
-        </Route>
-        <Route exact path="/films/:id/review">
-          <AddReviewScreen />
-        </Route>
-        <Route exact path="/player/:id">
-          <PlayerScreen />
-        </Route>
+        <Route exact path="/login" component={SignInScreen} />
+        <Route exact path="/mylist" component={MyListScreen} />
+        <Route exact path="/films/:id"
+          render={({match}) => {
+            const id = match.params.id;
+            const film = props.films.find((item) => item.id === parseInt(id, 10));
+            return <OverviewScreen film={film} />;
+          }}
+        />
+        <Route exact path="/films/:id/review"
+          render={({match}) => {
+            const id = match.params.id;
+            const film = props.films.find((item) => item.id === parseInt(id, 10));
+            return <AddReviewScreen film={film} />
+          }}
+        />
+        <Route exact path="/player/:id" component={PlayerScreen} />
       </Switch>
     </BrowserRouter>
   );

@@ -3,7 +3,9 @@ export const listOfTitles = [
   `Enola Holmes`, `Grand Isle`, `Legacy of Lies`, `Pinocchio`,
   `Project Power`, `Rogue`, `Sponge on the Run`, `The Binge`,
   `The Hunt`, `The Innocence`, `The Last Days of American Crime`,
-  `The New Mutants`, `The Owners`, `The Paramedic`, `Toxic`, `Venom`];
+  `The New Mutants`, `The Owners`, `The Paramedic`, `Toxic`, `Venom`,
+  `The Tax Collector`, `Playdate with Destiny`, `The Old Guard`, `Guest House`,
+  `A Quiet Place Part II`, `Dark Phoenix`, `Extraction`, `The Outpost`, `Monos`];
 
 export const getRandomInteger = (a = 0, b = 1) => {
   const lower = Math.ceil(Math.min(a, b));
