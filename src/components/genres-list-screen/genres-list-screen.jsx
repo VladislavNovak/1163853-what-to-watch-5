@@ -1,16 +1,28 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import GenreScreen from "../genre-screen/genre-screen";
 
-const GenresListScreen = (props) => {
-  const genresValueList = props.genre.getValues();
+class GenresListScreen extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
-    <ul className="catalog__genres-list">
-      {genresValueList.map((genreValueItem) => <GenreScreen key={genreValueItem} genreValueItem={genreValueItem} />)}
-    </ul>
-  );
-};
+    this.state = {selectedGenre: null};
+  }
+
+  render() {
+    const genresValueList = this.props.genre.getValues();
+
+    return(
+      <ul className="catalog__genres-list">
+        {genresValueList.map((genreValueItem) => <GenreScreen key={genreValueItem} genreValueItem={genreValueItem} />)}
+      </ul>
+    );
+  }
+
+  onGenreClickHandler() {
+    // установить выбранный genre. Возможно, как-то добатить класс
+  }
+}
 
 GenresListScreen.propTypes = {
   genre: PropTypes.object.isRequired,

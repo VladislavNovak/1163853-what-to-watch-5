@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CardsListScreen from "../cards-list-screen/cards-list-screen";
+import FilmsListScreen from "../films-list-screen/films-list-screen";
 import GenresListScreen from "../genres-list-screen/genres-list-screen";
 
 const MainScreen = (props) => {
@@ -88,7 +88,7 @@ const MainScreen = (props) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         {<GenresListScreen genre={genre} />}
-        {<CardsListScreen films={films} />}
+        {<FilmsListScreen films={films} />}
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">

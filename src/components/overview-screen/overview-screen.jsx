@@ -1,6 +1,6 @@
 import React from "react";
 
-const MovieScreen = () => {
+const OverviewScreen = () => {
   return <React.Fragment>
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
@@ -156,4 +156,4 @@ const MovieScreen = () => {
   </React.Fragment>;
 };
 
-export default MovieScreen;
+export default OverviewScreen;
