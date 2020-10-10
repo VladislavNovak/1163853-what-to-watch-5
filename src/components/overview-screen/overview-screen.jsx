@@ -167,6 +167,6 @@ class OverviewScreen extends PureComponent {
 
 OverviewScreen.propTypes = {
   film: PropTypes.object.isRequired,
-}
+};
 
 export default OverviewScreen;

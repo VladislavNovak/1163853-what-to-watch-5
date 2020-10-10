@@ -19,6 +19,6 @@ export default class Film {
     this.posterBig = getImage(this.title);
     this.trailer = `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`;
     this.runtime = `1h 39m`; // TODO [date]
-    this.isFavorite = false;
+    this.inMyFavoriteList = !(getRandomInteger(0, 5));
   }
 }

@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+
 import FilmScreen from "../film-screen/film-screen";
 
 class FilmsListScreen extends PureComponent {
@@ -11,6 +12,14 @@ class FilmsListScreen extends PureComponent {
     this.onFilmLeaveHandler = this.onFilmLeaveHandler.bind(this);
   }
 
+  onFilmOverHandler(id) {
+    this.setState({currentActiveFilm: id});
+  }
+
+  onFilmLeaveHandler() {
+    this.setState({currentActiveFilm: null});
+  }
+
   render() {
     const films = this.props.films;
 
@@ -19,14 +28,6 @@ class FilmsListScreen extends PureComponent {
         {films.map((film) => <FilmScreen key={film.id} id={film.id} poster={film.poster} title={film.title} onFilmOverHandler={this.onFilmOverHandler} onFilmLeaveHandler={this.onFilmLeaveHandler} />)}
       </div>
     );
-  }
-
-  onFilmOverHandler(id) {
-    this.setState({currentActiveFilm: id});
-  }
-
-  onFilmLeaveHandler() {
-    this.setState({currentActiveFilm: null});
   }
 }
 

@@ -9,6 +9,11 @@ import AddReviewScreen from "../add-review-screen/add-review-screen";
 import OverviewScreen from "../overview-screen/overview-screen";
 import PlayerScreen from "../player-screen/player-screen";
 
+// isFavoriteType: CHECKED/UNCHECKED
+// getMatchingFilm: находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
+// filterFavoriteFilms: фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
+import {isFavoriteType, getMatchingFilm, filterFavoriteFilms} from "../../utils/utils";
+
 const App = (props) => {
   return (
     <BrowserRouter>
@@ -21,20 +26,16 @@ const App = (props) => {
           />
         </Route>
         <Route exact path="/login" component={SignInScreen} />
-        <Route exact path="/mylist" component={MyListScreen} />
+        <Route exact path="/mylist">
+          < MyListScreen
+            favoriteFilms={filterFavoriteFilms(props.films, isFavoriteType.CHECKED)}
+          />
+        </Route>
         <Route exact path="/films/:id"
-          render={({match}) => {
-            const id = match.params.id;
-            const film = props.films.find((item) => item.id === parseInt(id, 10));
-            return <OverviewScreen film={film} />;
-          }}
+          render={({match}) => <OverviewScreen film={getMatchingFilm(props.films, match)} />}
         />
         <Route exact path="/films/:id/review"
-          render={({match}) => {
-            const id = match.params.id;
-            const film = props.films.find((item) => item.id === parseInt(id, 10));
-            return <AddReviewScreen film={film} />
-          }}
+          render={({match}) => <AddReviewScreen film={getMatchingFilm(props.films, match)} />}
         />
         <Route exact path="/player/:id" component={PlayerScreen} />
       </Switch>

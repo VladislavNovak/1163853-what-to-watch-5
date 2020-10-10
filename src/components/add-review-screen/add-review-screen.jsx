@@ -1,6 +1,8 @@
 import React from "react";
-import AddReviewFormScreen from "../add-review-form-screen/add-review-form-screen";
+import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+
+import AddReviewFormScreen from "../add-review-form-screen/add-review-form-screen";
 
 const AddReviewScreen = (props) => {
   const film = props.film;
@@ -53,6 +55,10 @@ const AddReviewScreen = (props) => {
       {<AddReviewFormScreen />}
     </section>
   );
+};
+
+AddReviewScreen.propTypes = {
+  film: PropTypes.object.isRequired,
 };
 
 export default AddReviewScreen;

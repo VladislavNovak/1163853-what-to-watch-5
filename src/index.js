@@ -7,7 +7,7 @@ import Genre from "./utils/genre";
 import {generateInstances} from "./utils/utils";
 
 const poster = generateInstances(Film, 1)[0];
-const films = generateInstances(Film, 8);
+const films = generateInstances(Film, 20);
 const reviews = generateInstances(Review, 8);
 const genre = new Genre();
 

@@ -1,3 +1,9 @@
+export const isFavoriteType = {
+  CHECKED: true,
+  UNCHECKED: false,
+};
+
+// Возвращает инстансы класса ClassObject в количестве указанном в count
 export const generateInstances = (ClassObject, count) => {
   const instances = [];
   for (let i = 0; i < count; i++) {
@@ -23,4 +29,17 @@ export const shuffle = (originArray) => {
   });
 
   return originArray;
+};
+
+// Находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
+export const getMatchingFilm = (films, match) => {
+  const id = match.params.id;
+  const film = films.find((item) => item.id === parseInt(id, 10));
+  return film;
+};
+
+// Фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
+export const filterFavoriteFilms = (films, type) => {
+  const filtredFilms = (type) ? films.filter((item) => item.inMyFavoriteList) : films.filter((item) => !item.inMyFavoriteList);
+  return filtredFilms;
 };
