@@ -22,7 +22,7 @@ class MyListScreen extends PureComponent {
   }
 
   render() {
-    const favoriteFilms = this.props.favoriteFilms;
+    const {favoriteFilms} = this.props;
 
     return (
       <div className="user-page">

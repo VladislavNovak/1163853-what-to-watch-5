@@ -55,8 +55,7 @@ class OverviewScreen extends PureComponent {
                   </svg>
                   <span>My list</span>
                 </button>
-                {/* <a href="add-review.html" className="btn movie-card__button">Add review</a> */}
-                <Link to={`/films/` + id + `/review`} className="btn movie-card__button">Add review</Link>
+                <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -65,7 +64,7 @@ class OverviewScreen extends PureComponent {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={posterBig} alt={title + ` poster`} width="218" height="327" />
+              <img src={posterBig} alt={`${title} poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">

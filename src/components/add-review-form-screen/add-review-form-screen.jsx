@@ -5,8 +5,8 @@ class AddReviewFormScreen extends PureComponent {
     super(props);
 
     this.state = {
-      textareaValue: null,
-      ratingInputValue: 3,
+      reviewText: ``,
+      selectedStar: ``,
     };
 
     this.onTextareaChangeHandler = this.onTextareaChangeHandler.bind(this);
@@ -19,11 +19,11 @@ class AddReviewFormScreen extends PureComponent {
   }
 
   onTextareaChangeHandler(evt) {
-    this.setState({textareaValue: evt.target.value});
+    this.setState({reviewText: evt.target.value});
   }
 
   onStarChangeHandler(evt) {
-    this.setState({ratingInputValue: evt.target.value});
+    this.setState({selectedStar: evt.target.value});
   }
 
   render() {
@@ -32,13 +32,15 @@ class AddReviewFormScreen extends PureComponent {
       <div className="add-review">
         <form onSubmit={this.onSubmitClickHandler} action="#" className="add-review__form">
           <div className="rating">
-            <div onChange={this.onStarChangeHandler} className="rating__stars">
+            <div className="rating__stars">
               <input
                 className="rating__input"
                 id="star-1"
                 type="radio"
                 name="rating"
                 value="1"
+                checked={this.state.selectedStar === `1`}
+                onChange={this.onStarChangeHandler}
               />
               <label className="rating__label" htmlFor="star-1">
                 Rating 1
@@ -50,6 +52,8 @@ class AddReviewFormScreen extends PureComponent {
                 type="radio"
                 name="rating"
                 value="2"
+                checked={this.state.selectedStar === `2`}
+                onChange={this.onStarChangeHandler}
               />
               <label className="rating__label" htmlFor="star-2">
                 Rating 2
@@ -61,7 +65,8 @@ class AddReviewFormScreen extends PureComponent {
                 type="radio"
                 name="rating"
                 value="3"
-                defaultChecked
+                checked={this.state.selectedStar === `3`}
+                onChange={this.onStarChangeHandler}
               />
               <label className="rating__label" htmlFor="star-3">
                 Rating 3
@@ -73,6 +78,8 @@ class AddReviewFormScreen extends PureComponent {
                 type="radio"
                 name="rating"
                 value="4"
+                checked={this.state.selectedStar === `4`}
+                onChange={this.onStarChangeHandler}
               />
               <label className="rating__label" htmlFor="star-4">
                 Rating 4
@@ -84,6 +91,8 @@ class AddReviewFormScreen extends PureComponent {
                 type="radio"
                 name="rating"
                 value="5"
+                checked={this.state.selectedStar === `5`}
+                onChange={this.onStarChangeHandler}
               />
               <label className="rating__label" htmlFor="star-5">
                 Rating 5
@@ -93,12 +102,13 @@ class AddReviewFormScreen extends PureComponent {
 
           <div className="add-review__text">
             <textarea
-              onChange={this.onTextareaChangeHandler}
               className="add-review__textarea"
               name="review-text"
               id="review-text"
               placeholder="Review text"
-            ></textarea>
+              value={this.state.reviewText}
+              onChange={this.onTextareaChangeHandler}
+            />
             <div className="add-review__submit">
               <button className="add-review__btn" type="submit">
                 Post

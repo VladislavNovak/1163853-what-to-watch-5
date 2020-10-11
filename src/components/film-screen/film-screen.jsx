@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-const FilmScreen = (props) => {
-  const {id, poster, title, onFilmOverHandler, onFilmLeaveHandler} = props;
+const FilmScreen = ({id, poster, title, onFilmOverHandler, onFilmLeaveHandler}) => {
 
   return (
     <article
@@ -16,7 +15,7 @@ const FilmScreen = (props) => {
         <img src={poster} alt={title} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">
-        <Link to={`/films/` + id} className="small-movie-card__link">
+        <Link to={`/films/${id}`} className="small-movie-card__link">
           {title}
         </Link>
       </h3>

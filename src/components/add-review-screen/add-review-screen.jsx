@@ -4,8 +4,7 @@ import {Link} from "react-router-dom";
 
 import AddReviewFormScreen from "../add-review-form-screen/add-review-form-screen";
 
-const AddReviewScreen = (props) => {
-  const film = props.film;
+const AddReviewScreen = ({film}) => {
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
@@ -27,7 +26,7 @@ const AddReviewScreen = (props) => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to={`/films/` + film.id} className="breadcrumbs__link">{film.title}</Link>
+                <Link to={`/films/${film.id}`} className="breadcrumbs__link">{film.title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -48,7 +47,7 @@ const AddReviewScreen = (props) => {
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">
-          <img src={film.poster} alt={film.title + `poster`} width="218" height="327" />
+          <img src={film.poster} alt={`${film.title} poster`} width="218" height="327" />
         </div>
       </div>
 

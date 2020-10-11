@@ -20,7 +20,7 @@ class GenresListScreen extends PureComponent {
   }
 
   onGenreClickHandler() {
-    // установить выбранный genre. Возможно, как-то добатить класс
+    // установить выбранный genre
   }
 }
 

@@ -3,10 +3,7 @@ import PropTypes from "prop-types";
 import FilmsListScreen from "../films-list-screen/films-list-screen";
 import GenresListScreen from "../genres-list-screen/genres-list-screen";
 
-const MainScreen = (props) => {
-  const poster = props.poster;
-  const films = props.films;
-  const genre = props.genre;
+const MainScreen = ({poster, films, genre}) => {
 
   return <React.Fragment>
     <section className="movie-card">
@@ -40,7 +37,7 @@ const MainScreen = (props) => {
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src={poster.poster} alt={poster.title + `poster`} width="218" height="327" />
+            <img src={poster.poster} alt={`${poster.title} poster`} width="218" height="327" />
           </div>
 
           <div className="movie-card__desc">

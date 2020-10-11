@@ -21,7 +21,7 @@ class FilmsListScreen extends PureComponent {
   }
 
   render() {
-    const films = this.props.films;
+    const {films} = this.props;
 
     return (
       <div className="catalog__movies-list">
