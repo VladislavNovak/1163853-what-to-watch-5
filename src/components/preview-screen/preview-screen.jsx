@@ -1,14 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const PreviewScreen = ({trailer}) => {
+const PreviewScreen = ({trailer, poster}) => {
   return (
-    <video src={trailer} autoPlay muted width="280" height="175">something is wrong</video>
+    <video
+      src={trailer}
+      poster={poster}
+      autoPlay
+      muted
+      width="280"
+      height="175"
+    >
+      Something is wrong
+    </video>
   );
 };
 
 PreviewScreen.propTypes = {
   trailer: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
 };
 
 export default PreviewScreen;
