@@ -14,17 +14,17 @@ class FilmsListScreen extends PureComponent {
       isRunPreview: false,
     };
 
-    this.onMouseOverFilm = this.onMouseOverFilm.bind(this);
-    this.onMouseLeaveFilm = this.onMouseLeaveFilm.bind(this);
+    this.handleMouseOverFilm = this.handleMouseOverFilm.bind(this);
+    this.handleMouseLeaveFilm = this.handleMouseLeaveFilm.bind(this);
   }
 
-  onMouseOverFilm(id) {
+  handleMouseOverFilm(id) {
     this.setState({activeFilmID: id});
 
     this.timerID = setTimeout(() => this.setState({isRunPreview: true}), 1000);
   }
 
-  onMouseLeaveFilm() {
+  handleMouseLeaveFilm() {
     this.setState({activeFilmID: -1});
 
     this.setState({isRunPreview: false});
@@ -46,8 +46,8 @@ class FilmsListScreen extends PureComponent {
             poster={film.poster}
             title={film.title}
             trailer={film.trailer}
-            onMouseOverFilm={this.onMouseOverFilm}
-            onMouseLeaveFilm={this.onMouseLeaveFilm}
+            handleMouseOverFilm={this.handleMouseOverFilm}
+            handleMouseLeaveFilm={this.handleMouseLeaveFilm}
           />
         ))}
       </div>
