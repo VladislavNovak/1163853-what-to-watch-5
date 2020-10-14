@@ -7,17 +7,20 @@ class FilmsListScreen extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {currentActiveFilm: null};
-    this.onFilmOverHandler = this.onFilmOverHandler.bind(this);
-    this.onFilmLeaveHandler = this.onFilmLeaveHandler.bind(this);
+    this.state = {
+      activeFilm: null,
+    };
+    this.onMouseOverFilm = this.onMouseOverFilm.bind(this);
+    this.onMouseLeaveFilm = this.onMouseLeaveFilm.bind(this);
   }
 
-  onFilmOverHandler(id) {
-    this.setState({currentActiveFilm: id});
+  onMouseOverFilm(id) {
+    this.setState({activeFilm: id});
   }
 
-  onFilmLeaveHandler() {
-    this.setState({currentActiveFilm: null});
+  onMouseLeaveFilm() {
+
+    this.setState({activeFilm: null});
   }
 
   render() {
@@ -25,7 +28,18 @@ class FilmsListScreen extends PureComponent {
 
     return (
       <div className="catalog__movies-list">
-        {films.map((film) => <FilmScreen key={film.id} id={film.id} poster={film.poster} title={film.title} onFilmOverHandler={this.onFilmOverHandler} onFilmLeaveHandler={this.onFilmLeaveHandler} />)}
+        {films.map((film) => (
+          <FilmScreen
+            key={film.id}
+            activeFilm={this.state.activeFilm === film.id}
+            id={film.id}
+            poster={film.poster}
+            title={film.title}
+            trailer={film.trailer}
+            onMouseOverFilm={this.onMouseOverFilm}
+            onMouseLeaveFilm={this.onMouseLeaveFilm}
+          />
+        ))}
       </div>
     );
   }
