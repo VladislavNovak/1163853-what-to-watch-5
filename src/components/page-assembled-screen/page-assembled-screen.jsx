@@ -10,7 +10,7 @@ class PageAssembledScreen extends PureComponent {
   }
 
   render() {
-    const {id, title, genre, released, poster, posterBig, score, level, rating, description, director, starring} = this.props.film;
+    const {id, title, genre, released, poster, posterBig} = this.props.film;
     return <React.Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
@@ -71,36 +71,6 @@ class PageAssembledScreen extends PureComponent {
 
             <div className="movie-card__desc">
               <TabsScreen film={this.props.film} />
-              {/* <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav> */}
-
-              <div className="movie-rating">
-                <div className="movie-rating__score">{score}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{level}</span>
-                  <span className="movie-rating__count">{rating}</span>
-                </p>
-              </div>
-
-              <div className="movie-card__text">
-                {description}
-
-                <p className="movie-card__director"><strong>Director: {director}</strong></p>
-
-                <p className="movie-card__starring"><strong>Starring: {starring} and other</strong></p>
-
-              </div>
             </div>
           </div>
         </div>
