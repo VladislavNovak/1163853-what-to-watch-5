@@ -6,7 +6,6 @@ import PreviewScreen from "../preview-screen/preview-screen";
 
 const FilmScreen = ({
   isActiveFilm,
-  isRunPreview,
   id,
   poster,
   title,
@@ -21,7 +20,7 @@ const FilmScreen = ({
       onMouseLeave={handleMouseLeaveFilm}
     >
       <div className="small-movie-card__image">
-        {isActiveFilm && isRunPreview ? (
+        {isActiveFilm ? (
           <PreviewScreen trailer={trailer} poster={poster} />
         ) : (
           <img src={poster} alt={title} width="280" height="175" />
@@ -39,7 +38,6 @@ const FilmScreen = ({
 FilmScreen.propTypes = {
   id: PropTypes.number.isRequired,
   isActiveFilm: PropTypes.bool.isRequired,
-  isRunPreview: PropTypes.bool.isRequired,
   poster: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   trailer: PropTypes.string.isRequired,

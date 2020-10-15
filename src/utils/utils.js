@@ -3,6 +3,12 @@ export const isFavoriteType = {
   UNCHECKED: false,
 };
 
+export const TabsType = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEW: `Review`
+};
+
 // Возвращает инстансы класса ClassObject в количестве указанном в count
 export const generateInstances = (ClassObject, count) => {
   const instances = [];

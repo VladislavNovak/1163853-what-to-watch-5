@@ -11,7 +11,6 @@ class FilmsListScreen extends PureComponent {
 
     this.state = {
       activeFilmID: -1,
-      isRunPreview: false,
     };
 
     this.handleMouseOverFilm = this.handleMouseOverFilm.bind(this);
@@ -19,17 +18,23 @@ class FilmsListScreen extends PureComponent {
   }
 
   handleMouseOverFilm(id) {
-    this.setState({activeFilmID: id});
+    if (this.timerID !== null) {
+      clearTimeout(this.timerID);
+    }
 
-    this.timerID = setTimeout(() => this.setState({isRunPreview: true}), 1000);
+    this.timerID = setTimeout(() => this.setState({activeFilmID: id}), 1000);
   }
 
   handleMouseLeaveFilm() {
     this.setState({activeFilmID: -1});
-
-    this.setState({isRunPreview: false});
     clearTimeout(this.timerID);
     this.timerID = null;
+  }
+
+  componentWillUnmount() {
+    if (this.timerID) {
+      clearTimeout(this.timerID);
+    }
   }
 
   render() {
@@ -41,7 +46,6 @@ class FilmsListScreen extends PureComponent {
           <FilmScreen
             key={film.id}
             isActiveFilm={this.state.activeFilmID === film.id}
-            isRunPreview={this.state.isRunPreview}
             id={film.id}
             poster={film.poster}
             title={film.title}
