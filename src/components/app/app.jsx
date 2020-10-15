@@ -6,7 +6,7 @@ import MainScreen from "../main-screen/main-screen";
 import SignInScreen from "../sign-in-screen/sign-in-screen";
 import MyListScreen from "../my-list-screen/my-list-screen";
 import AddReviewScreen from "../add-review-screen/add-review-screen";
-import OverviewScreen from "../overview-screen/overview-screen";
+import PageAssembledScreen from "../page-assembled-screen/page-assembled-screen";
 import PlayerScreen from "../player-screen/player-screen";
 
 // isFavoriteType: CHECKED/UNCHECKED
@@ -32,7 +32,7 @@ const App = (props) => {
           />
         </Route>
         <Route exact path="/films/:id"
-          render={({match}) => <OverviewScreen film={getMatchingFilm(props.films, match)} />}
+          render={({match}) => <PageAssembledScreen film={getMatchingFilm(props.films, match)} />}
         />
         <Route exact path="/films/:id/review"
           render={({match}) => <AddReviewScreen film={getMatchingFilm(props.films, match)} />}

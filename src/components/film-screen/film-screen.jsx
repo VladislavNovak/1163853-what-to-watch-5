@@ -5,9 +5,9 @@ import {Link} from "react-router-dom";
 import PreviewScreen from "../preview-screen/preview-screen";
 
 const FilmScreen = ({
-  id,
   isActiveFilm,
   isRunPreview,
+  id,
   poster,
   title,
   trailer,
