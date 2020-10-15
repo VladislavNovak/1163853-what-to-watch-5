@@ -7,17 +7,34 @@ class FilmsListScreen extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {currentActiveFilm: null};
-    this.onFilmOverHandler = this.onFilmOverHandler.bind(this);
-    this.onFilmLeaveHandler = this.onFilmLeaveHandler.bind(this);
+    this.timerID = null;
+
+    this.state = {
+      activeFilmID: -1,
+    };
+
+    this.handleMouseOverFilm = this.handleMouseOverFilm.bind(this);
+    this.handleMouseLeaveFilm = this.handleMouseLeaveFilm.bind(this);
   }
 
-  onFilmOverHandler(id) {
-    this.setState({currentActiveFilm: id});
+  handleMouseOverFilm(id) {
+    if (this.timerID !== null) {
+      clearTimeout(this.timerID);
+    }
+
+    this.timerID = setTimeout(() => this.setState({activeFilmID: id}), 1000);
   }
 
-  onFilmLeaveHandler() {
-    this.setState({currentActiveFilm: null});
+  handleMouseLeaveFilm() {
+    this.setState({activeFilmID: -1});
+    clearTimeout(this.timerID);
+    this.timerID = null;
+  }
+
+  componentWillUnmount() {
+    if (this.timerID) {
+      clearTimeout(this.timerID);
+    }
   }
 
   render() {
@@ -25,7 +42,18 @@ class FilmsListScreen extends PureComponent {
 
     return (
       <div className="catalog__movies-list">
-        {films.map((film) => <FilmScreen key={film.id} id={film.id} poster={film.poster} title={film.title} onFilmOverHandler={this.onFilmOverHandler} onFilmLeaveHandler={this.onFilmLeaveHandler} />)}
+        {films.map((film) => (
+          <FilmScreen
+            key={film.id}
+            isActiveFilm={this.state.activeFilmID === film.id}
+            id={film.id}
+            poster={film.poster}
+            title={film.title}
+            trailer={film.trailer}
+            handleMouseOverFilm={this.handleMouseOverFilm}
+            handleMouseLeaveFilm={this.handleMouseLeaveFilm}
+          />
+        ))}
       </div>
     );
   }

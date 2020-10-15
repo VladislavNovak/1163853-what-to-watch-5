@@ -1,7 +1,12 @@
-import {listOfTitles, generateId, getRandomItemFromList, getImage} from "./temp";
-import {getRandomInteger} from "../utils/utils";
-import Genre from "../utils/genre";
-import Level from "../utils/level";
+import {
+  listOfTitles,
+  generateId,
+  getRandomItemFromList,
+  getImage
+} from './temp';
+import {getRandomInteger} from '../utils/utils';
+import Genre from '../utils/genre';
+import Level from '../utils/level';
 
 export default class Film {
   constructor() {
@@ -19,6 +24,6 @@ export default class Film {
     this.posterBig = getImage(this.title);
     this.trailer = `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`;
     this.runtime = `1h 39m`; // TODO [date]
-    this.inMyFavoriteList = !(getRandomInteger(0, 5));
+    this.inMyFavoriteList = !getRandomInteger(0, 5);
   }
 }

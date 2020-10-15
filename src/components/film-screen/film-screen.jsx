@@ -2,17 +2,29 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-const FilmScreen = ({id, poster, title, onFilmOverHandler, onFilmLeaveHandler}) => {
+import PreviewScreen from "../preview-screen/preview-screen";
 
+const FilmScreen = ({
+  isActiveFilm,
+  id,
+  poster,
+  title,
+  trailer,
+  handleMouseOverFilm,
+  handleMouseLeaveFilm,
+}) => {
   return (
     <article
-      key={id}
       className="small-movie-card catalog__movies-card"
-      onMouseOver={() => onFilmOverHandler(id)}
-      onMouseLeave={() => onFilmLeaveHandler()}
+      onMouseOver={() => handleMouseOverFilm(id)}
+      onMouseLeave={handleMouseLeaveFilm}
     >
       <div className="small-movie-card__image">
-        <img src={poster} alt={title} width="280" height="175" />
+        {isActiveFilm ? (
+          <PreviewScreen trailer={trailer} poster={poster} />
+        ) : (
+          <img src={poster} alt={title} width="280" height="175" />
+        )}
       </div>
       <h3 className="small-movie-card__title">
         <Link to={`/films/${id}`} className="small-movie-card__link">
@@ -25,10 +37,12 @@ const FilmScreen = ({id, poster, title, onFilmOverHandler, onFilmLeaveHandler}) 
 
 FilmScreen.propTypes = {
   id: PropTypes.number.isRequired,
+  isActiveFilm: PropTypes.bool.isRequired,
   poster: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  onFilmOverHandler: PropTypes.func.isRequired,
-  onFilmLeaveHandler: PropTypes.func.isRequired,
+  trailer: PropTypes.string.isRequired,
+  handleMouseOverFilm: PropTypes.func.isRequired,
+  handleMouseLeaveFilm: PropTypes.func.isRequired,
 };
 
 export default FilmScreen;

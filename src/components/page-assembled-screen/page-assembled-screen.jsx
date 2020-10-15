@@ -2,7 +2,9 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-class OverviewScreen extends PureComponent {
+import TabsScreen from "../tabs-screen/tabs-screen";
+
+class PageAssembledScreen extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -68,7 +70,8 @@ class OverviewScreen extends PureComponent {
             </div>
 
             <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
+              <TabsScreen film={this.props.film} />
+              {/* <nav className="movie-nav movie-card__nav">
                 <ul className="movie-nav__list">
                   <li className="movie-nav__item movie-nav__item--active">
                     <a href="#" className="movie-nav__link">Overview</a>
@@ -80,7 +83,7 @@ class OverviewScreen extends PureComponent {
                     <a href="#" className="movie-nav__link">Reviews</a>
                   </li>
                 </ul>
-              </nav>
+              </nav> */}
 
               <div className="movie-rating">
                 <div className="movie-rating__score">{score}</div>
@@ -164,8 +167,8 @@ class OverviewScreen extends PureComponent {
   }
 }
 
-OverviewScreen.propTypes = {
+PageAssembledScreen.propTypes = {
   film: PropTypes.object.isRequired,
 };
 
-export default OverviewScreen;
+export default PageAssembledScreen;
