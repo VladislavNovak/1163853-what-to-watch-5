@@ -3,9 +3,12 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 import TabSwitcherScreen from "../tab-switcher-screen/tab-switcher-screen";
+import FilmsListScreen from "../films-list-screen/films-list-screen";
 
-const TabAssemblerScreen = ({film, reviews}) => {
+const TabAssemblerScreen = ({film, films, reviews}) => {
   const {id, title, genre, released, poster, posterBig} = film;
+  const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, 4);
+
   return <React.Fragment>
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
@@ -72,47 +75,7 @@ const TabAssemblerScreen = ({film, reviews}) => {
     </section>
 
     <div className="page-content">
-      <section className="catalog catalog--like-this">
-        <h2 className="catalog__title">More like this</h2>
-
-        <div className="catalog__movies-list">
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-            </h3>
-          </article>
-
-          <article className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/aviator.jpg" alt="Aviator" width="280" height="175" />
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
-            </h3>
-          </article>
-        </div>
-      </section>
+      {similarFilms.length ? <FilmsListScreen films={similarFilms} wrapClassName={`catalog__movies-list`} /> : `` }
 
       <footer className="page-footer">
         <div className="logo">
@@ -133,6 +96,7 @@ const TabAssemblerScreen = ({film, reviews}) => {
 
 TabAssemblerScreen.propTypes = {
   film: PropTypes.object.isRequired,
+  films: PropTypes.array.isRequired,
   reviews: PropTypes.array.isRequired,
 };
 

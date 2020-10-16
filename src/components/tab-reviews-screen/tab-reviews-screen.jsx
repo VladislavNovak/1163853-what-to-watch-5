@@ -5,8 +5,8 @@ import ReviewScreen from "../review-screen/review-screen";
 
 
 const TabReviewsScreen = ({reviews}) => {
-  const leftColReviews = reviews.filter((_, index) => index % 2 !== 0);
-  const rightColReviews = reviews.filter((_, index) => index % 2 === 0);
+  const leftColReviews = reviews.filter((_, index) => index % 2 === 0);
+  const rightColReviews = reviews.filter((_, index) => index % 2 !== 0);
 
   return (
     <div className="movie-card__reviews movie-card__row">

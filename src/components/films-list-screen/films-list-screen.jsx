@@ -39,9 +39,10 @@ class FilmsListScreen extends PureComponent {
 
   render() {
     const {films} = this.props;
+    const {wrapClassName} = this.props;
 
     return (
-      <div className="catalog__movies-list">
+      <div className={wrapClassName}>
         {films.map((film) => (
           <FilmScreen
             key={film.id}
@@ -61,6 +62,7 @@ class FilmsListScreen extends PureComponent {
 
 FilmsListScreen.propTypes = {
   films: PropTypes.array.isRequired,
+  wrapClassName: PropTypes.string.isRequired,
 };
 
 export default FilmsListScreen;

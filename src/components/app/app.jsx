@@ -32,7 +32,7 @@ const App = (props) => {
           />
         </Route>
         <Route exact path="/films/:id"
-          render={({match}) => <TabAssemblerScreen film={getMatchingFilm(props.films, match)} reviews={getMatchingReview(props.reviews, match)} />}
+          render={({match}) => <TabAssemblerScreen film={getMatchingFilm(props.films, match)} films={props.films} reviews={getMatchingReview(props.reviews, match)} />}
         />
         <Route exact path="/films/:id/review"
           render={({match}) => <AddReviewScreen film={getMatchingFilm(props.films, match)} />}

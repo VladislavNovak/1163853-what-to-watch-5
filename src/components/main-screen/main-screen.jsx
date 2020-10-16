@@ -77,7 +77,7 @@ const MainScreen = ({poster, films, genre}) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         {<GenresListScreen genre={genre} />}
-        {<FilmsListScreen films={films} />}
+        {<FilmsListScreen films={films} wrapClassName={`catalog__movies-list`} />}
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">
