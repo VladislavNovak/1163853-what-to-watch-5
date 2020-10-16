@@ -1,25 +1,25 @@
-import {getRandomInteger, listOfTexts, getRandomItemFromList, listOfPeople} from "./temp";
+import {getRandomInteger, listOfTexts, getRandomItemFromList, listOfPeople, randomDate} from "./temp";
 
 class Reviews {
   constructor(filmID) {
     this.filmID = filmID;
     this.quote = getRandomItemFromList(listOfTexts);
     this.author = getRandomItemFromList(listOfPeople);
-    this.datetime = `1h 39m`; // TODO [date]
+    this.datetime = randomDate(`02/13/2013`, `01/01/2021`); // TODO [date]
     this.rating = getRandomInteger(0, 10);
   }
 }
 
-// Возвращает массивы инстансов Reviews
+// Возвращает массив инстансов Reviews в количестве count, с присвоенными в произвольном порядке film.id
 export const generateReviews = (films, count) => {
   const collectionID = [];
   films.map((film) => collectionID.push(film.id));
 
-  const instances = [];
+  const reviews = [];
 
   for (let i = 0; i < count; i++) {
-    instances.push(new Reviews(getRandomItemFromList(collectionID)));
+    reviews.push(new Reviews(getRandomItemFromList(collectionID)));
   }
 
-  return instances;
+  return reviews;
 };

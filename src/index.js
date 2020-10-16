@@ -7,8 +7,7 @@ import Genre from "./utils/genre";
 
 const poster = generateFilms(1)[0];
 const films = generateFilms(20);
-const reviews = generateReviews(films, 40);
-// console.log(reviews)
+const reviews = generateReviews(films, 150);
 
 const genre = new Genre();
 

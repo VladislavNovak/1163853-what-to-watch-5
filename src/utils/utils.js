@@ -6,7 +6,7 @@ export const isFavoriteType = {
 export const TabsType = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,
-  REVIEW: `Review`
+  REVIEWS: `Reviews`
 };
 
 export const getRandomInteger = (a = 0, b = 1) => {
@@ -32,6 +32,12 @@ export const getMatchingFilm = (films, match) => {
   const id = match.params.id;
   const film = films.find((item) => item.id === parseInt(id, 10));
   return film;
+};
+
+export const getMatchingReview = (reviews, match) => {
+  const id = match.params.id;
+  const matchReviews = reviews.filter((review) => review.filmID === parseInt(id, 10));
+  return matchReviews;
 };
 
 // Фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов

@@ -5,7 +5,7 @@ import TabOverviewScreen from "../tab-overview-screen/tab-overview-screen";
 import TabDetailsScreen from "../tab-details-screen/tab-details-screen";
 import TabReviewsScreen from "../tab-reviews-screen/tab-reviews-screen";
 
-// TabsType: OVERVIEW/DETAILS/REVIEW
+// TabsType: OVERVIEW/DETAILS/REVIEWS
 import {TabsType} from "../../utils/utils";
 
 class TabSwitcherScreen extends PureComponent {
@@ -25,14 +25,15 @@ class TabSwitcherScreen extends PureComponent {
 
   renderTabContent() {
     const {score, level, rating, description, director, starring, runtime, genre, released} = this.props.film;
+    const {reviews} = this.props;
 
     switch (this.state.activeTab) {
       case TabsType.OVERVIEW:
         return <TabOverviewScreen score={score} level={level} rating={rating} description={description} director={director} starring={starring} />;
       case TabsType.DETAILS:
         return <TabDetailsScreen director={director} starring={starring} runtime={runtime} genre={genre} released={released} />;
-      case TabsType.REVIEW:
-        return <TabReviewsScreen />;
+      case TabsType.REVIEWS:
+        return <TabReviewsScreen reviews={reviews}/>;
       default:
         return ``;
     }
@@ -58,6 +59,7 @@ class TabSwitcherScreen extends PureComponent {
 
 TabSwitcherScreen.propTypes = {
   film: PropTypes.object.isRequired,
+  reviews: PropTypes.array.isRequired,
 };
 
 export default TabSwitcherScreen;

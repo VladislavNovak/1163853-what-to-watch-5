@@ -32,10 +32,10 @@ class Film {
 
 // Возвращает инстансы класса ClassObject в количестве указанном в count
 export const generateFilms = (count) => {
-  const instances = [];
+  const films = [];
   for (let i = 0; i < count; i++) {
-    instances.push(new Film());
+    films.push(new Film());
   }
 
-  return instances;
+  return films;
 };
