@@ -1,11 +1,14 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 
-import PageOverviewScreen from "../page-overview-screen/page-overview-screen";
+import TabOverviewScreen from "../tab-overview-screen/tab-overview-screen";
+import TabDetailsScreen from "../tab-details-screen/tab-details-screen";
+import TabReviewsScreen from "../tab-reviews-screen/tab-reviews-screen";
 
 // TabsType: OVERVIEW/DETAILS/REVIEW
 import {TabsType} from "../../utils/utils";
 
-class TabsScreen extends PureComponent {
+class TabSwitcherScreen extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -21,19 +24,17 @@ class TabsScreen extends PureComponent {
   }
 
   renderTabContent() {
-    const {film} = this.props;
+    const {score, level, rating, description, director, starring, runtime, genre, released} = this.props.film;
 
     switch (this.state.activeTab) {
       case TabsType.OVERVIEW:
-        return <PageOverviewScreen score={film.score} level={film.level} rating={film.rating} description={film.description} director={film.director} starring={film.starring} />
+        return <TabOverviewScreen score={score} level={level} rating={rating} description={description} director={director} starring={starring} />;
       case TabsType.DETAILS:
-        console.log(`Секция DETAILS`)
-        break;
+        return <TabDetailsScreen director={director} starring={starring} runtime={runtime} genre={genre} released={released} />;
       case TabsType.REVIEW:
-        console.log(`Секция REVIEW`)
-        break;
+        return <TabReviewsScreen />;
       default:
-        break;
+        return ``;
     }
   }
 
@@ -55,5 +56,8 @@ class TabsScreen extends PureComponent {
   }
 }
 
+TabSwitcherScreen.propTypes = {
+  film: PropTypes.object.isRequired,
+};
 
-export default TabsScreen;
+export default TabSwitcherScreen;

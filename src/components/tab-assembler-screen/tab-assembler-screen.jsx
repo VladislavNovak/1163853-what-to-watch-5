@@ -2,9 +2,9 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-import TabsScreen from "../tabs-screen/tabs-screen";
+import TabSwitcherScreen from "../tab-switcher-screen/tab-switcher-screen";
 
-class PageAssembledScreen extends PureComponent {
+class TabAssemblerScreen extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -70,7 +70,7 @@ class PageAssembledScreen extends PureComponent {
             </div>
 
             <div className="movie-card__desc">
-              <TabsScreen film={this.props.film} />
+              <TabSwitcherScreen film={this.props.film} />
             </div>
           </div>
         </div>
@@ -137,8 +137,8 @@ class PageAssembledScreen extends PureComponent {
   }
 }
 
-PageAssembledScreen.propTypes = {
+TabAssemblerScreen.propTypes = {
   film: PropTypes.object.isRequired,
 };
 
-export default PageAssembledScreen;
+export default TabAssemblerScreen;

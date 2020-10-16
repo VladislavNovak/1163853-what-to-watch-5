@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const PageOverviewScreen = ({score, level, rating, description, director, starring}) => {
+const TabOverviewScreen = ({score, level, rating, description, director, starring}) => {
   const formattingList = (list) => {
     const slice = list.slice(0, 4);
-    return (`${slice.join(`, `)} and other...`)
-  }
+    return (`${slice.join(`, `)} and other...`);
+  };
 
   return <React.Fragment>
     <div className="movie-rating">
@@ -20,21 +20,20 @@ const PageOverviewScreen = ({score, level, rating, description, director, starri
       {description}
 
       <p className="movie-card__director"><strong>Director: {director}</strong></p>
-
       <p className="movie-card__starring"><strong>Starring: {formattingList(starring)}</strong></p>
 
     </div>
   </React.Fragment>;
 };
 
-PageOverviewScreen.propTypes = {
+TabOverviewScreen.propTypes = {
   score: PropTypes.number.isRequired,
   level: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
   starring: PropTypes.array.isRequired,
-}
+};
 
-export default PageOverviewScreen;
+export default TabOverviewScreen;
 

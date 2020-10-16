@@ -9,16 +9,6 @@ export const TabsType = {
   REVIEW: `Review`
 };
 
-// Возвращает инстансы класса ClassObject в количестве указанном в count
-export const generateInstances = (ClassObject, count) => {
-  const instances = [];
-  for (let i = 0; i < count; i++) {
-    instances.push(new ClassObject());
-  }
-
-  return instances;
-};
-
 export const getRandomInteger = (a = 0, b = 1) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));

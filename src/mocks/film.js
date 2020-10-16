@@ -6,11 +6,11 @@ import {
   getRandomItemFromList,
   getImage,
 } from './temp';
-import {shuffle} from '../utils/utils'
+import {shuffle} from '../utils/utils';
 import Genre from '../utils/genre';
 import Level from '../utils/level';
 
-export default class Film {
+class Film {
   constructor() {
     this.id = generateId();
     this.title = getRandomItemFromList(listOfTitles);
@@ -29,3 +29,13 @@ export default class Film {
     this.inMyFavoriteList = !getRandomInteger(0, 5);
   }
 }
+
+// Возвращает инстансы класса ClassObject в количестве указанном в count
+export const generateFilms = (count) => {
+  const instances = [];
+  for (let i = 0; i < count; i++) {
+    instances.push(new Film());
+  }
+
+  return instances;
+};

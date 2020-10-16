@@ -6,7 +6,7 @@ import MainScreen from "../main-screen/main-screen";
 import SignInScreen from "../sign-in-screen/sign-in-screen";
 import MyListScreen from "../my-list-screen/my-list-screen";
 import AddReviewScreen from "../add-review-screen/add-review-screen";
-import PageAssembledScreen from "../page-assembled-screen/page-assembled-screen";
+import PageAssembledScreen from "../tab-assembler-screen/tab-assembler-screen";
 import PlayerScreen from "../player-screen/player-screen";
 
 // isFavoriteType: CHECKED/UNCHECKED
