@@ -26,7 +26,7 @@ class TabSwitcherScreen extends PureComponent {
   }
 
   _renderTabContent() {
-    const {film, reviews} = this.props
+    const {film, reviews} = this.props;
     const {score, level, rating, description, director, starring, runtime, genre, released} = film;
 
     switch (this.state.activeTab) {
