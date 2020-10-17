@@ -86,8 +86,8 @@ export const randomDate = (dateX, dateY) => {
   const date2 = new Date(dateY).getTime();
 
   if (date1 > date2) {
-    return new Date(getRandomInteger(date2, date1)).toLocaleDateString();
+    return new Date(getRandomInteger(date2, date1));
   } else {
-    return new Date(getRandomInteger(date1, date2)).toLocaleDateString();
+    return new Date(getRandomInteger(date1, date2));
   }
 };

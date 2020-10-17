@@ -1,3 +1,4 @@
+import moment from "../../node_modules/moment/moment.js";
 import {getRandomInteger, listOfTexts, getRandomItemFromList, listOfPeople, randomDate} from "./temp";
 
 class Reviews {
@@ -5,7 +6,7 @@ class Reviews {
     this.filmID = filmID;
     this.quote = getRandomItemFromList(listOfTexts);
     this.author = getRandomItemFromList(listOfPeople);
-    this.datetime = randomDate(`02/13/2013`, `01/01/2021`); // TODO [date]
+    this.datetime = moment(randomDate(`02-13-2013`, `01-01-2021`)).format('YYYY-M-D');
     this.rating = getRandomInteger(0, 10);
   }
 }
