@@ -16,26 +16,43 @@ class TabSwitcherScreen extends PureComponent {
       activeTab: TabsType.OVERVIEW,
     };
 
-    this.handleTabClick = this.handleTabClick.bind(this);
+    this._handleTabClick = this._handleTabClick.bind(this);
   }
 
-  handleTabClick(index) {
+  _handleTabClick(index) {
     this.setState({activeTab: index});
   }
 
-  renderTabContent() {
-    const {score, level, rating, description, director, starring, runtime, genre, released} = this.props.film;
-    const {reviews} = this.props;
+  _renderTabContent() {
+    const {film, reviews} = this.props
+    const {score, level, rating, description, director, starring, runtime, genre, released} = film;
 
     switch (this.state.activeTab) {
       case TabsType.OVERVIEW:
-        return <TabOverviewScreen score={score} level={level} rating={rating} description={description} director={director} starring={starring} />;
+        return (
+          <TabOverviewScreen
+            score={score}
+            level={level}
+            rating={rating}
+            description={description}
+            director={director}
+            starring={starring}
+          />
+        );
       case TabsType.DETAILS:
-        return <TabDetailsScreen director={director} starring={starring} runtime={runtime} genre={genre} released={released} />;
+        return (
+          <TabDetailsScreen
+            director={director}
+            starring={starring}
+            runtime={runtime}
+            genre={genre}
+            released={released}
+          />
+        );
       case TabsType.REVIEWS:
-        return <TabReviewsScreen reviews={reviews}/>;
+        return <TabReviewsScreen reviews={reviews} />;
       default:
-        return ``;
+        throw new Error(`Something went wrong. No matching tab!`);
     }
   }
 
@@ -46,13 +63,13 @@ class TabSwitcherScreen extends PureComponent {
           {Object.entries(TabsType).map(([key, value]) => {
             return (
               <li key={key} className={`movie-nav__item ${this.state.activeTab === value ? `movie-nav__item--active` : ``}`}>
-                <a className="movie-nav__link" onClick={() => this.handleTabClick(value)}>{value}</a>
+                <a className="movie-nav__link" onClick={() => this._handleTabClick(value)}>{value}</a>
               </li>
             );
           })}
         </ul>
       </nav>
-      {this.renderTabContent()}
+      {this._renderTabContent()}
     </React.Fragment>;
   }
 }

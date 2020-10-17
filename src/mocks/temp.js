@@ -1,4 +1,4 @@
-export const listOfTitles = [
+export const LIST_OF_TITLES = [
   `Bad Boys for Life`, `Badland`, `Dark Forces`, `Double World`,
   `Enola Holmes`, `Grand Isle`, `Legacy of Lies`, `Pinocchio`,
   `Project Power`, `Rogue`, `Sponge on the Run`, `The Binge`,
@@ -9,7 +9,7 @@ export const listOfTitles = [
   `The Angry Birds Movie 2`, `The Addams Family`, `The Pale Door`, `Ava`
 ];
 
-export const listOfPeople = [
+export const LIST_OF_PEOPLES = [
   `Cole Rogers`, `Cameron Cox`, `Anthony Nelson`, `Adam Bryant`, `Austin Rogers`,
   `Colin Howard`, `Xavier Murphy`, `Jordan Miller`, `Hunter Harris`, `Thomas Alexander`,
   `Anthony Rivera`, `Charles Turner`, `Devin Gray`, `Timothy Jones`, `Matthew Carter`,
@@ -21,7 +21,7 @@ export const listOfPeople = [
   `Jordan Parker`, `Nathaniel Richardson`, `Mason Clark`
 ];
 
-export const listOfTexts = [
+export const LIST_OF_TEXTS = [
   `Значимость этих проблем настолько очевидна, что консультация с широким активом играет важную роль в формировании новых предложений. Идейные соображения высшего порядка, а также рамки и место обучения кадров обеспечивает широкому кругу (специалистов) участие в формировании новых предложений.`,
   `Повседневная практика показывает, что реализация намеченных плановых заданий в значительной степени обуславливает создание модели развития. Значимость этих проблем настолько очевидна, что дальнейшее развитие различных форм деятельности обеспечивает широкому кругу (специалистов) участие в формировании новых предложений.`,
   `Таким образом новая модель организационной деятельности способствует подготовки и реализации систем массового участия. Значимость этих проблем настолько очевидна, что консультация с широким активом играет важную роль в формировании новых предложений.`,

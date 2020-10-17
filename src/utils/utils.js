@@ -28,16 +28,12 @@ export const shuffle = (originArray) => {
 };
 
 // Находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
-export const getMatchingFilm = (films, match) => {
-  const id = match.params.id;
-  const film = films.find((item) => item.id === parseInt(id, 10));
-  return film;
+export const getMatchingFilm = (films, {params}) => {
+  return films.find((item) => item.id === Number(params.id));
 };
 
-export const getMatchingReview = (reviews, match) => {
-  const id = match.params.id;
-  const matchReviews = reviews.filter((review) => review.filmID === parseInt(id, 10));
-  return matchReviews;
+export const getMatchingReview = (reviews, {params}) => {
+  return reviews.filter((review) => review.filmID === Number(params.id));
 };
 
 // Фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
