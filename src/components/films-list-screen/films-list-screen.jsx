@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import FilmScreen from "../film-screen/film-screen";
 
+import {filmPropStructure} from "../../utils/validator.prop";
+
 class FilmsListScreen extends PureComponent {
   constructor(props) {
     super(props);
@@ -61,7 +63,7 @@ class FilmsListScreen extends PureComponent {
 }
 
 FilmsListScreen.propTypes = {
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(filmPropStructure).isRequired,
   wrapClassName: PropTypes.string.isRequired,
 };
 

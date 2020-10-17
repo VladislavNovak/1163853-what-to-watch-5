@@ -26,3 +26,10 @@ export const reviewPropStructure = PropTypes.shape({
   datetime: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
 }).isRequired;
+
+export const genrePropStructure = PropTypes.shape({
+  listOfGenres: PropTypes.object.isRequired,
+  getValues: PropTypes.func.isRequired,
+  getValuesWithoutAll: PropTypes.func.isRequired,
+  getRandomValue: PropTypes.func.isRequired,
+}).isRequired;

@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import FilmsListScreen from "../films-list-screen/films-list-screen";
 import GenresListScreen from "../genres-list-screen/genres-list-screen";
 
+import {filmPropStructure, genrePropStructure} from "../../utils/validator.prop";
+
 const MainScreen = ({poster, films, genre}) => {
 
   return <React.Fragment>
@@ -104,9 +106,9 @@ const MainScreen = ({poster, films, genre}) => {
 };
 
 MainScreen.propTypes = {
-  poster: PropTypes.object.isRequired,
-  films: PropTypes.array.isRequired,
-  genre: PropTypes.object.isRequired,
+  poster: PropTypes.shape(filmPropStructure).isRequired,
+  films: PropTypes.arrayOf(filmPropStructure).isRequired,
+  genre: PropTypes.shape(genrePropStructure).isRequired,
 };
 
 export default MainScreen;

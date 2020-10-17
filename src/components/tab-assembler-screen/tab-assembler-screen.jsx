@@ -5,6 +5,8 @@ import {Link} from "react-router-dom";
 import TabSwitcherScreen from "../tab-switcher-screen/tab-switcher-screen";
 import FilmsListScreen from "../films-list-screen/films-list-screen";
 
+import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
+
 const TabAssemblerScreen = ({film, films, reviews}) => {
   const {id, title, genre, released, poster, posterBig} = film;
   const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, 4);
@@ -97,9 +99,9 @@ const TabAssemblerScreen = ({film, films, reviews}) => {
 };
 
 TabAssemblerScreen.propTypes = {
-  film: PropTypes.object.isRequired,
-  films: PropTypes.array.isRequired,
-  reviews: PropTypes.array.isRequired,
+  film: PropTypes.shape(filmPropStructure).isRequired,
+  films: PropTypes.arrayOf(filmPropStructure).isRequired,
+  reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
 };
 
 export default TabAssemblerScreen;

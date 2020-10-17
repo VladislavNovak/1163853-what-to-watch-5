@@ -32,7 +32,7 @@ TabOverviewScreen.propTypes = {
   rating: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
-  starring: PropTypes.array.isRequired,
+  starring: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default TabOverviewScreen;

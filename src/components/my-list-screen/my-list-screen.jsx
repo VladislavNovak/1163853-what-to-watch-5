@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 
 import FilmScreen from "../film-screen/film-screen";
 
+import {filmPropStructure} from "../../utils/validator.prop";
+
 class MyListScreen extends PureComponent {
   constructor(props) {
     super(props);
@@ -71,7 +73,7 @@ class MyListScreen extends PureComponent {
 }
 
 MyListScreen.propTypes = {
-  favoriteFilms: PropTypes.array.isRequired,
+  favoriteFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
 };
 
 export default MyListScreen;

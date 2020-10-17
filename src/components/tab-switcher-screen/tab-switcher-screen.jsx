@@ -5,6 +5,8 @@ import TabOverviewScreen from "../tab-overview-screen/tab-overview-screen";
 import TabDetailsScreen from "../tab-details-screen/tab-details-screen";
 import TabReviewsScreen from "../tab-reviews-screen/tab-reviews-screen";
 
+import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
+
 // TabsType: OVERVIEW/DETAILS/REVIEWS
 import {TabsType} from "../../utils/utils";
 
@@ -75,8 +77,8 @@ class TabSwitcherScreen extends PureComponent {
 }
 
 TabSwitcherScreen.propTypes = {
-  film: PropTypes.object.isRequired,
-  reviews: PropTypes.array.isRequired,
+  film: PropTypes.shape(filmPropStructure).isRequired,
+  reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
 };
 
 export default TabSwitcherScreen;

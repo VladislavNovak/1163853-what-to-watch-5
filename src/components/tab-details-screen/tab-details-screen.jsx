@@ -42,7 +42,7 @@ const TabDetailsScreen = ({director, starring, runtime, genre, released}) => {
 
 TabDetailsScreen.propTypes = {
   director: PropTypes.string.isRequired,
-  starring: PropTypes.array.isRequired,
+  starring: PropTypes.arrayOf(PropTypes.string).isRequired,
   runtime: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   released: PropTypes.number.isRequired,
