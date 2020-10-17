@@ -3,16 +3,16 @@ import PropTypes from "prop-types";
 
 import ReviewScreen from "../review-screen/review-screen";
 
-
 const TabReviewsScreen = ({reviews}) => {
-  const leftColReviews = reviews.filter((_, index) => index % 2 === 0);
-  const rightColReviews = reviews.filter((_, index) => index % 2 !== 0);
+  const columns = [];
+  columns[0] = reviews.filter((_, index) => index % 2 === 0);
+  columns[1] = reviews.filter((_, index) => index % 2 !== 0);
 
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
-        {leftColReviews.length
-          ? leftColReviews.map((review, index) => (
+        {columns[0].length
+          ? columns[0].map((review, index) => (
             <ReviewScreen
               key={`${review.filmID} - ${index}`}
               quote={review.quote}
@@ -24,8 +24,8 @@ const TabReviewsScreen = ({reviews}) => {
           : ``}
       </div>
       <div className="movie-card__reviews-col">
-        {rightColReviews.length
-          ? rightColReviews.map((review, index) => (
+        {columns[1].length
+          ? columns[1].map((review, index) => (
             <ReviewScreen
               key={`${review.filmID} - ${index}`}
               quote={review.quote}
