@@ -41,3 +41,7 @@ export const filterFavoriteFilms = (films, type) => {
   const filtredFilms = (type) ? films.filter((item) => item.inMyFavoriteList) : films.filter((item) => !item.inMyFavoriteList);
   return filtredFilms;
 };
+
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
