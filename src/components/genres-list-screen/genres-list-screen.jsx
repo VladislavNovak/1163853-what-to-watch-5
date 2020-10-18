@@ -2,6 +2,8 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import GenreScreen from "../genre-screen/genre-screen";
 
+import {genrePropStructure} from "../../utils/validator.prop";
+
 class GenresListScreen extends PureComponent {
   constructor(props) {
     super(props);
@@ -25,8 +27,7 @@ class GenresListScreen extends PureComponent {
 }
 
 GenresListScreen.propTypes = {
-  genre: PropTypes.object.isRequired,
-  genresValueList: PropTypes.array,
+  genre: PropTypes.shape(genrePropStructure).isRequired,
 };
 
 export default GenresListScreen;

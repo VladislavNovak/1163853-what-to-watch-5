@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-import Film from "./mocks/film";
-import Review from "./mocks/review";
+import {generateFilms} from "./mocks/film";
+import {generateReviews} from "./mocks/review";
 import Genre from "./utils/genre";
-import {generateInstances} from "./utils/utils";
 
-const poster = generateInstances(Film, 1)[0];
-const films = generateInstances(Film, 20);
-const reviews = generateInstances(Review, 8);
+const poster = generateFilms(1)[0];
+const films = generateFilms(20);
+const reviews = generateReviews(films, 150);
+
 const genre = new Genre();
 
 ReactDOM.render(

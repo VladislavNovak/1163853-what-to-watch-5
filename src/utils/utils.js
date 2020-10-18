@@ -6,17 +6,7 @@ export const isFavoriteType = {
 export const TabsType = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,
-  REVIEW: `Review`
-};
-
-// Возвращает инстансы класса ClassObject в количестве указанном в count
-export const generateInstances = (ClassObject, count) => {
-  const instances = [];
-  for (let i = 0; i < count; i++) {
-    instances.push(new ClassObject());
-  }
-
-  return instances;
+  REVIEWS: `Reviews`
 };
 
 export const getRandomInteger = (a = 0, b = 1) => {
@@ -38,10 +28,12 @@ export const shuffle = (originArray) => {
 };
 
 // Находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
-export const getMatchingFilm = (films, match) => {
-  const id = match.params.id;
-  const film = films.find((item) => item.id === parseInt(id, 10));
-  return film;
+export const getMatchingFilm = (films, {params}) => {
+  return films.find((item) => item.id === Number(params.id));
+};
+
+export const getMatchingReview = (reviews, {params}) => {
+  return reviews.filter((review) => review.filmID === Number(params.id));
 };
 
 // Фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов

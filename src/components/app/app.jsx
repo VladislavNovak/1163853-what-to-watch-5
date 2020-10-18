@@ -6,13 +6,15 @@ import MainScreen from "../main-screen/main-screen";
 import SignInScreen from "../sign-in-screen/sign-in-screen";
 import MyListScreen from "../my-list-screen/my-list-screen";
 import AddReviewScreen from "../add-review-screen/add-review-screen";
-import PageAssembledScreen from "../page-assembled-screen/page-assembled-screen";
+import TabAssemblerScreen from "../tab-assembler-screen/tab-assembler-screen";
 import PlayerScreen from "../player-screen/player-screen";
+
+import {filmPropStructure, reviewPropStructure, genrePropStructure} from "../../utils/validator.prop";
 
 // isFavoriteType: CHECKED/UNCHECKED
 // getMatchingFilm: находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
 // filterFavoriteFilms: фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
-import {isFavoriteType, getMatchingFilm, filterFavoriteFilms} from "../../utils/utils";
+import {isFavoriteType, getMatchingFilm, getMatchingReview, filterFavoriteFilms} from "../../utils/utils";
 
 const App = (props) => {
   return (
@@ -32,7 +34,7 @@ const App = (props) => {
           />
         </Route>
         <Route exact path="/films/:id"
-          render={({match}) => <PageAssembledScreen film={getMatchingFilm(props.films, match)} />}
+          render={({match}) => <TabAssemblerScreen film={getMatchingFilm(props.films, match)} films={props.films} reviews={getMatchingReview(props.reviews, match)} />}
         />
         <Route exact path="/films/:id/review"
           render={({match}) => <AddReviewScreen film={getMatchingFilm(props.films, match)} />}
@@ -44,9 +46,10 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  poster: PropTypes.object.isRequired,
-  films: PropTypes.array.isRequired,
-  genre: PropTypes.object.isRequired,
+  poster: PropTypes.shape(filmPropStructure).isRequired,
+  films: PropTypes.arrayOf(filmPropStructure).isRequired,
+  genre: PropTypes.shape(genrePropStructure).isRequired,
+  reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
 };
 
 export default App;

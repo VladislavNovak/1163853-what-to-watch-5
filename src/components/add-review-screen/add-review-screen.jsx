@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 
 import AddReviewFormScreen from "../add-review-form-screen/add-review-form-screen";
 
+import {filmPropStructure} from "../../utils/validator.prop";
+
 const AddReviewScreen = ({film}) => {
   return (
     <section className="movie-card movie-card--full">
@@ -57,7 +59,7 @@ const AddReviewScreen = ({film}) => {
 };
 
 AddReviewScreen.propTypes = {
-  film: PropTypes.object.isRequired,
+  film: PropTypes.shape(filmPropStructure).isRequired,
 };
 
 export default AddReviewScreen;
