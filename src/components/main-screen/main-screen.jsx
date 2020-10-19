@@ -1,11 +1,12 @@
 import React from "react";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import FilmsListScreen from "../films-list-screen/films-list-screen";
 import GenresListScreen from "../genres-list-screen/genres-list-screen";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
-const MainScreen = ({poster, films}) => {
+const MainScreen = ({poster, filteredFilms}) => {
 
   return <React.Fragment>
     <section className="movie-card">
@@ -79,7 +80,7 @@ const MainScreen = ({poster, films}) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         {<GenresListScreen />}
-        {<FilmsListScreen films={films} wrapClassName={`catalog__movies-list`} />}
+        {<FilmsListScreen films={filteredFilms} wrapClassName={`catalog__movies-list`} />}
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">
@@ -107,7 +108,12 @@ const MainScreen = ({poster, films}) => {
 
 MainScreen.propTypes = {
   poster: PropTypes.shape(filmPropStructure).isRequired,
-  films: PropTypes.arrayOf(filmPropStructure).isRequired,
+  filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
 };
 
-export default MainScreen;
+const mapStateToProps = (state) => ({
+  filteredFilms: state.filteredFilms,
+});
+
+export {MainScreen};
+export default connect(mapStateToProps)(MainScreen);

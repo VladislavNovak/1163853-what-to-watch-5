@@ -1,6 +1,5 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-
 import FilmScreen from "../film-screen/film-screen";
 
 import {filmPropStructure} from "../../utils/validator.prop";
@@ -68,3 +67,4 @@ FilmsListScreen.propTypes = {
 };
 
 export default FilmsListScreen;
+

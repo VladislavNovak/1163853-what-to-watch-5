@@ -9,7 +9,7 @@ const GenresListScreen = ({activeGenre, genres, changeActiveGenre, filterFilmsLi
     <ul className="catalog__genres-list">
       {genres.map((genre, index) => (
         <li
-          key={`${genre}-${index}`}
+          key={`genre-${index}`}
           onClick={() => {
             changeActiveGenre(genre);
             filterFilmsListByGenre(genre);
