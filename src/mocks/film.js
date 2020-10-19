@@ -31,7 +31,7 @@ class Film {
 }
 
 // Возвращает инстансы класса ClassObject в количестве указанном в count
-export const generateFilms = (count) => {
+const generateFilms = (count) => {
   const films = [];
   for (let i = 0; i < count; i++) {
     films.push(new Film());
@@ -39,3 +39,8 @@ export const generateFilms = (count) => {
 
   return films;
 };
+
+const mockFilms = generateFilms(20);
+const mockPoster = generateFilms(1)[0];
+
+export {mockFilms, mockPoster};

@@ -14,7 +14,7 @@ export const filmPropStructure = PropTypes.shape({
   poster: PropTypes.string.isRequired,
   posterBig: PropTypes.string.isRequired,
   trailer: PropTypes.string.isRequired,
-  runtime: PropTypes.string.isRequired, // TODO [date]
+  runtime: PropTypes.string.isRequired,
   inMyFavoriteList: PropTypes.bool.isRequired,
 }).isRequired;
 
@@ -27,9 +27,10 @@ export const reviewPropStructure = PropTypes.shape({
   rating: PropTypes.number.isRequired,
 }).isRequired;
 
-export const genrePropStructure = PropTypes.shape({
-  listOfGenres: PropTypes.object.isRequired,
-  getValues: PropTypes.func.isRequired,
-  getValuesWithoutAll: PropTypes.func.isRequired,
-  getRandomValue: PropTypes.func.isRequired,
+export const genreListPropStructure = PropTypes.shape({
+  categories: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+  }).isRequired).isRequired
 }).isRequired;

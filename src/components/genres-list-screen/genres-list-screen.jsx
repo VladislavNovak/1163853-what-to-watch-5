@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import GenreScreen from "../genre-screen/genre-screen";
 
-import {genrePropStructure} from "../../utils/validator.prop";
+import {genreListPropStructure} from "../../utils/validator.prop";
 
 class GenresListScreen extends PureComponent {
   constructor(props) {
@@ -12,11 +12,11 @@ class GenresListScreen extends PureComponent {
   }
 
   render() {
-    const genresValueList = this.props.genre.getValues();
+    const {genreList} = this.props;
 
     return (
       <ul className="catalog__genres-list">
-        {genresValueList.map((genreValueItem) => <GenreScreen key={genreValueItem} genreValueItem={genreValueItem} />)}
+        {genreList.categories.map((category) => <GenreScreen key={category.id} type={category.type} />)}
       </ul>
     );
   }
@@ -27,7 +27,7 @@ class GenresListScreen extends PureComponent {
 }
 
 GenresListScreen.propTypes = {
-  genre: PropTypes.shape(genrePropStructure).isRequired,
+  genreList: genreListPropStructure,
 };
 
 export default GenresListScreen;

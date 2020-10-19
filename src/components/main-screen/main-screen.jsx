@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import FilmsListScreen from "../films-list-screen/films-list-screen";
 import GenresListScreen from "../genres-list-screen/genres-list-screen";
 
-import {filmPropStructure, genrePropStructure} from "../../utils/validator.prop";
+import {filmPropStructure, genreListPropStructure} from "../../utils/validator.prop";
 
-const MainScreen = ({poster, films, genre}) => {
+const MainScreen = ({poster, films, genreList}) => {
 
   return <React.Fragment>
     <section className="movie-card">
@@ -78,7 +78,7 @@ const MainScreen = ({poster, films, genre}) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        {<GenresListScreen genre={genre} />}
+        {<GenresListScreen genreList={genreList} />}
         {<FilmsListScreen films={films} wrapClassName={`catalog__movies-list`} />}
 
         <div className="catalog__more">
@@ -108,7 +108,7 @@ const MainScreen = ({poster, films, genre}) => {
 MainScreen.propTypes = {
   poster: PropTypes.shape(filmPropStructure).isRequired,
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
-  genre: PropTypes.shape(genrePropStructure).isRequired,
+  genreList: genreListPropStructure,
 };
 
 export default MainScreen;
