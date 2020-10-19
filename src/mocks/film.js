@@ -1,6 +1,7 @@
 import {
   LIST_OF_TITLES,
   LIST_OF_PEOPLES,
+  LIST_OF_GENRES,
   generateId,
   getRandomInteger,
   getRandomItemFromList,
@@ -14,7 +15,7 @@ class Film {
   constructor() {
     this.id = generateId();
     this.title = getRandomItemFromList(LIST_OF_TITLES);
-    this.genre = new Genre().getRandomValue();
+    this.genre = getRandomItemFromList(LIST_OF_GENRES);
     this.released = getRandomInteger(1990, 2020);
     this.score = getRandomInteger(1, 10);
     this.level = new Level().getLevel(this.score);

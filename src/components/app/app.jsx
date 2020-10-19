@@ -9,7 +9,7 @@ import AddReviewScreen from "../add-review-screen/add-review-screen";
 import TabAssemblerScreen from "../tab-assembler-screen/tab-assembler-screen";
 import PlayerScreen from "../player-screen/player-screen";
 
-import {filmPropStructure, reviewPropStructure, genreListPropStructure} from "../../utils/validator.prop";
+import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
 
 // isFavoriteType: CHECKED/UNCHECKED
 // getMatchingFilm: находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
@@ -24,7 +24,6 @@ const App = (props) => {
           <MainScreen
             poster={props.poster}
             films={props.films}
-            genreList={props.genreList}
           />
         </Route>
         <Route exact path="/login" component={SignInScreen} />
@@ -48,7 +47,6 @@ const App = (props) => {
 App.propTypes = {
   poster: PropTypes.shape(filmPropStructure).isRequired,
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
-  genreList: genreListPropStructure,
   reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
 };
 
