@@ -8,7 +8,6 @@ import {
   getImage,
 } from './temp';
 import {shuffle} from '../utils/utils';
-import Genre from '../utils/genre';
 import Level from '../utils/level';
 
 class Film {

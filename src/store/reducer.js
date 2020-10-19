@@ -1,27 +1,28 @@
 import {ActionType} from "./action";
 import {extend} from "../utils/utils";
-import Genre from "../utils/genre";
-import {mockFilms} from "../mocks/film"
-
-const genre = new Genre();
+import {genre} from "../utils/genre";
+import {mockFilms} from "../mocks/film";
 
 const initialState = {
-  activeGenre: genre.listOfGenres.ALL_GENRES,
-  filmsListByGenre: genre.getFilteredFilms(mockFilms, activeGenre),
-}
+  activeGenre: genre.getItemAllGenres(),
+  genres: genre.getList(),
+  filteredFilms: genre.getFilteredFilmsByGenre(mockFilms, genre.getItemAllGenres()),
+};
 
-export const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.SELECT_GENRE:
+    case ActionType.CHANGE_FILTER_BY_GENRE:
       return extend(state, {
-        activeGenre: state.activeGenre,
+        activeGenre: action.payload,
       });
 
-    case ActionType.FILMS_LIST_BY_GENRE:
+    case ActionType.GET_FILMS_LIST_BY_GENRE:
       return extend(state, {
-        filmsListByGenre: state.filmsListByGenre,
-      })
+        filteredFilms: genre.getFilteredFilmsByGenre(mockFilms, action.payload),
+      });
   }
 
   return state;
 };
+
+export {reducer};

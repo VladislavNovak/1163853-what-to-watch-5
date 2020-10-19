@@ -8,7 +8,6 @@ class GenresListScreen extends PureComponent {
   }
 
   render() {
-    const {genreList} = this.props;
 
     return (
       <ul className="catalog__genres-list">
