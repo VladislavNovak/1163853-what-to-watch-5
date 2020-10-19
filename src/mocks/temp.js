@@ -52,7 +52,7 @@ export const LIST_OF_TEXTS = [
   `Задача организации, в особенности же консультация с профессионалами из IT влечет за собой процесс внедрения и модернизации направлений прогрессивного развития? Практический опыт показывает, что начало повседневной работы по формированию позиции представляет собой интересный эксперимент проверки существующих финансовых и административных условий.`
 ];
 
-export const LIST_OF_GENRES = [`All genres`, `Comedies`, `Crime`, `Documentary`, `Dramas`, `Horror`, `Kids & Family`, `Romance`, `Sci-Fi`, `Thriller`];
+export const LIST_OF_GENRES = [`Comedies`, `Crime`, `Documentary`, `Dramas`, `Horror`, `Kids & Family`, `Romance`, `Sci-Fi`, `Thriller`];
 
 export const getRandomInteger = (a = 0, b = 1) => {
   const lower = Math.ceil(Math.min(a, b));

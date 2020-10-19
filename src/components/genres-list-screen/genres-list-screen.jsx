@@ -1,24 +1,51 @@
-import React, {PureComponent} from "react";
+import React from "react";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
 
-class GenresListScreen extends PureComponent {
-  constructor(props) {
-    super(props);
+const GenresListScreen = ({activeGenre, genres, changeActiveGenre, filterFilmsListByGenre}) => {
 
-    this.state = {selectedGenre: null};
-  }
+  return (
+    <ul className="catalog__genres-list">
+      {genres.map((genre, index) => (
+        <li
+          key={`${genre}-${index}`}
+          onClick={() => {
+            changeActiveGenre(genre);
+            filterFilmsListByGenre(genre);
+          }}
+          className={`catalog__genres-item ${
+            activeGenre === genre ? `catalog__genres-item--active` : ``
+          }`}
+        >
+          <a className="catalog__genres-link">{genre}</a>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
-  render() {
+GenresListScreen.propTypes = {
+  activeGenre: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  changeActiveGenre: PropTypes.func.isRequired,
+  filterFilmsListByGenre: PropTypes.func.isRequired,
+};
 
-    return (
-      <ul className="catalog__genres-list">
+const mapStateToProps = (state) => ({
+  activeGenre: state.activeGenre,
+  genres: state.genres,
+});
 
-      </ul>
-    );
-  }
+const mapDispatchToProps = (dispatch) => ({
+  changeActiveGenre(newSelectedGenre) {
+    dispatch(ActionCreator.changeActiveGenre(newSelectedGenre));
+  },
 
-  onGenreClickHandler() {
-    // установить выбранный genre
-  }
-}
+  filterFilmsListByGenre(newSelectedGenre) {
+    dispatch(ActionCreator.filterFilmsListByGenre(newSelectedGenre));
+  },
+});
 
-export default GenresListScreen;
+export {GenresListScreen};
+export default connect(mapStateToProps, mapDispatchToProps)(GenresListScreen);

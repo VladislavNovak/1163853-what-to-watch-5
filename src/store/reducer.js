@@ -11,12 +11,12 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.CHANGE_FILTER_BY_GENRE:
+    case ActionType.CHANGE_ACTIVE_GENRE:
       return extend(state, {
         activeGenre: action.payload,
       });
 
-    case ActionType.GET_FILMS_LIST_BY_GENRE:
+    case ActionType.FILTER_FILMS_LIST_BY_GENRE:
       return extend(state, {
         filteredFilms: genre.getFilteredFilmsByGenre(mockFilms, action.payload),
       });
