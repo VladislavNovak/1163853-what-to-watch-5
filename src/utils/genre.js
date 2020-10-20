@@ -1,10 +1,11 @@
 import {mockFilms} from "../mocks/film";
 
 const SHOW_COUNT_OF_RANDOM_GENRES = 9;
+const ALL_GENRE = `All genres`;
 
 class Genre {
   constructor() {
-    this.categories = [`All genres`];
+    this.categories = [ALL_GENRE];
   }
 
   updateList(films) {
@@ -17,11 +18,11 @@ class Genre {
   }
 
   getItemAllGenres() {
-    return this.categories[0];
+    return ALL_GENRE;
   }
 
   getFilteredFilmsByGenre(films, genre) {
-    return (genre === this.categories[0]) ? films : films.filter((film) => film.genre === genre);
+    return (genre === this.getItemAllGenres()) ? films : films.filter((film) => film.genre === genre);
   }
 }
 
