@@ -1,5 +1,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
+
 import FilmScreen from "../film/film";
 
 import {filmPropStructure} from "../../utils/validator.prop";
@@ -39,30 +42,60 @@ class FilmsList extends PureComponent {
   }
 
   render() {
-    const {films} = this.props;
+    const {films, visibleFilmsCount, addVisibleFilms} = this.props;
+
+    const visibleFilms = films.slice(0, visibleFilmsCount);
 
     return (
-      <div className={`catalog__movies-list`}>
-        {films.map((film) => (
-          <FilmScreen
-            key={film.id}
-            isActiveFilm={this.state.activeFilmID === film.id}
-            id={film.id}
-            poster={film.poster}
-            title={film.title}
-            trailer={film.trailer}
-            handleMouseOverFilm={this.handleMouseOverFilm}
-            handleMouseLeaveFilm={this.handleMouseLeaveFilm}
-          />
-        ))}
-      </div>
+      <React.Fragment>
+        <div className={`catalog__movies-list`}>
+          {visibleFilms.map((film) => (
+            <FilmScreen
+              key={film.id}
+              isActiveFilm={this.state.activeFilmID === film.id}
+              id={film.id}
+              poster={film.poster}
+              title={film.title}
+              trailer={film.trailer}
+              handleMouseOverFilm={this.handleMouseOverFilm}
+              handleMouseLeaveFilm={this.handleMouseLeaveFilm}
+            />
+          ))}
+        </div>
+
+        {films.length > visibleFilmsCount ? (
+          <div className="catalog__more">
+            <button
+              className="catalog__button"
+              type="button"
+              onClick={addVisibleFilms}
+            >
+              Show more
+            </button>
+          </div>
+        ) : (
+          ``
+        )}
+      </React.Fragment>
     );
   }
 }
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
+  visibleFilmsCount: PropTypes.number.isRequired,
+  addVisibleFilms: PropTypes.func.isRequired,
 };
 
-export default FilmsList;
+const mapStateToProps = ({visibleFilmsCount}) => ({visibleFilmsCount});
+
+const mapDispatchToProps = (dispatch) => ({
+  addVisibleFilms() {
+    dispatch(ActionCreator.addNewVisibleFilms());
+  }
+});
+
+export {FilmsList};
+export default connect(mapStateToProps, mapDispatchToProps)(FilmsList);
+
 
