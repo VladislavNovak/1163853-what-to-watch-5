@@ -1,22 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app/app';
-import {generateFilms} from "./mocks/film";
-import {generateReviews} from "./mocks/review";
-import Genre from "./utils/genre";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {reducer} from "./store/reducer";
 
-const poster = generateFilms(1)[0];
-const films = generateFilms(20);
+import App from './components/app/app';
+import {mockFilms} from "./mocks/film";
+import {generateReviews} from "./mocks/review";
+
+const films = mockFilms;
 const reviews = generateReviews(films, 150);
 
-const genre = new Genre();
+// В хранилище первым аргументом передаём функцию (reducer), которая знает, как его обновлять
+// вторым аргументом подключаем возможность работы в redux devTools
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+);
 
 ReactDOM.render(
-    <App
-      poster={poster}
-      films={films}
-      reviews={reviews}
-      genre={genre}
-    />,
+    <Provider store={store}>
+      <App
+        poster={films[0]}
+        films={films}
+        reviews={reviews}
+      />
+    </Provider>,
+
     document.querySelector(`#root`)
 );

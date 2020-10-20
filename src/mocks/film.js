@@ -1,20 +1,20 @@
 import {
   LIST_OF_TITLES,
   LIST_OF_PEOPLES,
+  LIST_OF_GENRES,
   generateId,
   getRandomInteger,
   getRandomItemFromList,
   getImage,
 } from './temp';
 import {shuffle} from '../utils/utils';
-import Genre from '../utils/genre';
 import Level from '../utils/level';
 
 class Film {
   constructor() {
     this.id = generateId();
     this.title = getRandomItemFromList(LIST_OF_TITLES);
-    this.genre = new Genre().getRandomValue();
+    this.genre = getRandomItemFromList(LIST_OF_GENRES);
     this.released = getRandomInteger(1990, 2020);
     this.score = getRandomInteger(1, 10);
     this.level = new Level().getLevel(this.score);
@@ -31,7 +31,7 @@ class Film {
 }
 
 // Возвращает инстансы класса ClassObject в количестве указанном в count
-export const generateFilms = (count) => {
+const generateFilms = (count) => {
   const films = [];
   for (let i = 0; i < count; i++) {
     films.push(new Film());
@@ -39,3 +39,7 @@ export const generateFilms = (count) => {
 
   return films;
 };
+
+const mockFilms = generateFilms(20);
+
+export {mockFilms};

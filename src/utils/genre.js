@@ -1,35 +1,25 @@
-import {shuffle} from "./utils";
+import {mockFilms} from "../mocks/film";
+import {ALL_GENRE} from "./utils";
 
-// нужен для генерации разметки и, временная функция, для генерации моков
-export default class Genre {
-  constructor() {
-    this.listOfGenres = {
-      ALL_GENRES: `All genres`,
-      COMEDIES: `Comedies`,
-      CRIME: `Crime`,
-      DOCUMENTARY: `Documentary`,
-      DRAMAS: `Dramas`,
-      HORROR: `Horror`,
-      Kids: `Kids & Family`,
-      ROMANCE: `Romance`,
-      SCI: `Sci-Fi`,
-      THRILLER: `Thriller`,
-    };
+class Genre {
+  constructor(films) {
+    this._VISIBLE_AMOUNT_OF_GENRES = 9;
+    this._categories = this.collectGenres(films);
   }
 
-  getValues() {
-    return Object.values(this.listOfGenres);
+  collectGenres(films) {
+    return [ALL_GENRE, ...Array.from(new Set(films.map(({genre}) => genre))).slice(0, this._VISIBLE_AMOUNT_OF_GENRES)];
   }
 
-  // получаем все значения [array], кроме `All_genres`
-  getValuesWithoutAll() {
-    return Object.values(this.listOfGenres).filter((genre) => genre !== this.listOfGenres.ALL_GENRES);
+  getList() {
+    return this._categories;
   }
 
-  // получаем одно случайное значение [string], кроме `All_genres`
-  getRandomValue() {
-    const arrWithoutAll = this.getValuesWithoutAll();
-    return shuffle(arrWithoutAll)[0];
+  getItemAllGenres() {
+    return ALL_GENRE;
   }
 }
 
+const genre = new Genre(mockFilms);
+
+export {genre};
