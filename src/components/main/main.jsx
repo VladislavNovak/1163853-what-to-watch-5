@@ -1,12 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import FilmsListScreen from "../films-list-screen/films-list-screen";
-import GenresListScreen from "../genres-list-screen/genres-list-screen";
+import FilmsList from "../films-list/films-list";
+import GenresList from "../genres-list/genres-list";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
-const MainScreen = ({poster, filteredFilms}) => {
+const Main = ({poster, filteredFilms}) => {
 
   return <React.Fragment>
     <section className="movie-card">
@@ -79,8 +79,8 @@ const MainScreen = ({poster, filteredFilms}) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        {<GenresListScreen />}
-        {<FilmsListScreen films={filteredFilms} />}
+        {<GenresList />}
+        {<FilmsList films={filteredFilms} />}
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">
@@ -106,12 +106,12 @@ const MainScreen = ({poster, filteredFilms}) => {
   </React.Fragment>;
 };
 
-MainScreen.propTypes = {
+Main.propTypes = {
   poster: PropTypes.shape(filmPropStructure).isRequired,
   filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
 };
 
 const mapStateToProps = ({filteredFilms}) => ({filteredFilms});
 
-export {MainScreen};
-export default connect(mapStateToProps)(MainScreen);
+export {Main};
+export default connect(mapStateToProps)(Main);

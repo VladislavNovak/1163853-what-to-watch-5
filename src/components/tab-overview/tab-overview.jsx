@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TabOverviewScreen = ({score, level, rating, description, director, starring}) => {
+const TabOverview = ({score, level, rating, description, director, starring}) => {
   const formattingList = (list) => {
     const slice = list.slice(0, 4);
     return (`${slice.join(`, `)} and other...`);
@@ -26,7 +26,7 @@ const TabOverviewScreen = ({score, level, rating, description, director, starrin
   </React.Fragment>;
 };
 
-TabOverviewScreen.propTypes = {
+TabOverview.propTypes = {
   score: PropTypes.number.isRequired,
   level: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
@@ -35,5 +35,5 @@ TabOverviewScreen.propTypes = {
   starring: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default TabOverviewScreen;
+export default TabOverview;
 

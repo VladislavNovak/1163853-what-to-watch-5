@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TabDetailsScreen = ({director, starring, runtime, genre, released}) => {
+const TabDetails = ({director, starring, runtime, genre, released}) => {
   const formattingList = (list) => {
     const slice = list.slice(0, 12);
     return (`${slice.join(`, \n`)} and other...`);
@@ -40,7 +40,7 @@ const TabDetailsScreen = ({director, starring, runtime, genre, released}) => {
   );
 };
 
-TabDetailsScreen.propTypes = {
+TabDetails.propTypes = {
   director: PropTypes.string.isRequired,
   starring: PropTypes.arrayOf(PropTypes.string).isRequired,
   runtime: PropTypes.string.isRequired,
@@ -48,4 +48,4 @@ TabDetailsScreen.propTypes = {
   released: PropTypes.number.isRequired,
 };
 
-export default TabDetailsScreen;
+export default TabDetails;

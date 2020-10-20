@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import {reviewPropStructure} from "../../utils/validator.prop";
 
-import ReviewScreen from "../review-screen/review-screen";
+import Review from "../review/review";
 
-const TabReviewsScreen = ({reviews}) => {
+const TabReviews = ({reviews}) => {
   const colLeft = reviews.filter((_, index) => index % 2 === 0);
   const colRight = reviews.filter((_, index) => index % 2 !== 0);
 
@@ -13,7 +13,7 @@ const TabReviewsScreen = ({reviews}) => {
       <div className="movie-card__reviews-col">
         {colLeft.length
           ? colLeft.map(({filmID, quote, author, datetime, rating}, index) => (
-            <ReviewScreen
+            <Review
               key={`${filmID} - ${index}`}
               quote={quote}
               author={author}
@@ -26,7 +26,7 @@ const TabReviewsScreen = ({reviews}) => {
       <div className="movie-card__reviews-col">
         {colRight.length
           ? colRight.map(({filmID, quote, author, datetime, rating}, index) => (
-            <ReviewScreen
+            <Review
               key={`${filmID} - ${index}`}
               quote={quote}
               author={author}
@@ -40,8 +40,8 @@ const TabReviewsScreen = ({reviews}) => {
   );
 };
 
-TabReviewsScreen.propTypes = {
+TabReviews.propTypes = {
   reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
 };
 
-export default TabReviewsScreen;
+export default TabReviews;

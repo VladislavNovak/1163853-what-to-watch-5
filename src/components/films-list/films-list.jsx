@@ -1,10 +1,10 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import FilmScreen from "../film-screen/film-screen";
+import FilmScreen from "../film/film";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
-class FilmsListScreen extends PureComponent {
+class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -60,9 +60,9 @@ class FilmsListScreen extends PureComponent {
   }
 }
 
-FilmsListScreen.propTypes = {
+FilmsList.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
 };
 
-export default FilmsListScreen;
+export default FilmsList;
 

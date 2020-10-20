@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import moment from '../../../node_modules/moment/moment';
+import moment from 'moment';
 
 const ReviewScreen = ({quote, author, datetime, rating}) => {
 

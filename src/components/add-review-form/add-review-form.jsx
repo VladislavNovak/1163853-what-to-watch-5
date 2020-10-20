@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 
-class AddReviewFormScreen extends PureComponent {
+class AddReviewForm extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -122,4 +122,4 @@ class AddReviewFormScreen extends PureComponent {
 
 }
 
-export default AddReviewFormScreen;
+export default AddReviewForm;

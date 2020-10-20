@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-import AddReviewFormScreen from "../add-review-form-screen/add-review-form-screen";
+import AddReviewForm from "../add-review-form/add-review-form";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
-const AddReviewScreen = ({film}) => {
+const AddReview = ({film}) => {
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
@@ -53,13 +53,13 @@ const AddReviewScreen = ({film}) => {
         </div>
       </div>
 
-      {<AddReviewFormScreen />}
+      {<AddReviewForm />}
     </section>
   );
 };
 
-AddReviewScreen.propTypes = {
+AddReview.propTypes = {
   film: PropTypes.shape(filmPropStructure).isRequired,
 };
 
-export default AddReviewScreen;
+export default AddReview;

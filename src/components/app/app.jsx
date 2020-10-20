@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 
-import MainScreen from "../main-screen/main-screen";
-import SignInScreen from "../sign-in-screen/sign-in-screen";
-import MyListScreen from "../my-list-screen/my-list-screen";
-import AddReviewScreen from "../add-review-screen/add-review-screen";
-import TabAssemblerScreen from "../tab-assembler-screen/tab-assembler-screen";
-import PlayerScreen from "../player-screen/player-screen";
+import Main from "../main/main";
+import SignIn from "../sign-in/sign-in";
+import MyList from "../my-list/my-list";
+import AddReview from "../add-review/add-review";
+import TabAssembler from "../tab-assembler/tab-assembler";
+import Player from "../player/player";
 
 import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
 
@@ -21,24 +21,24 @@ const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainScreen
+          <Main
             poster={props.poster}
             films={props.films}
           />
         </Route>
-        <Route exact path="/login" component={SignInScreen} />
+        <Route exact path="/login" component={SignIn} />
         <Route exact path="/mylist">
-          < MyListScreen
+          < MyList
             favoriteFilms={filterFavoriteFilms(props.films, isFavoriteType.CHECKED)}
           />
         </Route>
         <Route exact path="/films/:id"
-          render={({match}) => <TabAssemblerScreen film={getMatchingFilm(props.films, match)} films={props.films} reviews={getMatchingReview(props.reviews, match)} />}
+          render={({match}) => <TabAssembler film={getMatchingFilm(props.films, match)} films={props.films} reviews={getMatchingReview(props.reviews, match)} />}
         />
         <Route exact path="/films/:id/review"
-          render={({match}) => <AddReviewScreen film={getMatchingFilm(props.films, match)} />}
+          render={({match}) => <AddReview film={getMatchingFilm(props.films, match)} />}
         />
-        <Route exact path="/player/:id" component={PlayerScreen} />
+        <Route exact path="/player/:id" component={Player} />
       </Switch>
     </BrowserRouter>
   );

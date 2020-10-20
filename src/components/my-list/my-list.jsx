@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-import FilmScreen from "../film-screen/film-screen";
+import Film from "../film/film";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
@@ -50,7 +50,7 @@ class MyListScreen extends PureComponent {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <div className="catalog__movies-list">
-            {favoriteFilms.map((film) => <FilmScreen key={film.id} id={film.id} poster={film.poster} title={film.title} onFilmOverHandler={this.onFilmOverHandler} onFilmLeaveHandler={this.onFilmLeaveHandler} />)}
+            {favoriteFilms.map((film) => <Film key={film.id} id={film.id} poster={film.poster} title={film.title} onFilmOverHandler={this.onFilmOverHandler} onFilmLeaveHandler={this.onFilmLeaveHandler} />)}
           </div>
         </section>
 

@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-import PreviewScreen from "../preview-screen/preview-screen";
+import Preview from "../preview/preview";
 
-const FilmScreen = ({
+const Film = ({
   isActiveFilm,
   id,
   poster,
@@ -21,7 +21,7 @@ const FilmScreen = ({
     >
       <div className="small-movie-card__image">
         {isActiveFilm ? (
-          <PreviewScreen trailer={trailer} poster={poster} />
+          <Preview trailer={trailer} poster={poster} />
         ) : (
           <img src={poster} alt={title} width="280" height="175" />
         )}
@@ -35,7 +35,7 @@ const FilmScreen = ({
   );
 };
 
-FilmScreen.propTypes = {
+Film.propTypes = {
   id: PropTypes.number.isRequired,
   isActiveFilm: PropTypes.bool.isRequired,
   poster: PropTypes.string.isRequired,
@@ -45,4 +45,4 @@ FilmScreen.propTypes = {
   handleMouseLeaveFilm: PropTypes.func.isRequired,
 };
 
-export default FilmScreen;
+export default Film;

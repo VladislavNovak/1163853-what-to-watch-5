@@ -1,16 +1,16 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-import TabOverviewScreen from "../tab-overview-screen/tab-overview-screen";
-import TabDetailsScreen from "../tab-details-screen/tab-details-screen";
-import TabReviewsScreen from "../tab-reviews-screen/tab-reviews-screen";
+import TabOverview from "../tab-overview/tab-overview";
+import TabDetails from "../tab-details/tab-details";
+import TabReviews from "../tab-reviews/tab-reviews";
 
 import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
 
 // TabsType: OVERVIEW/DETAILS/REVIEWS
 import {TabsType} from "../../utils/utils";
 
-class TabSwitcherScreen extends PureComponent {
+class TabSwitcher extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -32,7 +32,7 @@ class TabSwitcherScreen extends PureComponent {
     switch (this.state.activeTab) {
       case TabsType.OVERVIEW:
         return (
-          <TabOverviewScreen
+          <TabOverview
             score={score}
             level={level}
             rating={rating}
@@ -43,7 +43,7 @@ class TabSwitcherScreen extends PureComponent {
         );
       case TabsType.DETAILS:
         return (
-          <TabDetailsScreen
+          <TabDetails
             director={director}
             starring={starring}
             runtime={runtime}
@@ -52,7 +52,7 @@ class TabSwitcherScreen extends PureComponent {
           />
         );
       case TabsType.REVIEWS:
-        return <TabReviewsScreen reviews={reviews} />;
+        return <TabReviews reviews={reviews} />;
       default:
         throw new Error(`Something went wrong. No matching tab!`);
     }
@@ -76,9 +76,9 @@ class TabSwitcherScreen extends PureComponent {
   }
 }
 
-TabSwitcherScreen.propTypes = {
+TabSwitcher.propTypes = {
   film: PropTypes.shape(filmPropStructure).isRequired,
   reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
 };
 
-export default TabSwitcherScreen;
+export default TabSwitcher;

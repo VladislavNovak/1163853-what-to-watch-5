@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-import TabSwitcherScreen from "../tab-switcher-screen/tab-switcher-screen";
-import FilmsListScreen from "../films-list-screen/films-list-screen";
+import TabSwitcher from "../tab-switcher/tab-switcher";
+import FilmsList from "../films-list/films-list";
 
 import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
 
-const TabAssemblerScreen = ({film, films, reviews}) => {
+const TabAssembler = ({film, films, reviews}) => {
   const {id, title, genre, released, poster, posterBig} = film;
   const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, 4);
 
@@ -70,7 +70,7 @@ const TabAssemblerScreen = ({film, films, reviews}) => {
           </div>
 
           <div className="movie-card__desc">
-            <TabSwitcherScreen film={film} reviews={reviews} />
+            <TabSwitcher film={film} reviews={reviews} />
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@ const TabAssemblerScreen = ({film, films, reviews}) => {
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-        {similarFilms.length ? <FilmsListScreen films={similarFilms} /> : `` }
+        {similarFilms.length ? <FilmsList films={similarFilms} /> : `` }
       </section>
       <footer className="page-footer">
         <div className="logo">
@@ -98,10 +98,10 @@ const TabAssemblerScreen = ({film, films, reviews}) => {
   </React.Fragment>;
 };
 
-TabAssemblerScreen.propTypes = {
+TabAssembler.propTypes = {
   film: PropTypes.shape(filmPropStructure).isRequired,
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
   reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
 };
 
-export default TabAssemblerScreen;
+export default TabAssembler;
