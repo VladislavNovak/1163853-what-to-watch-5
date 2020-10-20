@@ -42,7 +42,7 @@ class FilmsList extends PureComponent {
   }
 
   render() {
-    const {films, visibleFilmsCount, addVisibleFilms} = this.props;
+    const {films, visibleFilmsCount, handleMoreButtonClick} = this.props;
 
     const visibleFilms = films.slice(0, visibleFilmsCount);
 
@@ -68,7 +68,7 @@ class FilmsList extends PureComponent {
             <button
               className="catalog__button"
               type="button"
-              onClick={addVisibleFilms}
+              onClick={handleMoreButtonClick}
             >
               Show more
             </button>
@@ -84,13 +84,13 @@ class FilmsList extends PureComponent {
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
   visibleFilmsCount: PropTypes.number.isRequired,
-  addVisibleFilms: PropTypes.func.isRequired,
+  handleMoreButtonClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({visibleFilmsCount}) => ({visibleFilmsCount});
 
 const mapDispatchToProps = (dispatch) => ({
-  addVisibleFilms() {
+  handleMoreButtonClick() {
     dispatch(ActionCreator.addNewVisibleFilms());
   }
 });
