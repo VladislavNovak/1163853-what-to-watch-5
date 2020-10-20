@@ -1,12 +1,12 @@
 import {ActionType} from "./action";
-import {extend} from "../utils/utils";
+import {extend, getFilteredFilmsByGenre} from "../utils/utils";
 import {genre} from "../utils/genre";
 import {mockFilms} from "../mocks/film";
 
 const initialState = {
   activeGenre: genre.getItemAllGenres(),
   genres: genre.getList(),
-  filteredFilms: genre.getFilteredFilmsByGenre(mockFilms, genre.getItemAllGenres()),
+  filteredFilms: getFilteredFilmsByGenre(mockFilms, genre.getItemAllGenres()),
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.FILTER_FILMS_LIST_BY_GENRE:
       return extend(state, {
-        filteredFilms: genre.getFilteredFilmsByGenre(mockFilms, action.payload),
+        filteredFilms: getFilteredFilmsByGenre(mockFilms, action.payload),
       });
   }
 

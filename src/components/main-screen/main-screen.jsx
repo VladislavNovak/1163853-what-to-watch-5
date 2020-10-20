@@ -80,7 +80,7 @@ const MainScreen = ({poster, filteredFilms}) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         {<GenresListScreen />}
-        {<FilmsListScreen films={filteredFilms} wrapClassName={`catalog__movies-list`} />}
+        {<FilmsListScreen films={filteredFilms} />}
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">
@@ -111,9 +111,7 @@ MainScreen.propTypes = {
   filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  filteredFilms: state.filteredFilms,
-});
+const mapStateToProps = ({filteredFilms}) => ({filteredFilms});
 
 export {MainScreen};
 export default connect(mapStateToProps)(MainScreen);

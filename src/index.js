@@ -5,10 +5,9 @@ import {Provider} from "react-redux";
 import {reducer} from "./store/reducer";
 
 import App from './components/app/app';
-import {mockFilms, mockPoster} from "./mocks/film";
+import {mockFilms} from "./mocks/film";
 import {generateReviews} from "./mocks/review";
 
-const poster = mockPoster;
 const films = mockFilms;
 const reviews = generateReviews(films, 150);
 
@@ -22,7 +21,7 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
       <App
-        poster={poster}
+        poster={films[0]}
         films={films}
         reviews={reviews}
       />

@@ -41,6 +41,5 @@ const generateFilms = (count) => {
 };
 
 const mockFilms = generateFilms(20);
-const mockPoster = generateFilms(1)[0];
 
-export {mockFilms, mockPoster};
+export {mockFilms};

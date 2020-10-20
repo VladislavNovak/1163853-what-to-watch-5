@@ -32,10 +32,7 @@ GenresListScreen.propTypes = {
   filterFilmsListByGenre: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  activeGenre: state.activeGenre,
-  genres: state.genres,
-});
+const mapStateToProps = ({activeGenre, genres}) => ({activeGenre, genres});
 
 const mapDispatchToProps = (dispatch) => ({
   changeActiveGenre(newSelectedGenre) {

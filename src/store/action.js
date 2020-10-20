@@ -4,13 +4,13 @@ export const ActionType = {
 };
 
 export const ActionCreator = {
-  changeActiveGenre: (newSelectedGenre) => ({
+  changeActiveGenre: (genre) => ({
     type: ActionType.CHANGE_ACTIVE_GENRE,
-    payload: newSelectedGenre
+    payload: genre
   }),
 
-  filterFilmsListByGenre: (newSelectedGenre) => ({
+  filterFilmsListByGenre: (genre) => ({
     type: ActionType.FILTER_FILMS_LIST_BY_GENRE,
-    payload: newSelectedGenre
+    payload: genre
   }),
 };

@@ -79,7 +79,7 @@ const TabAssemblerScreen = ({film, films, reviews}) => {
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-        {similarFilms.length ? <FilmsListScreen films={similarFilms} wrapClassName={`catalog__movies-list`} /> : `` }
+        {similarFilms.length ? <FilmsListScreen films={similarFilms} /> : `` }
       </section>
       <footer className="page-footer">
         <div className="logo">

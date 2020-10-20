@@ -1,3 +1,5 @@
+export const ALL_GENRE = `All genres`;
+
 export const isFavoriteType = {
   CHECKED: true,
   UNCHECKED: false,
@@ -28,20 +30,13 @@ export const shuffle = (originArray) => {
 };
 
 // Находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
-export const getMatchingFilm = (films, {params}) => {
-  return films.find((item) => item.id === Number(params.id));
-};
+export const getMatchingFilm = (films, {params}) => films.find((item) => item.id === Number(params.id));
 
-export const getMatchingReview = (reviews, {params}) => {
-  return reviews.filter((review) => review.filmID === Number(params.id));
-};
+export const getMatchingReview = (reviews, {params}) => reviews.filter((review) => review.filmID === Number(params.id));
 
 // Фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
-export const filterFavoriteFilms = (films, type) => {
-  const filtredFilms = (type) ? films.filter((item) => item.inMyFavoriteList) : films.filter((item) => !item.inMyFavoriteList);
-  return filtredFilms;
-};
+export const filterFavoriteFilms = (films, type) => (type) ? films.filter((item) => item.inMyFavoriteList) : films.filter((item) => !item.inMyFavoriteList);
 
-export const extend = (a, b) => {
-  return Object.assign({}, a, b);
-};
+export const extend = (a, b) => Object.assign({}, a, b);
+
+export const getFilteredFilmsByGenre = (films, genre) => (genre === ALL_GENRE) ? films : films.filter((film) => film.genre === genre);
