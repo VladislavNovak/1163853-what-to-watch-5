@@ -5,6 +5,7 @@ import {ActionCreator} from "../../store/action";
 
 import FilmScreen from "../film/film";
 
+import {FILMS_COUNT_PER_CLICK} from "../../utils/utils";
 import {filmPropStructure} from "../../utils/validator.prop";
 
 class FilmsList extends PureComponent {
@@ -68,7 +69,7 @@ class FilmsList extends PureComponent {
             <button
               className="catalog__button"
               type="button"
-              onClick={handleMoreButtonClick}
+              onClick={() => {handleMoreButtonClick(FILMS_COUNT_PER_CLICK)}}
             >
               Show more
             </button>
@@ -90,8 +91,8 @@ FilmsList.propTypes = {
 const mapStateToProps = ({visibleFilmsCount}) => ({visibleFilmsCount});
 
 const mapDispatchToProps = (dispatch) => ({
-  handleMoreButtonClick() {
-    dispatch(ActionCreator.addNewVisibleFilms());
+  handleMoreButtonClick(filmsCountPerClick) {
+    dispatch(ActionCreator.addNewVisibleFilms(filmsCountPerClick));
   }
 });
 

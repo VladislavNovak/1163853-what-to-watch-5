@@ -1,5 +1,3 @@
-import {FILMS_COUNT_PER_CLICK} from "../utils/utils";
-
 export const ActionType = {
   CHANGE_ACTIVE_GENRE: `CHANGE_ACTIVE_GENRE`,
   FILTER_FILMS_LIST_BY_GENRE: `FILTER_FILMS_LIST_BY_GENRE`,
@@ -17,8 +15,8 @@ export const ActionCreator = {
     payload: genre
   }),
 
-  addNewVisibleFilms: () => ({
+  addNewVisibleFilms: (filmsCountPerClick) => ({
     type: ActionType.CHANGE_FILMS_COUNT,
-    payload: FILMS_COUNT_PER_CLICK
+    payload: filmsCountPerClick
   }),
 };
