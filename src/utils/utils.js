@@ -1,4 +1,5 @@
 export const ALL_GENRE = `All genres`;
+export const FILMS_COUNT_PER_CLICK = 8;
 
 export const isFavoriteType = {
   CHECKED: true,

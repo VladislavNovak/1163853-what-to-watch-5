@@ -40,6 +40,6 @@ const generateFilms = (count) => {
   return films;
 };
 
-const mockFilms = generateFilms(20);
+const mockFilms = generateFilms(23);
 
 export {mockFilms};

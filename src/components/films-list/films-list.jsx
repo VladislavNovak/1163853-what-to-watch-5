@@ -1,6 +1,10 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
+
 import FilmScreen from "../film/film";
+import ButtonShowMore from "../button-show-more/button-show-more";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
@@ -39,30 +43,48 @@ class FilmsList extends PureComponent {
   }
 
   render() {
-    const {films} = this.props;
+    const {films, visibleFilmsCount, handleMoreButtonClick} = this.props;
+
+    const visibleFilms = films.slice(0, visibleFilmsCount);
 
     return (
-      <div className={`catalog__movies-list`}>
-        {films.map((film) => (
-          <FilmScreen
-            key={film.id}
-            isActiveFilm={this.state.activeFilmID === film.id}
-            id={film.id}
-            poster={film.poster}
-            title={film.title}
-            trailer={film.trailer}
-            handleMouseOverFilm={this.handleMouseOverFilm}
-            handleMouseLeaveFilm={this.handleMouseLeaveFilm}
-          />
-        ))}
-      </div>
+      <React.Fragment>
+        <div className={`catalog__movies-list`}>
+          {visibleFilms.map((film) => (
+            <FilmScreen
+              key={film.id}
+              isActiveFilm={this.state.activeFilmID === film.id}
+              id={film.id}
+              poster={film.poster}
+              title={film.title}
+              trailer={film.trailer}
+              handleMouseOverFilm={this.handleMouseOverFilm}
+              handleMouseLeaveFilm={this.handleMouseLeaveFilm}
+            />
+          ))}
+        </div>
+
+        {films.length > visibleFilmsCount ? <ButtonShowMore handleMoreButtonClick={handleMoreButtonClick} /> : ``}
+      </React.Fragment>
     );
   }
 }
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
+  visibleFilmsCount: PropTypes.number.isRequired,
+  handleMoreButtonClick: PropTypes.func.isRequired,
 };
 
-export default FilmsList;
+const mapStateToProps = ({visibleFilmsCount}) => ({visibleFilmsCount});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleMoreButtonClick(filmsCountPerClick) {
+    dispatch(ActionCreator.addNewVisibleFilms(filmsCountPerClick));
+  }
+});
+
+export {FilmsList};
+export default connect(mapStateToProps, mapDispatchToProps)(FilmsList);
+
 
