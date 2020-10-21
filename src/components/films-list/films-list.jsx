@@ -4,8 +4,8 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
 import FilmScreen from "../film/film";
+import ButtonShowMore from "../button-show-more/button-show-more";
 
-import {FILMS_COUNT_PER_CLICK} from "../../utils/utils";
 import {filmPropStructure} from "../../utils/validator.prop";
 
 class FilmsList extends PureComponent {
@@ -64,19 +64,7 @@ class FilmsList extends PureComponent {
           ))}
         </div>
 
-        {films.length > visibleFilmsCount ? (
-          <div className="catalog__more">
-            <button
-              className="catalog__button"
-              type="button"
-              onClick={() => {handleMoreButtonClick(FILMS_COUNT_PER_CLICK)}}
-            >
-              Show more
-            </button>
-          </div>
-        ) : (
-          ``
-        )}
+        {films.length > visibleFilmsCount ? <ButtonShowMore handleMoreButtonClick={handleMoreButtonClick} /> : ``}
       </React.Fragment>
     );
   }
