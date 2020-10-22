@@ -1,78 +1,57 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
+import withFilmList from "../../hocs/with-film-list/with-film-list";
 import FilmScreen from "../film/film";
 import ButtonShowMore from "../button-show-more/button-show-more";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
-class FilmsList extends PureComponent {
-  constructor(props) {
-    super(props);
+const FilmsList = ({
+  films,
+  visibleFilmsCount,
+  visibleFilms,
+  activeFilmID,
+  handleMouseOverFilm,
+  handleMouseLeaveFilm,
+  handleMoreButtonClick,
+}) => {
 
-    this.timerID = null;
+  return (
+    <React.Fragment>
+      <div className={`catalog__movies-list`}>
+        {visibleFilms.map((film) => (
+          <FilmScreen
+            key={film.id}
+            isActiveFilm={activeFilmID === film.id}
+            id={film.id}
+            poster={film.poster}
+            title={film.title}
+            trailer={film.trailer}
+            handleMouseOverFilm={handleMouseOverFilm}
+            handleMouseLeaveFilm={handleMouseLeaveFilm}
+          />
+        ))}
+      </div>
 
-    this.state = {
-      activeFilmID: -1,
-    };
-
-    this.handleMouseOverFilm = this.handleMouseOverFilm.bind(this);
-    this.handleMouseLeaveFilm = this.handleMouseLeaveFilm.bind(this);
-  }
-
-  handleMouseOverFilm(id) {
-    if (this.timerID !== null) {
-      clearTimeout(this.timerID);
-    }
-
-    this.timerID = setTimeout(() => this.setState({activeFilmID: id}), 1000);
-  }
-
-  handleMouseLeaveFilm() {
-    this.setState({activeFilmID: -1});
-    clearTimeout(this.timerID);
-    this.timerID = null;
-  }
-
-  componentWillUnmount() {
-    if (this.timerID) {
-      clearTimeout(this.timerID);
-    }
-  }
-
-  render() {
-    const {films, visibleFilmsCount, handleMoreButtonClick} = this.props;
-
-    const visibleFilms = films.slice(0, visibleFilmsCount);
-
-    return (
-      <React.Fragment>
-        <div className={`catalog__movies-list`}>
-          {visibleFilms.map((film) => (
-            <FilmScreen
-              key={film.id}
-              isActiveFilm={this.state.activeFilmID === film.id}
-              id={film.id}
-              poster={film.poster}
-              title={film.title}
-              trailer={film.trailer}
-              handleMouseOverFilm={this.handleMouseOverFilm}
-              handleMouseLeaveFilm={this.handleMouseLeaveFilm}
-            />
-          ))}
-        </div>
-
-        {films.length > visibleFilmsCount ? <ButtonShowMore handleMoreButtonClick={handleMoreButtonClick} /> : ``}
-      </React.Fragment>
-    );
-  }
-}
+      {films.length > visibleFilmsCount ? (
+        <ButtonShowMore handleMoreButtonClick={handleMoreButtonClick} />
+      ) : (
+        ``
+      )}
+    </React.Fragment>
+  );
+};
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
   visibleFilmsCount: PropTypes.number.isRequired,
+  visibleFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
+  activeFilmID: PropTypes.number.isRequired,
+  handleMouseOverFilm: PropTypes.func.isRequired,
+  handleMouseLeaveFilm: PropTypes.func.isRequired,
   handleMoreButtonClick: PropTypes.func.isRequired,
 };
 
@@ -84,7 +63,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export {FilmsList};
-export default connect(mapStateToProps, mapDispatchToProps)(FilmsList);
+const FilmsListWrapper = withFilmList(FilmsList);
 
-
+export {FilmsListWrapper};
+export default connect(mapStateToProps, mapDispatchToProps)(FilmsListWrapper);
