@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
-const withFilmsList = (Component) => {
-  class WithFilmsList extends PureComponent {
+const withFilms = (Component) => {
+  class WithFilms extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -53,11 +53,11 @@ const withFilmsList = (Component) => {
     }
   }
 
-  WithFilmsList.propTypes = {
+  WithFilms.propTypes = {
     films: PropTypes.arrayOf(filmPropStructure).isRequired,
   };
 
-  return WithFilmsList;
+  return WithFilms;
 };
 
-export default withFilmsList;
+export default withFilms;

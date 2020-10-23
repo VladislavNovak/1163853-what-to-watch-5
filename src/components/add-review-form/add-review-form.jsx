@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import withAddReviewForm from "../../hocs/with-add-review-form/with-add-review-form";
+import withForm from "../../hocs/with-form/with-form";
 
 const FIVE_STARS = [1, 2, 3, 4, 5];
 
@@ -65,4 +65,4 @@ AddReviewForm.propTypes = {
   onTextareaChangeHandler: PropTypes.func.isRequired,
 };
 
-export default withAddReviewForm(AddReviewForm);
+export default withForm(AddReviewForm);

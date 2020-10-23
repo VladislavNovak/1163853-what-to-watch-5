@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 
-const withAddReviewForm = (Component) => {
-  class WithAddReviewForm extends PureComponent {
+const withForm = (Component) => {
+  class WithForm extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -41,7 +41,7 @@ const withAddReviewForm = (Component) => {
     }
   }
 
-  return WithAddReviewForm;
+  return WithForm;
 };
 
-export default withAddReviewForm;
+export default withForm;

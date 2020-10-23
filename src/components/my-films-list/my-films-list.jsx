@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-import withFilmsList from "../../hocs/with-films-list/with-films-list";
+import withFilms from "../../hocs/with-films/with-films";
 import Film from "../film/film";
 
 import {filmPropStructure} from "../../utils/validator.prop";
@@ -82,4 +82,4 @@ MyFilmsList.propTypes = {
   handleMouseLeaveFilm: PropTypes.func.isRequired,
 };
 
-export default withFilmsList(MyFilmsList);
+export default withFilms(MyFilmsList);
