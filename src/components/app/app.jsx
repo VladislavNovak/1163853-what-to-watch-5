@@ -22,7 +22,6 @@ const App = (props) => {
       <Switch>
         <Route exact path="/">
           <Main
-            poster={props.poster}
             films={props.films}
           />
         </Route>
@@ -45,7 +44,6 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  poster: PropTypes.shape(filmPropStructure).isRequired,
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
   reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
 };

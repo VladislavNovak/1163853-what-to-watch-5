@@ -13,7 +13,8 @@ import {filmPropStructure} from "../../utils/validator.prop";
 
 const FilmsListWrapper = withChangingActiveFilm(FilmsList);
 
-const Main = ({poster, filteredFilms, visibleFilmsCount, handleMoreButtonClick}) => {
+const Main = ({filteredFilms, visibleFilmsCount, handleMoreButtonClick}) => {
+  const poster = filteredFilms[0];
 
   return <React.Fragment>
     <section className="movie-card">
@@ -108,7 +109,6 @@ const Main = ({poster, filteredFilms, visibleFilmsCount, handleMoreButtonClick})
 };
 
 Main.propTypes = {
-  poster: PropTypes.shape(filmPropStructure).isRequired,
   filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
   visibleFilmsCount: PropTypes.number.isRequired,
   handleMoreButtonClick: PropTypes.func.isRequired,
