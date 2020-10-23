@@ -10,8 +10,8 @@ import TabReviews from "../../components/tab-reviews/tab-reviews";
 // TabsType: OVERVIEW/DETAILS/REVIEWS
 import {TabsType} from "../../utils/utils";
 
-const withTab = (Component) => {
-  class WithTab extends PureComponent {
+const withChangingActiveTab = (Component) => {
+  class WithChangingActiveTab extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -19,15 +19,15 @@ const withTab = (Component) => {
         activeTab: TabsType.OVERVIEW,
       };
 
-      this.handleTabClick = this.handleTabClick.bind(this);
-      this.renderTabContent = this.renderTabContent.bind(this);
+      this._handleTabClick = this._handleTabClick.bind(this);
+      this._renderTabContent = this._renderTabContent.bind(this);
     }
 
-    handleTabClick(index) {
+    _handleTabClick(index) {
       this.setState({activeTab: index});
     }
 
-    renderTabContent() {
+    _renderTabContent() {
       const {film, reviews} = this.props;
       const {score, level, rating, description, director, starring, runtime, genre, released} = film;
 
@@ -70,19 +70,19 @@ const withTab = (Component) => {
         <Component
           {...this.props}
           activeTab={this.state.activeTab}
-          renderTabContent={this.renderTabContent}
-          handleTabClick={this.handleTabClick}
+          renderTabContent={this._renderTabContent}
+          handleTabClick={this._handleTabClick}
         />
       );
     }
   }
 
-  WithTab.propTypes = {
+  WithChangingActiveTab.propTypes = {
     film: PropTypes.shape(filmPropStructure).isRequired,
     reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
   };
 
-  return WithTab;
+  return WithChangingActiveTab;
 };
 
-export default withTab;
+export default withChangingActiveTab;

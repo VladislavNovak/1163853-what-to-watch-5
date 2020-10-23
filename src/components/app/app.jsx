@@ -4,6 +4,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
+import withChangingActiveFilm from "../../hocs/with-changing-active-film/with-changing-active-film";
 import MyFilmsList from "../my-films-list/my-films-list";
 import AddReview from "../add-review/add-review";
 import TabAssembler from "../tab-assembler/tab-assembler";
@@ -15,6 +16,8 @@ import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop
 // getMatchingFilm: находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
 // filterFavoriteFilms: фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
 import {isFavoriteType, getMatchingFilm, getMatchingReview, filterFavoriteFilms} from "../../utils/utils";
+
+const MyFilmsListWrapper = withChangingActiveFilm(MyFilmsList);
 
 const App = (props) => {
   return (
@@ -28,7 +31,7 @@ const App = (props) => {
         </Route>
         <Route exact path="/login" component={SignIn} />
         <Route exact path="/mylist">
-          < MyFilmsList
+          < MyFilmsListWrapper
             films={filterFavoriteFilms(props.films, isFavoriteType.CHECKED)}
           />
         </Route>

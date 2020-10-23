@@ -3,8 +3,11 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 import AddReviewForm from "../add-review-form/add-review-form";
+import withChangingValues from "../../hocs/with-changing-values/with-changing-values";
 
 import {filmPropStructure} from "../../utils/validator.prop";
+
+const AddReviewFormWrapper = withChangingValues(AddReviewForm);
 
 const AddReview = ({film}) => {
   return (
@@ -53,7 +56,7 @@ const AddReview = ({film}) => {
         </div>
       </div>
 
-      {<AddReviewForm />}
+      {<AddReviewFormWrapper />}
     </section>
   );
 };

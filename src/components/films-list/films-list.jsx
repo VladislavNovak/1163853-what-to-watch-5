@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
-import withFilms from "../../hocs/with-films/with-films";
 import Film from "../film/film";
 import ButtonShowMore from "../button-show-more/button-show-more";
 
@@ -63,7 +62,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-const FilmsListWrapper = withFilms(FilmsList);
-
-export {FilmsListWrapper};
-export default connect(mapStateToProps, mapDispatchToProps)(FilmsListWrapper);
+export {FilmsList};
+export default connect(mapStateToProps, mapDispatchToProps)(FilmsList);

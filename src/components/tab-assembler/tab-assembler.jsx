@@ -3,9 +3,14 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 import TabSwitcher from "../tab-switcher/tab-switcher";
+import withChangingActiveTab from "../../hocs/with-changing-active-tab/with-changing-active-tab";
+import withChangingActiveFilm from "../../hocs/with-changing-active-film/with-changing-active-film";
 import FilmsList from "../films-list/films-list";
 
 import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
+
+const FilmsListWrapper = withChangingActiveFilm(FilmsList);
+const TabSwitcherWrapper = withChangingActiveTab(TabSwitcher);
 
 const TabAssembler = ({film, films, reviews}) => {
   const {id, title, genre, released, poster, posterBig} = film;
@@ -70,7 +75,7 @@ const TabAssembler = ({film, films, reviews}) => {
           </div>
 
           <div className="movie-card__desc">
-            <TabSwitcher film={film} reviews={reviews} />
+            <TabSwitcherWrapper film={film} reviews={reviews} />
           </div>
         </div>
       </div>
@@ -79,7 +84,7 @@ const TabAssembler = ({film, films, reviews}) => {
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-        {similarFilms.length ? <FilmsList films={similarFilms} /> : `` }
+        {similarFilms.length ? <FilmsListWrapper films={similarFilms} /> : `` }
       </section>
       <footer className="page-footer">
         <div className="logo">

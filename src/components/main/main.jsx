@@ -1,10 +1,13 @@
 import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import FilmsList from "../films-list/films-list";
 import GenresList from "../genres-list/genres-list";
+import withChangingActiveFilm from "../../hocs/with-changing-active-film/with-changing-active-film";
+import FilmsList from "../films-list/films-list";
 
 import {filmPropStructure} from "../../utils/validator.prop";
+
+const FilmsListWrapper = withChangingActiveFilm(FilmsList);
 
 const Main = ({poster, filteredFilms}) => {
 
@@ -79,7 +82,7 @@ const Main = ({poster, filteredFilms}) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
         {<GenresList />}
-        {<FilmsList films={filteredFilms} />}
+        {<FilmsListWrapper films={filteredFilms} />}
       </section>
 
       <footer className="page-footer">

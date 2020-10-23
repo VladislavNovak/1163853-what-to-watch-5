@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
-const withFilms = (Component) => {
-  class WithFilms extends PureComponent {
+const withChangingActiveFilm = (Component) => {
+  class WithChangingActiveFilm extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -14,11 +14,11 @@ const withFilms = (Component) => {
         currentActiveFilm: -1,
       };
 
-      this.handleMouseOverFilm = this.handleMouseOverFilm.bind(this);
-      this.handleMouseLeaveFilm = this.handleMouseLeaveFilm.bind(this);
+      this._handleMouseOverFilm = this._handleMouseOverFilm.bind(this);
+      this._handleMouseLeaveFilm = this._handleMouseLeaveFilm.bind(this);
     }
 
-    handleMouseOverFilm(id) {
+    _handleMouseOverFilm(id) {
       if (this.timerID !== null) {
         clearTimeout(this.timerID);
       }
@@ -26,7 +26,7 @@ const withFilms = (Component) => {
       this.timerID = setTimeout(() => this.setState({currentActiveFilm: id}), 1000);
     }
 
-    handleMouseLeaveFilm() {
+    _handleMouseLeaveFilm() {
       this.setState({currentActiveFilm: -1});
       clearTimeout(this.timerID);
       this.timerID = null;
@@ -39,25 +39,23 @@ const withFilms = (Component) => {
     }
 
     render() {
-      const {films} = this.props;
 
       return (
         <Component
           {...this.props}
-          films={films}
           currentActiveFilm={this.state.currentActiveFilm}
-          handleMouseOverFilm={this.handleMouseOverFilm}
-          handleMouseLeaveFilm={this.handleMouseLeaveFilm}
+          handleMouseOverFilm={this._handleMouseOverFilm}
+          handleMouseLeaveFilm={this._handleMouseLeaveFilm}
         />
       );
     }
   }
 
-  WithFilms.propTypes = {
+  WithChangingActiveFilm.propTypes = {
     films: PropTypes.arrayOf(filmPropStructure).isRequired,
   };
 
-  return WithFilms;
+  return WithChangingActiveFilm;
 };
 
-export default withFilms;
+export default withChangingActiveFilm;

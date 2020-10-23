@@ -1,11 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import withForm from "../../hocs/with-form/with-form";
 
 const FIVE_STARS = [1, 2, 3, 4, 5];
 
-const AddReviewForm = ({onSubmitClickHandler, selectedStar, onStarChangeHandler, reviewText, onTextareaChangeHandler}) => {
-
+const AddReviewForm = ({
+  reviewText,
+  selectedStar,
+  onSubmitClickHandler,
+  onTextareaChangeHandler,
+  onStarChangeHandler,
+}) => {
   return (
     <div className="add-review">
       <form
@@ -18,18 +22,16 @@ const AddReviewForm = ({onSubmitClickHandler, selectedStar, onStarChangeHandler,
             {FIVE_STARS.map((star) => (
               <React.Fragment key={star}>
                 <input
+                  key={`input-${star}`}
                   className="rating__input"
                   id={`star-${star}`}
                   type="radio"
                   name="rating"
                   value={`${star}`}
-                  checked={selectedStar === star}
                   onChange={onStarChangeHandler}
+                  checked={Number(selectedStar) === star}
                 />
-                <label
-                  className="rating__label"
-                  htmlFor={`star-${star}`}
-                >
+                <label key={`label-${star}`} className="rating__label" htmlFor={`star-${star}`}>
                   {`Rating ${star}`}
                 </label>
               </React.Fragment>
@@ -65,4 +67,4 @@ AddReviewForm.propTypes = {
   onTextareaChangeHandler: PropTypes.func.isRequired,
 };
 
-export default withForm(AddReviewForm);
+export default AddReviewForm;

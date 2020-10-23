@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import withTab from "../../hocs/with-tab/with-tab";
-
 import {TabsType} from "../../utils/utils";
 
 const TabSwitcher = ({activeTab, renderTabContent, handleTabClick}) => {
@@ -28,4 +26,4 @@ TabSwitcher.propTypes = {
   handleTabClick: PropTypes.func.isRequired,
 };
 
-export default withTab(TabSwitcher);
+export default TabSwitcher;
