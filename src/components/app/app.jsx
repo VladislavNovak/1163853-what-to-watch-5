@@ -4,7 +4,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
-import MyList from "../my-list/my-list";
+import MyFilmsList from "../my-films-list/my-films-list";
 import AddReview from "../add-review/add-review";
 import TabAssembler from "../tab-assembler/tab-assembler";
 import Player from "../player/player";
@@ -28,8 +28,8 @@ const App = (props) => {
         </Route>
         <Route exact path="/login" component={SignIn} />
         <Route exact path="/mylist">
-          < MyList
-            favoriteFilms={filterFavoriteFilms(props.films, isFavoriteType.CHECKED)}
+          < MyFilmsList
+            films={filterFavoriteFilms(props.films, isFavoriteType.CHECKED)}
           />
         </Route>
         <Route exact path="/films/:id"

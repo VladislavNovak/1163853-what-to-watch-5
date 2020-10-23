@@ -3,29 +3,30 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
-import withFilmList from "../../hocs/with-film-list/with-film-list";
-import FilmScreen from "../film/film";
+import withFilmsList from "../../hocs/with-films-list/with-films-list";
+import Film from "../film/film";
 import ButtonShowMore from "../button-show-more/button-show-more";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
 const FilmsList = ({
   films,
-  visibleFilmsCount,
-  visibleFilms,
-  activeFilmID,
+  currentActiveFilm,
   handleMouseOverFilm,
   handleMouseLeaveFilm,
+  visibleFilmsCount,
   handleMoreButtonClick,
 }) => {
+
+  const visibleFilms = films.slice(0, visibleFilmsCount);
 
   return (
     <React.Fragment>
       <div className={`catalog__movies-list`}>
         {visibleFilms.map((film) => (
-          <FilmScreen
+          <Film
             key={film.id}
-            isActiveFilm={activeFilmID === film.id}
+            isActiveFilm={currentActiveFilm === film.id}
             id={film.id}
             poster={film.poster}
             title={film.title}
@@ -48,8 +49,7 @@ const FilmsList = ({
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
   visibleFilmsCount: PropTypes.number.isRequired,
-  visibleFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
-  activeFilmID: PropTypes.number.isRequired,
+  currentActiveFilm: PropTypes.number.isRequired,
   handleMouseOverFilm: PropTypes.func.isRequired,
   handleMouseLeaveFilm: PropTypes.func.isRequired,
   handleMoreButtonClick: PropTypes.func.isRequired,
@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-const FilmsListWrapper = withFilmList(FilmsList);
+const FilmsListWrapper = withFilmsList(FilmsList);
 
 export {FilmsListWrapper};
 export default connect(mapStateToProps, mapDispatchToProps)(FilmsListWrapper);

@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
-const withFilmList = (Component) => {
-  class WithFilmList extends PureComponent {
+const withFilmsList = (Component) => {
+  class WithFilmsList extends PureComponent {
     constructor(props) {
       super(props);
 
       this.timerID = null;
 
       this.state = {
-        activeFilmID: -1,
+        currentActiveFilm: -1,
       };
 
       this.handleMouseOverFilm = this.handleMouseOverFilm.bind(this);
@@ -23,11 +23,11 @@ const withFilmList = (Component) => {
         clearTimeout(this.timerID);
       }
 
-      this.timerID = setTimeout(() => this.setState({activeFilmID: id}), 1000);
+      this.timerID = setTimeout(() => this.setState({currentActiveFilm: id}), 1000);
     }
 
     handleMouseLeaveFilm() {
-      this.setState({activeFilmID: -1});
+      this.setState({currentActiveFilm: -1});
       clearTimeout(this.timerID);
       this.timerID = null;
     }
@@ -39,16 +39,13 @@ const withFilmList = (Component) => {
     }
 
     render() {
-      const {films, visibleFilmsCount} = this.props;
+      const {films} = this.props;
 
-      const visibleFilms = films.slice(0, visibleFilmsCount);
       return (
         <Component
           {...this.props}
           films={films}
-          visibleFilmsCount={visibleFilmsCount}
-          visibleFilms={visibleFilms}
-          activeFilmID={this.state.activeFilmID}
+          currentActiveFilm={this.state.currentActiveFilm}
           handleMouseOverFilm={this.handleMouseOverFilm}
           handleMouseLeaveFilm={this.handleMouseLeaveFilm}
         />
@@ -56,12 +53,11 @@ const withFilmList = (Component) => {
     }
   }
 
-  WithFilmList.propTypes = {
+  WithFilmsList.propTypes = {
     films: PropTypes.arrayOf(filmPropStructure).isRequired,
-    visibleFilmsCount: PropTypes.number.isRequired,
   };
 
-  return WithFilmList;
+  return WithFilmsList;
 };
 
-export default withFilmList;
+export default withFilmsList;
