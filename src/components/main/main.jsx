@@ -1,6 +1,10 @@
 import React from "react";
-import {connect} from "react-redux";
 import PropTypes from "prop-types";
+
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
+
+import ButtonShowMore from "../button-show-more/button-show-more";
 import GenresList from "../genres-list/genres-list";
 import withChangingActiveFilm from "../../hocs/with-changing-active-film/with-changing-active-film";
 import FilmsList from "../films-list/films-list";
@@ -9,7 +13,7 @@ import {filmPropStructure} from "../../utils/validator.prop";
 
 const FilmsListWrapper = withChangingActiveFilm(FilmsList);
 
-const Main = ({poster, filteredFilms}) => {
+const Main = ({poster, filteredFilms, visibleFilmsCount, handleMoreButtonClick}) => {
 
   return <React.Fragment>
     <section className="movie-card">
@@ -83,6 +87,7 @@ const Main = ({poster, filteredFilms}) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
         {<GenresList />}
         {<FilmsListWrapper films={filteredFilms} />}
+        {filteredFilms.length > visibleFilmsCount ? <ButtonShowMore handleMoreButtonClick={handleMoreButtonClick} /> : ``}
       </section>
 
       <footer className="page-footer">
@@ -105,9 +110,17 @@ const Main = ({poster, filteredFilms}) => {
 Main.propTypes = {
   poster: PropTypes.shape(filmPropStructure).isRequired,
   filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
+  visibleFilmsCount: PropTypes.number.isRequired,
+  handleMoreButtonClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({filteredFilms}) => ({filteredFilms});
+const mapStateToProps = ({filteredFilms, visibleFilmsCount}) => ({filteredFilms, visibleFilmsCount});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleMoreButtonClick(filmsCountPerClick) {
+    dispatch(ActionCreator.addNewVisibleFilms(filmsCountPerClick));
+  }
+});
 
 export {Main};
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
