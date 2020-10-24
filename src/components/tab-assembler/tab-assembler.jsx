@@ -9,8 +9,8 @@ import FilmsList from "../films-list/films-list";
 
 import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
 
-const FilmsListWrapper = withChangingActiveFilm(FilmsList);
-const TabSwitcherWrapper = withChangingActiveTab(TabSwitcher);
+const FilmsListWrapped = withChangingActiveFilm(FilmsList);
+const TabSwitcherWrapped = withChangingActiveTab(TabSwitcher);
 
 const TabAssembler = ({film, films, reviews}) => {
   const {id, title, genre, released, poster, posterBig} = film;
@@ -75,7 +75,7 @@ const TabAssembler = ({film, films, reviews}) => {
           </div>
 
           <div className="movie-card__desc">
-            <TabSwitcherWrapper film={film} reviews={reviews} />
+            <TabSwitcherWrapped film={film} reviews={reviews} />
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@ const TabAssembler = ({film, films, reviews}) => {
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-        {similarFilms.length ? <FilmsListWrapper films={similarFilms} /> : `` }
+        {similarFilms.length ? <FilmsListWrapped films={similarFilms} /> : `` }
       </section>
       <footer className="page-footer">
         <div className="logo">

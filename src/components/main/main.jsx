@@ -11,7 +11,7 @@ import FilmsList from "../films-list/films-list";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
-const FilmsListWrapper = withChangingActiveFilm(FilmsList);
+const FilmsListWrapped = withChangingActiveFilm(FilmsList);
 
 const Main = ({filteredFilms, visibleFilmsCount, handleMoreButtonClick}) => {
   const poster = filteredFilms[0];
@@ -87,7 +87,7 @@ const Main = ({filteredFilms, visibleFilmsCount, handleMoreButtonClick}) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
         {<GenresList />}
-        {<FilmsListWrapper films={filteredFilms} />}
+        {<FilmsListWrapped films={filteredFilms} />}
         {filteredFilms.length > visibleFilmsCount ? <ButtonShowMore handleMoreButtonClick={handleMoreButtonClick} /> : ``}
       </section>
 
