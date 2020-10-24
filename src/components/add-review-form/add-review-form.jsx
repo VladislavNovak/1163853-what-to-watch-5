@@ -1,125 +1,70 @@
-import React, {PureComponent} from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
-class AddReviewForm extends PureComponent {
-  constructor(props) {
-    super(props);
+const FIVE_STARS = [1, 2, 3, 4, 5];
 
-    this.state = {
-      reviewText: ``,
-      selectedStar: ``,
-    };
-
-    this.onTextareaChangeHandler = this.onTextareaChangeHandler.bind(this);
-    this.onStarChangeHandler = this.onStarChangeHandler.bind(this);
-    this.onSubmitClickHandler = this.onSubmitClickHandler.bind(this);
-  }
-
-  onSubmitClickHandler(evt) {
-    evt.preventDefault();
-  }
-
-  onTextareaChangeHandler(evt) {
-    this.setState({reviewText: evt.target.value});
-  }
-
-  onStarChangeHandler(evt) {
-    this.setState({selectedStar: evt.target.value});
-  }
-
-  render() {
-
-    return (
-      <div className="add-review">
-        <form onSubmit={this.onSubmitClickHandler} action="#" className="add-review__form">
-          <div className="rating">
-            <div className="rating__stars">
-              <input
-                className="rating__input"
-                id="star-1"
-                type="radio"
-                name="rating"
-                value="1"
-                checked={this.state.selectedStar === `1`}
-                onChange={this.onStarChangeHandler}
-              />
-              <label className="rating__label" htmlFor="star-1">
-                Rating 1
-              </label>
-
-              <input
-                className="rating__input"
-                id="star-2"
-                type="radio"
-                name="rating"
-                value="2"
-                checked={this.state.selectedStar === `2`}
-                onChange={this.onStarChangeHandler}
-              />
-              <label className="rating__label" htmlFor="star-2">
-                Rating 2
-              </label>
-
-              <input
-                className="rating__input"
-                id="star-3"
-                type="radio"
-                name="rating"
-                value="3"
-                checked={this.state.selectedStar === `3`}
-                onChange={this.onStarChangeHandler}
-              />
-              <label className="rating__label" htmlFor="star-3">
-                Rating 3
-              </label>
-
-              <input
-                className="rating__input"
-                id="star-4"
-                type="radio"
-                name="rating"
-                value="4"
-                checked={this.state.selectedStar === `4`}
-                onChange={this.onStarChangeHandler}
-              />
-              <label className="rating__label" htmlFor="star-4">
-                Rating 4
-              </label>
-
-              <input
-                className="rating__input"
-                id="star-5"
-                type="radio"
-                name="rating"
-                value="5"
-                checked={this.state.selectedStar === `5`}
-                onChange={this.onStarChangeHandler}
-              />
-              <label className="rating__label" htmlFor="star-5">
-                Rating 5
-              </label>
-            </div>
+const AddReviewForm = ({
+  reviewText,
+  selectedStar,
+  onSubmitClickHandler,
+  onTextareaChangeHandler,
+  onStarChangeHandler,
+}) => {
+  return (
+    <div className="add-review">
+      <form
+        onSubmit={onSubmitClickHandler}
+        action="#"
+        className="add-review__form"
+      >
+        <div className="rating">
+          <div className="rating__stars">
+            {FIVE_STARS.map((star) => (
+              <React.Fragment key={star}>
+                <input
+                  key={`input-${star}`}
+                  className="rating__input"
+                  id={`star-${star}`}
+                  type="radio"
+                  name="rating"
+                  value={`${star}`}
+                  onChange={onStarChangeHandler}
+                  checked={Number(selectedStar) === star}
+                />
+                <label key={`label-${star}`} className="rating__label" htmlFor={`star-${star}`}>
+                  {`Rating ${star}`}
+                </label>
+              </React.Fragment>
+            ))}
           </div>
+        </div>
 
-          <div className="add-review__text">
-            <textarea
-              className="add-review__textarea"
-              name="review-text"
-              id="review-text"
-              placeholder="Review text"
-              value={this.state.reviewText}
-              onChange={this.onTextareaChangeHandler}
-            />
-            <div className="add-review__submit">
-              <button className="add-review__btn" type="submit">
-                Post
-              </button>
-            </div>
+        <div className="add-review__text">
+          <textarea
+            className="add-review__textarea"
+            name="review-text"
+            id="review-text"
+            placeholder="Review text"
+            value={reviewText}
+            onChange={onTextareaChangeHandler}
+          />
+          <div className="add-review__submit">
+            <button className="add-review__btn" type="submit">
+              Post
+            </button>
           </div>
-        </form>
-      </div>
-    );
-  }
+        </div>
+      </form>
+    </div>
+  );
+};
 
-}
+AddReviewForm.propTypes = {
+  selectedStar: PropTypes.string.isRequired,
+  reviewText: PropTypes.string.isRequired,
+  onSubmitClickHandler: PropTypes.func.isRequired,
+  onStarChangeHandler: PropTypes.func.isRequired,
+  onTextareaChangeHandler: PropTypes.func.isRequired,
+};
 
 export default AddReviewForm;

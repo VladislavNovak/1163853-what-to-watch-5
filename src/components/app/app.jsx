@@ -4,7 +4,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
-import MyList from "../my-list/my-list";
+import MyFilmsList from "../my-films-list/my-films-list";
 import AddReview from "../add-review/add-review";
 import TabAssembler from "../tab-assembler/tab-assembler";
 import Player from "../player/player";
@@ -22,14 +22,13 @@ const App = (props) => {
       <Switch>
         <Route exact path="/">
           <Main
-            poster={props.poster}
             films={props.films}
           />
         </Route>
         <Route exact path="/login" component={SignIn} />
         <Route exact path="/mylist">
-          < MyList
-            favoriteFilms={filterFavoriteFilms(props.films, isFavoriteType.CHECKED)}
+          <MyFilmsList
+            films={filterFavoriteFilms(props.films, isFavoriteType.CHECKED)}
           />
         </Route>
         <Route exact path="/films/:id"
@@ -45,7 +44,6 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  poster: PropTypes.shape(filmPropStructure).isRequired,
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
   reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
 };

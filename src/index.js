@@ -21,7 +21,6 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
       <App
-        poster={films[0]}
         films={films}
         reviews={reviews}
       />
