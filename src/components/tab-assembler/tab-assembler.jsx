@@ -7,12 +7,13 @@ import withChangingActiveTab from "../../hocs/with-changing-active-tab/with-chan
 import withChangingActiveFilm from "../../hocs/with-changing-active-film/with-changing-active-film";
 import FilmsList from "../films-list/films-list";
 
+import ButtonPlay from "../button-play/button-play";
 import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
 
 const FilmsListWrapped = withChangingActiveFilm(FilmsList);
 const TabSwitcherWrapped = withChangingActiveTab(TabSwitcher);
 
-const TabAssembler = ({film, films, reviews}) => {
+const TabAssembler = ({film, films, reviews, handleButtonPlayClick}) => {
   const {id, title, genre, released, poster, posterBig} = film;
   const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, 4);
 
@@ -50,12 +51,7 @@ const TabAssembler = ({film, films, reviews}) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button">
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s" />
-                </svg>
-                <span>Play</span>
-              </button>
+            <ButtonPlay id={id} handleButtonPlayClick={handleButtonPlayClick} />
               <button className="btn btn--list movie-card__button" type="button">
                 <svg viewBox="0 0 19 20" width="19" height="20">
                   <use xlinkHref="#add" />
@@ -107,6 +103,7 @@ TabAssembler.propTypes = {
   film: PropTypes.shape(filmPropStructure).isRequired,
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
   reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
+  handleButtonPlayClick: PropTypes.func.isRequired,
 };
 
 export default TabAssembler;

@@ -8,6 +8,7 @@ import MyFilmsList from "../my-films-list/my-films-list";
 import AddReview from "../add-review/add-review";
 import TabAssembler from "../tab-assembler/tab-assembler";
 import Player from "../player/player";
+import withPlayer from "../../hocs/with-player/with-player";
 
 import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
 
@@ -16,26 +17,46 @@ import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop
 // filterFavoriteFilms: фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
 import {isFavoriteType, getMatchingFilm, getMatchingReview, filterFavoriteFilms} from "../../utils/utils";
 
+// const PlayerWrapped = withPlayer(Player)
+
 const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          <Main
-            films={props.films}
-          />
-        </Route>
+        <Route
+          exact
+          path="/"
+          render={({history}) => (
+            <Main
+              films={props.films}
+              handleButtonPlayClick={(id) => history.push(`/player/${id}`)}
+            />
+          )}
+        ></Route>
         <Route exact path="/login" component={SignIn} />
         <Route exact path="/mylist">
           <MyFilmsList
             films={filterFavoriteFilms(props.films, isFavoriteType.CHECKED)}
           />
         </Route>
-        <Route exact path="/films/:id"
-          render={({match}) => <TabAssembler film={getMatchingFilm(props.films, match)} films={props.films} reviews={getMatchingReview(props.reviews, match)} />}
+        <Route
+          exact
+          path="/films/:id"
+          render={({match, history}) => (
+            <TabAssembler
+              film={getMatchingFilm(props.films, match)}
+              films={props.films}
+              reviews={getMatchingReview(props.reviews, match)}
+              handleButtonPlayClick={(id) => history.push(`/player/${id}`)}
+            />
+          )}
         />
-        <Route exact path="/films/:id/review"
-          render={({match}) => <AddReview film={getMatchingFilm(props.films, match)} />}
+        <Route
+          exact
+          path="/films/:id/review"
+          render={({match}) => (
+            <AddReview film={getMatchingFilm(props.films, match)} />
+          )}
         />
         <Route exact path="/player/:id" component={Player} />
       </Switch>

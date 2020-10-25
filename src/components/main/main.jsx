@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
 import ButtonShowMore from "../button-show-more/button-show-more";
+import ButtonPlay from "../button-play/button-play";
 import GenresList from "../genres-list/genres-list";
 import withChangingActiveFilm from "../../hocs/with-changing-active-film/with-changing-active-film";
 import FilmsList from "../films-list/films-list";
@@ -13,7 +14,7 @@ import {filmPropStructure} from "../../utils/validator.prop";
 
 const FilmsListWrapped = withChangingActiveFilm(FilmsList);
 
-const Main = ({filteredFilms, visibleFilmsCount, handleMoreButtonClick}) => {
+const Main = ({filteredFilms, visibleFilmsCount, handleMoreButtonClick, handleButtonPlayClick}) => {
   const poster = filteredFilms[0];
 
   return <React.Fragment>
@@ -59,15 +60,7 @@ const Main = ({filteredFilms, visibleFilmsCount, handleMoreButtonClick}) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button
-                className="btn btn--play movie-card__button"
-                type="button"
-              >
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s" />
-                </svg>
-                <span>Play</span>
-              </button>
+              <ButtonPlay id={poster.id} handleButtonPlayClick={handleButtonPlayClick} />
               <button
                 className="btn btn--list movie-card__button"
                 type="button"
@@ -112,6 +105,7 @@ Main.propTypes = {
   filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
   visibleFilmsCount: PropTypes.number.isRequired,
   handleMoreButtonClick: PropTypes.func.isRequired,
+  handleButtonPlayClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({filteredFilms, visibleFilmsCount}) => ({filteredFilms, visibleFilmsCount});

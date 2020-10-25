@@ -1,6 +1,6 @@
 import React from "react";
 
-const PlayerScreen = () => {
+const Player = () => {
   const styleLeft = {left: `30%`};
 
   return <React.Fragment>
@@ -39,5 +39,5 @@ const PlayerScreen = () => {
   </React.Fragment>;
 };
 
-export default PlayerScreen;
+export default Player;
 
