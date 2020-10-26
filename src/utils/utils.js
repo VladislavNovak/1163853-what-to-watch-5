@@ -41,3 +41,25 @@ export const filterFavoriteFilms = (films, type) => (type) ? films.filter((item)
 export const extend = (a, b) => Object.assign({}, a, b);
 
 export const getFilteredFilmsByGenre = (films, genre) => (genre === ALL_GENRE) ? films : films.filter((film) => film.genre === genre);
+
+// Рассчитываем время в секундах и минутах
+export const getFormattedTime = (time) => {
+  time = Math.floor(time);
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time - minutes * 60);
+  let minutesVal = minutes;
+  let secondsVal = seconds;
+
+  if (minutes < 10) {
+    minutesVal = `0${minutes}`;
+  }
+
+  if (seconds < 10) {
+    secondsVal = `0${seconds}`;
+  }
+
+  return `${minutesVal}:${secondsVal}`;
+};
+
+// Отображаем время воспроизведения
+export const getVideoProgress = (video) => (Math.floor(video.currentTime) / (Math.floor(video.duration) / 100));

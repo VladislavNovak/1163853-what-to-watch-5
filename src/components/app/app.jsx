@@ -17,9 +17,9 @@ import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop
 // filterFavoriteFilms: фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
 import {isFavoriteType, getMatchingFilm, getMatchingReview, filterFavoriteFilms} from "../../utils/utils";
 
-// const PlayerWrapped = withPlayer(Player)
+const PlayerWrapped = withPlayer(Player);
 
-const App = (props) => {
+const App = ({films, reviews}) => {
   return (
     <BrowserRouter>
       <Switch>
@@ -28,15 +28,16 @@ const App = (props) => {
           path="/"
           render={({history}) => (
             <Main
-              films={props.films}
+              films={films}
               handleButtonPlayClick={(id) => history.push(`/player/${id}`)}
             />
           )}
-        ></Route>
+        >
+        </Route>
         <Route exact path="/login" component={SignIn} />
         <Route exact path="/mylist">
           <MyFilmsList
-            films={filterFavoriteFilms(props.films, isFavoriteType.CHECKED)}
+            films={filterFavoriteFilms(films, isFavoriteType.CHECKED)}
           />
         </Route>
         <Route
@@ -44,9 +45,9 @@ const App = (props) => {
           path="/films/:id"
           render={({match, history}) => (
             <TabAssembler
-              film={getMatchingFilm(props.films, match)}
-              films={props.films}
-              reviews={getMatchingReview(props.reviews, match)}
+              film={getMatchingFilm(films, match)}
+              films={films}
+              reviews={getMatchingReview(reviews, match)}
               handleButtonPlayClick={(id) => history.push(`/player/${id}`)}
             />
           )}
@@ -55,10 +56,19 @@ const App = (props) => {
           exact
           path="/films/:id/review"
           render={({match}) => (
-            <AddReview film={getMatchingFilm(props.films, match)} />
+            <AddReview film={getMatchingFilm(films, match)} />
           )}
         />
-        <Route exact path="/player/:id" component={Player} />
+        <Route
+          exact
+          path="/player/:id"
+          render={({match, history}) => (
+            <PlayerWrapped
+              film={getMatchingFilm(films, match)}
+              handlePlayerExitClick={() => history.goBack()}
+            />
+          )}
+        />
       </Switch>
     </BrowserRouter>
   );

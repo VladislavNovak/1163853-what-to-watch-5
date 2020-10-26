@@ -51,7 +51,7 @@ const TabAssembler = ({film, films, reviews, handleButtonPlayClick}) => {
             </p>
 
             <div className="movie-card__buttons">
-            <ButtonPlay id={id} handleButtonPlayClick={handleButtonPlayClick} />
+              <ButtonPlay id={id} handleButtonPlayClick={handleButtonPlayClick} />
               <button className="btn btn--list movie-card__button" type="button">
                 <svg viewBox="0 0 19 20" width="19" height="20">
                   <use xlinkHref="#add" />
