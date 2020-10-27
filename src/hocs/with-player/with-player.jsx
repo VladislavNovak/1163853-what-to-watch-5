@@ -51,9 +51,6 @@ const withPlayer = (Component) => {
 
       this.setState({
         videoCurrentTime: video.currentTime,
-      });
-
-      this.setState({
         progressPosition: getVideoProgress(video),
       });
 

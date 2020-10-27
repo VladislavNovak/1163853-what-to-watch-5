@@ -44,7 +44,7 @@ const Player = ({
               className="player__play"
               onClick={isPlaying ? handlePlayerPauseClick : handlePlayerPlayClick}
             >
-              {isPlaying && (
+              {!isPlaying && (
                 <React.Fragment>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s" />
@@ -52,7 +52,7 @@ const Player = ({
                   <span>Play</span>
                 </React.Fragment>
               )}
-              {!isPlaying && (
+              {isPlaying && (
                 <React.Fragment>
                   <svg viewBox="0 0 14 21" width="14" height="21">
                     <use xlinkHref="#pause" />

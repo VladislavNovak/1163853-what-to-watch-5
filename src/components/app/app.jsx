@@ -28,7 +28,6 @@ const App = ({films, reviews}) => {
           path="/"
           render={({history}) => (
             <Main
-              films={films}
               handleButtonPlayClick={(id) => history.push(`/player/${id}`)}
             />
           )}

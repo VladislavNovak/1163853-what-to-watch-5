@@ -1,5 +1,6 @@
 export const ALL_GENRE = `All genres`;
 export const FILMS_COUNT_PER_CLICK = 8;
+const SEC_PER_MINUTE = 60;
 
 export const isFavoriteType = {
   CHECKED: true,
@@ -45,18 +46,11 @@ export const getFilteredFilmsByGenre = (films, genre) => (genre === ALL_GENRE) ?
 // Рассчитываем время в секундах и минутах
 export const getFormattedTime = (time) => {
   time = Math.floor(time);
-  const minutes = Math.floor(time / 60);
-  const seconds = Math.floor(time - minutes * 60);
-  let minutesVal = minutes;
-  let secondsVal = seconds;
+  const minutes = Math.floor(time / SEC_PER_MINUTE);
+  const seconds = Math.floor(time - minutes * SEC_PER_MINUTE);
 
-  if (minutes < 10) {
-    minutesVal = `0${minutes}`;
-  }
-
-  if (seconds < 10) {
-    secondsVal = `0${seconds}`;
-  }
+  const minutesVal = minutes < 10 ? `0${minutes}` : String(minutes);
+  const secondsVal = seconds < 10 ? `0${seconds}` : String(seconds);
 
   return `${minutesVal}:${secondsVal}`;
 };
