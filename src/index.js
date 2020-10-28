@@ -14,7 +14,7 @@ const reviews = generateReviews(films, 150);
 // В хранилище первым аргументом передаём функцию (rootReducer), которая знает, как его обновлять
 // вторым аргументом подключаем возможность работы в redux devTools
 const store = createStore(
-  rootReducer,
+    rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
 
