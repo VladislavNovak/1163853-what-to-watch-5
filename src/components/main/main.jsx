@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
-
+import {getFilteredFilms, getVisibleFilmsCount} from "../../store/reducers/appState/selectors";
 import ButtonShowMore from "../button-show-more/button-show-more";
 import ButtonPlay from "../button-play/button-play";
 import GenresList from "../genres-list/genres-list";
@@ -108,7 +108,10 @@ Main.propTypes = {
   handleButtonPlayClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({filteredFilms, visibleFilmsCount}) => ({filteredFilms, visibleFilmsCount});
+const mapStateToProps = (state) => ({
+  filteredFilms: getFilteredFilms(state),
+  visibleFilmsCount: getVisibleFilmsCount(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
   handleMoreButtonClick(filmsCountPerClick) {

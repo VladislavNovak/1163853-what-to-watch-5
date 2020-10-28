@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {rootReducer} from "./store/reducers/root-reducer";
+import rootReducer from "./store/reducers";
 
 import App from './components/app/app';
 import {mockFilms} from "./mocks/film";

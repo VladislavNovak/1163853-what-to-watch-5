@@ -13,6 +13,10 @@ export const TabsType = {
   REVIEWS: `Reviews`
 };
 
+export const NameSpace = {
+  APP_STATE: `APP_STATE`,
+};
+
 export const getRandomInteger = (a = 0, b = 1) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
