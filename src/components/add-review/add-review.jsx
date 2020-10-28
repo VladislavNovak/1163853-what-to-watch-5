@@ -7,7 +7,7 @@ import withChangingValues from "../../hocs/with-changing-values/with-changing-va
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
-const AddReviewFormWrapper = withChangingValues(AddReviewForm);
+const AddReviewFormWrapped = withChangingValues(AddReviewForm);
 
 const AddReview = ({film}) => {
   return (
@@ -56,7 +56,7 @@ const AddReview = ({film}) => {
         </div>
       </div>
 
-      {<AddReviewFormWrapper />}
+      {<AddReviewFormWrapped />}
     </section>
   );
 };
