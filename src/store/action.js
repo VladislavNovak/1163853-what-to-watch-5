@@ -1,7 +1,8 @@
 export const ActionType = {
   CHANGE_ACTIVE_GENRE: `CHANGE_ACTIVE_GENRE`,
   FILTER_FILMS_LIST_BY_GENRE: `FILTER_FILMS_LIST_BY_GENRE`,
-  CHANGE_FILMS_COUNT: `CHANGE_FILMS_COUNT`
+  CHANGE_FILMS_COUNT: `CHANGE_FILMS_COUNT`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
 };
 
 export const ActionCreator = {
@@ -19,4 +20,9 @@ export const ActionCreator = {
     type: ActionType.CHANGE_FILMS_COUNT,
     payload: filmsCountPerClick
   }),
+
+  requireAuthorization: (status) => ({
+    type: ActionType.REQUIRED_AUTHORIZATION,
+    payload: status
+  })
 };

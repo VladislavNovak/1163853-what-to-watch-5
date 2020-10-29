@@ -15,6 +15,12 @@ export const TabsType = {
 
 export const NameSpace = {
   APP_STATE: `APP_STATE`,
+  USER: `USER`
+};
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
 };
 
 export const getRandomInteger = (a = 0, b = 1) => {
