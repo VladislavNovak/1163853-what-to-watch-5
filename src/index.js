@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import rootReducer from "./store/reducers";
+import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import {createAPI} from "./services/api";
 import {ActionCreator} from "./store/action";
@@ -16,14 +17,16 @@ const films = mockFilms;
 const reviews = generateReviews(films, 150);
 
 const api = createAPI(
-  () => store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH))
+    () => store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH))
 );
 
 // В хранилище первым аргументом передаём функцию (rootReducer), которая знает, как его обновлять
 // вторым аргументом подключаем возможность работы в redux devTools
 const store = createStore(
     rootReducer,
-    applyMiddleware(thunk.withExtraArgument(api))
+    composeWithDevTools(
+      applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
 
 store.dispatch(fetchFilms());

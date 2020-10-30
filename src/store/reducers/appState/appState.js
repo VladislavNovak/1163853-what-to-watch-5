@@ -2,6 +2,7 @@ import {ActionType} from "../../action";
 import {FILMS_COUNT_PER_CLICK, extend, getFilteredFilmsByGenre} from "../../../utils/utils";
 import {genre} from "../../../utils/genre";
 // import {mockFilms} from "../../../mocks/film";
+// import {непонятно что, т.к. невозможно извлечь данные просто из адаптера}
 
 const initialState = {
   activeGenre: genre.getItemAllGenres(),
