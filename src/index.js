@@ -21,7 +21,6 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
       <App
-        films={films}
         reviews={reviews}
       />
     </Provider>,

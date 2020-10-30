@@ -1,12 +1,13 @@
 import {ActionType} from "../../action";
 import {FILMS_COUNT_PER_CLICK, extend, getFilteredFilmsByGenre} from "../../../utils/utils";
 import {genre} from "../../../utils/genre";
-import {mockFilms} from "../../../mocks/film";
+// import {mockFilms} from "../../../mocks/film";
 
 const initialState = {
   activeGenre: genre.getItemAllGenres(),
   genres: genre.getList(),
-  filteredFilms: getFilteredFilmsByGenre(mockFilms, genre.getItemAllGenres()),
+  films: [],
+  filteredFilms: getFilteredFilmsByGenre(films, genre.getItemAllGenres()),
   visibleFilmsCount: FILMS_COUNT_PER_CLICK,
 };
 
@@ -19,12 +20,17 @@ const appState = (state = initialState, action) => {
 
     case ActionType.FILTER_FILMS_LIST_BY_GENRE:
       return extend(state, {
-        filteredFilms: getFilteredFilmsByGenre(mockFilms, action.payload),
+        filteredFilms: getFilteredFilmsByGenre(films, action.payload),
       });
 
     case ActionType.CHANGE_FILMS_COUNT:
       return extend(state, {
         visibleFilmsCount: state.visibleFilmsCount + action.payload,
+      });
+
+    case ActionType.LOAD_FILMS:
+      return extend(state, {
+        films: action.payload,
       });
   }
 
