@@ -8,7 +8,8 @@ const initialState = {
   activeGenre: genre.getItemAllGenres(),
   genres: genre.getList(),
   films: [],
-  filteredFilms: getFilteredFilmsByGenre(films, genre.getItemAllGenres()),
+  // filteredFilms: getFilteredFilmsByGenre(films, genre.getItemAllGenres()),
+  filteredFilms: [],
   visibleFilmsCount: FILMS_COUNT_PER_CLICK,
 };
 
@@ -29,7 +30,7 @@ const appState = (state = initialState, action) => {
         visibleFilmsCount: state.visibleFilmsCount + action.payload,
       });
 
-    case ActionType.LOAD_FILMS:
+    case ActionType.LOAD_DATA_FILMS:
       return extend(state, {
         films: action.payload,
       });
