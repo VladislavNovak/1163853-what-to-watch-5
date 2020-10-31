@@ -4,8 +4,11 @@ import {adaptFilmsToClient} from "../services/adapter";
 
 export const fetchFilms = () => (dispatch, _getState, api) => (
   api.get(`/films`)
-    .then((response) => dispatch(ActionCreator.loadFilms(adaptFilmsToClient(response.data))))
-);
+  .then((response) => {
+      dispatch(ActionCreator.loadDataFilms(adaptFilmsToClient(response.data)))
+      dispatch(ActionCreator.loadDataFilms(adaptFilmsToClient(response.data)))
+  }
+)
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(`/login`)

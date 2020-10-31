@@ -29,15 +29,16 @@ const store = createStore(
     )
 );
 
-store.dispatch(fetchFilms());
-store.dispatch(checkAuth());
+Promise.all([
+  store.dispatch(fetchFilms()),
+  store.dispatch(checkAuth()),
+])
+.then(() => {
+  <Provider store={store}>
+  <App
+    reviews={reviews}
+  />
+</Provider>,
 
-ReactDOM.render(
-    <Provider store={store}>
-      <App
-        reviews={reviews}
-      />
-    </Provider>,
-
-    document.querySelector(`#root`)
-);
+document.querySelector(`#root`);
+});
