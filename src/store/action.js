@@ -6,6 +6,7 @@ export const ActionType = {
   LOAD_DATA_FILMS: `LOAD_DATA_FILMS`,
   SET_GENRES: `SET_GENRES`,
   GET_REVIEWS: `GET_REVIEWS`,
+  GET_PROMO: `GET_PROMO`,
 };
 
 export const ActionCreator = {
@@ -30,7 +31,7 @@ export const ActionCreator = {
   }),
 
   // loadDataFilms: (films) => ({
-  getFilms: (films) => ({
+  setFilms: (films) => ({
     type: ActionType.LOAD_DATA_FILMS,
     payload: films,
   }),
@@ -40,8 +41,13 @@ export const ActionCreator = {
     payload: genres,
   }),
 
-  getReviews: (reviews) => ({
+  setReviews: (reviews) => ({
     type: ActionType.GET_REVIEWS,
     payload: reviews,
+  }),
+
+  setPromo: (promo) => ({
+    type: ActionType.GET_PROMO,
+    payload: promo,
   }),
 };

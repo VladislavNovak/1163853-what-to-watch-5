@@ -1,6 +1,6 @@
 import Level from "../utils/level";
 
-const adapter = (film) => ({
+export const adaptOneFilmToClient = (film) => ({
   id: film.id,
   title: film.name,
   genre: film.genre,
@@ -21,5 +21,5 @@ const adapter = (film) => ({
 });
 
 export const adaptFilmsToClient = (data) => {
-  return data.map(adapter);
+  return data.map(adaptOneFilmToClient);
 };

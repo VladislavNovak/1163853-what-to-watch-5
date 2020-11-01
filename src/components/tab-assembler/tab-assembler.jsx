@@ -14,7 +14,7 @@ const FilmsListWrapped = withChangingActiveFilm(FilmsList);
 const TabSwitcherWrapped = withChangingActiveTab(TabSwitcher);
 
 const TabAssembler = ({film, films, handleButtonPlayClick}) => {
-  const {id, title, genre, released, poster, posterBig} = film;
+  const {id, title, genre, released, poster} = film;
   const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, 4);
 
   return <React.Fragment>
@@ -102,7 +102,6 @@ const TabAssembler = ({film, films, handleButtonPlayClick}) => {
 TabAssembler.propTypes = {
   film: PropTypes.shape(filmPropStructure).isRequired,
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
-  // reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
   handleButtonPlayClick: PropTypes.func.isRequired,
 };
 

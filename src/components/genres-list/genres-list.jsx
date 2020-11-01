@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
-import {getActiveGenre, getFilms, getGenres} from "../../store/reducers/app-state/selectors";
+import {selectsActiveGenre, selectsFilms, selectsGenres} from "../../store/reducers/app-state/selectors";
 import {getFilteredFilmsByGenre} from "../../utils/utils";
 import {filmPropStructure} from "../../utils/validator.prop";
 
@@ -37,9 +37,9 @@ GenresList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  films: getFilms(state),
-  activeGenre: getActiveGenre(state),
-  genres: getGenres(state),
+  films: selectsFilms(state),
+  activeGenre: selectsActiveGenre(state),
+  genres: selectsGenres(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

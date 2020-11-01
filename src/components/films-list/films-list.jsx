@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {getVisibleFilmsCount} from "../../store/reducers/app-state/selectors";
+import {selectsVisibleFilmsCount} from "../../store/reducers/app-state/selectors";
 import Film from "../film/film";
 
 import {filmPropStructure} from "../../utils/validator.prop";
@@ -42,7 +42,7 @@ FilmsList.propTypes = {
   handleMouseLeaveFilm: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({visibleFilmsCount: getVisibleFilmsCount(state)});
+const mapStateToProps = (state) => ({visibleFilmsCount: selectsVisibleFilmsCount(state)});
 
 export {FilmsList};
 export default connect(mapStateToProps)(FilmsList);

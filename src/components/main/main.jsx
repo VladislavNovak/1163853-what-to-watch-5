@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
-import {getFilteredFilms, getVisibleFilmsCount} from "../../store/reducers/app-state/selectors";
+import {selectsFilteredFilms, selectsVisibleFilmsCount} from "../../store/reducers/app-state/selectors";
 import ButtonShowMore from "../button-show-more/button-show-more";
 import ButtonPlay from "../button-play/button-play";
 import GenresList from "../genres-list/genres-list";
@@ -14,13 +14,12 @@ import {filmPropStructure} from "../../utils/validator.prop";
 
 const FilmsListWrapped = withChangingActiveFilm(FilmsList);
 
-const Main = ({filteredFilms, visibleFilmsCount, handleMoreButtonClick, handleButtonPlayClick}) => {
-  const poster = filteredFilms[0];
+const Main = ({promo, handleButtonPlayClick, filteredFilms, visibleFilmsCount, handleMoreButtonClick}) => {
 
   return <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
-        <img src={poster.backgroundImage} alt={poster.title} />
+        <img src={promo.backgroundImage} alt={promo.title} />
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -49,18 +48,18 @@ const Main = ({filteredFilms, visibleFilmsCount, handleMoreButtonClick, handleBu
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src={poster.poster} alt={`${poster.title} poster`} width="218" height="327" />
+            <img src={promo.poster} alt={`${promo.title} poster`} width="218" height="327" />
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{poster.title}</h2>
+            <h2 className="movie-card__title">{promo.title}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{poster.genre}</span>
-              <span className="movie-card__year">{poster.released}</span>
+              <span className="movie-card__genre">{promo.genre}</span>
+              <span className="movie-card__year">{promo.released}</span>
             </p>
 
             <div className="movie-card__buttons">
-              <ButtonPlay id={poster.id} handleButtonPlayClick={handleButtonPlayClick} />
+              <ButtonPlay id={promo.id} handleButtonPlayClick={handleButtonPlayClick} />
               <button
                 className="btn btn--list movie-card__button"
                 type="button"
@@ -102,15 +101,16 @@ const Main = ({filteredFilms, visibleFilmsCount, handleMoreButtonClick, handleBu
 };
 
 Main.propTypes = {
+  promo: PropTypes.shape(filmPropStructure).isRequired,
+  handleButtonPlayClick: PropTypes.func.isRequired,
   filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
   visibleFilmsCount: PropTypes.number.isRequired,
   handleMoreButtonClick: PropTypes.func.isRequired,
-  handleButtonPlayClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  filteredFilms: getFilteredFilms(state),
-  visibleFilmsCount: getVisibleFilmsCount(state),
+  filteredFilms: selectsFilteredFilms(state),
+  visibleFilmsCount: selectsVisibleFilmsCount(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

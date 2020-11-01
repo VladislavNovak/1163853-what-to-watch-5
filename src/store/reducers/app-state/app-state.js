@@ -8,6 +8,7 @@ const initialState = {
   films: [],
   reviews: [],
   filteredFilms: [],
+  promo: [],
   visibleFilmsCount: FILMS_COUNT_PER_CLICK,
 };
 
@@ -41,6 +42,11 @@ const appState = (state = initialState, action) => {
     case ActionType.GET_REVIEWS:
       return extend(state, {
         reviews: action.payload,
+      });
+
+    case ActionType.GET_PROMO:
+      return extend(state, {
+        promo: action.payload,
       });
   }
 

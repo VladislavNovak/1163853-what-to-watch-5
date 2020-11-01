@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {getFilms} from "../../store/reducers/app-state/selectors";
+import {selectsFilms, selectsPromo} from "../../store/reducers/app-state/selectors";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyFilmsList from "../my-films-list/my-films-list";
@@ -20,8 +20,7 @@ import {isFavoriteType, getMatchingFilm, filterFavoriteFilms} from "../../utils/
 
 const PlayerWrapped = withPlayer(Player);
 
-// const App = ({films, reviews}) => {
-const App = ({films}) => {
+const App = ({films, promo}) => {
   return (
     <BrowserRouter>
       <Switch>
@@ -30,6 +29,7 @@ const App = ({films}) => {
           path="/"
           render={({history}) => (
             <Main
+              promo={promo}
               handleButtonPlayClick={(id) => history.push(`/player/${id}`)}
             />
           )}
@@ -76,9 +76,13 @@ const App = ({films}) => {
 
 App.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
+  promo: PropTypes.shape(filmPropStructure).isRequired,
 };
 
-const mapStateToProps = (state) => ({films: getFilms(state)});
+const mapStateToProps = (state) => ({
+  films: selectsFilms(state),
+  promo: selectsPromo(state),
+});
 
 export {App};
 export default connect(mapStateToProps)(App);

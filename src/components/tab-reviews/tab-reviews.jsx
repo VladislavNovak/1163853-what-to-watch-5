@@ -2,12 +2,12 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {reviewPropStructure} from "../../utils/validator.prop";
 import {fetchReviews} from "../../store/api-action";
+import {selectsReviews} from "../../store/reducers/app-state/selectors";
 
 import Review from "../review/review";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 
 class TabReviews extends PureComponent {
-  // constructor() {}
 
   componentDidMount() {
     // Отправить запрос к серверу на получение reviews
@@ -24,7 +24,7 @@ class TabReviews extends PureComponent {
     return (
       <div className="movie-card__reviews movie-card__row">
         <div className="movie-card__reviews-col">
-          {colLeft.map(({ id, user, rating, comment, date }) => (
+          {colLeft.map(({id, user, rating, comment, date}) => (
             <Review
               key={`${id}`}
               quote={comment}
@@ -35,7 +35,7 @@ class TabReviews extends PureComponent {
           ))}
         </div>
         <div className="movie-card__reviews-col">
-          {colRight.map(({ id, user, rating, comment, date }) => (
+          {colRight.map(({id, user, rating, comment, date}) => (
             <Review
               key={`${id}`}
               quote={comment}
@@ -56,7 +56,7 @@ TabReviews.propTypes = {
   getReviews: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ reviews }) => ({ reviews });
+const mapStateToProps = (state) => ({reviews: selectsReviews(state)});
 
 const mapDispatchToProps = (dispatch) => ({
   getReviews(id) {
@@ -64,5 +64,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// export default TabReviews;
 export default connect(mapStateToProps, mapDispatchToProps)(TabReviews);

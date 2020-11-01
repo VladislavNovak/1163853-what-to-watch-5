@@ -7,7 +7,8 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import {createAPI} from "./services/api";
 import {ActionCreator} from "./store/action";
-import {fetchFilms, checkAuth} from "./store/api-action";
+import {fetchFilms, fetchPromo} from "./store/api-action";
+// import {checkAuth} from "./store/api-action";
 import {AuthorizationStatus} from "./utils/utils";
 import App from './components/app/app';
 
@@ -26,6 +27,7 @@ const store = createStore(
 
 Promise.all([
   store.dispatch(fetchFilms()),
+  store.dispatch(fetchPromo()),
   // store.dispatch(checkAuth()),
 ])
   .then(() => {
