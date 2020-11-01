@@ -20,17 +20,11 @@ export const filmPropStructure = PropTypes.shape({
 
 export const reviewPropStructure = PropTypes.shape({
   id: PropTypes.number.isRequired,
-  filmID: PropTypes.number.isRequired,
-  quote: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  datetime: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-}).isRequired;
-
-export const genreListPropStructure = PropTypes.shape({
-  categories: PropTypes.arrayOf(PropTypes.shape({
+  user: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-  }).isRequired).isRequired
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  rating: PropTypes.number.isRequired,
+  comment: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
 }).isRequired;

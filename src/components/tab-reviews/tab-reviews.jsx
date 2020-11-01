@@ -10,7 +10,6 @@ import {connect} from "react-redux";
 class TabReviews extends PureComponent {
 
   componentDidMount() {
-    // Отправить запрос к серверу на получение reviews
     const {getReviews, id} = this.props;
     getReviews(id);
   }

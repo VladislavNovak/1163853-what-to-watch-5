@@ -3,10 +3,10 @@ export const ActionType = {
   FILTER_FILMS_LIST_BY_GENRE: `FILTER_FILMS_LIST_BY_GENRE`,
   CHANGE_FILMS_COUNT: `CHANGE_FILMS_COUNT`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
-  LOAD_DATA_FILMS: `LOAD_DATA_FILMS`,
+  SET_FILMS: `SET_FILMS`,
   SET_GENRES: `SET_GENRES`,
-  GET_REVIEWS: `GET_REVIEWS`,
-  GET_PROMO: `GET_PROMO`,
+  SET_REVIEWS: `SET_REVIEWS`,
+  SET_PROMO: `SET_PROMO`,
 };
 
 export const ActionCreator = {
@@ -30,9 +30,8 @@ export const ActionCreator = {
     payload: status
   }),
 
-  // loadDataFilms: (films) => ({
   setFilms: (films) => ({
-    type: ActionType.LOAD_DATA_FILMS,
+    type: ActionType.SET_FILMS,
     payload: films,
   }),
 
@@ -42,12 +41,12 @@ export const ActionCreator = {
   }),
 
   setReviews: (reviews) => ({
-    type: ActionType.GET_REVIEWS,
+    type: ActionType.SET_REVIEWS,
     payload: reviews,
   }),
 
   setPromo: (promo) => ({
-    type: ActionType.GET_PROMO,
+    type: ActionType.SET_PROMO,
     payload: promo,
   }),
 };

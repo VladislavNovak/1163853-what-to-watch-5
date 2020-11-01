@@ -6,6 +6,7 @@ const initialState = {
   activeGenre: ALL_GENRE,
   genres: [],
   films: [],
+  activeFilm: [],
   reviews: [],
   filteredFilms: [],
   promo: [],
@@ -29,7 +30,7 @@ const appState = (state = initialState, action) => {
         visibleFilmsCount: state.visibleFilmsCount + action.payload,
       });
 
-    case ActionType.LOAD_DATA_FILMS:
+    case ActionType.SET_FILMS:
       return extend(state, {
         films: action.payload,
       });
@@ -39,15 +40,20 @@ const appState = (state = initialState, action) => {
         genres: action.payload,
       });
 
-    case ActionType.GET_REVIEWS:
+    case ActionType.SET_REVIEWS:
       return extend(state, {
         reviews: action.payload,
       });
 
-    case ActionType.GET_PROMO:
+    case ActionType.SET_PROMO:
       return extend(state, {
         promo: action.payload,
       });
+
+    // case ActionType.SET_PROMO:
+    //   return extend(state, {
+    //     promo: action.payload,
+    //   });
   }
 
   return state;
