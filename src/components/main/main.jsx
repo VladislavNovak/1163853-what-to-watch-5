@@ -20,7 +20,7 @@ const Main = ({filteredFilms, visibleFilmsCount, handleMoreButtonClick, handleBu
   return <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
-        <img src={poster.posterBig} alt={poster.title} />
+        <img src={poster.backgroundImage} alt={poster.title} />
       </div>
 
       <h1 className="visually-hidden">WTW</h1>

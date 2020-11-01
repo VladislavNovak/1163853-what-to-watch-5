@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
+import {filmPropStructure} from "../../utils/validator.prop";
 
 import TabOverview from "../../components/tab-overview/tab-overview";
 import TabDetails from "../../components/tab-details/tab-details";
@@ -28,8 +28,9 @@ const withChangingActiveTab = (Component) => {
     }
 
     _renderTabContent() {
-      const {film, reviews} = this.props;
-      const {score, level, rating, description, director, starring, runtime, genre, released} = film;
+      // const {film, reviews} = this.props;
+      const {film} = this.props;
+      const {id, score, level, rating, description, director, starring, runtime, genre, released} = film;
 
       switch (this.state.activeTab) {
         case TabsType.OVERVIEW:
@@ -56,7 +57,8 @@ const withChangingActiveTab = (Component) => {
         case TabsType.REVIEWS:
           return (
             <TabReviews
-              reviews={reviews}
+              // reviews={reviews}
+              id={id}
             />
           );
         default:
@@ -79,7 +81,7 @@ const withChangingActiveTab = (Component) => {
 
   WithChangingActiveTab.propTypes = {
     film: PropTypes.shape(filmPropStructure).isRequired,
-    reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
+    // reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
   };
 
   return WithChangingActiveTab;

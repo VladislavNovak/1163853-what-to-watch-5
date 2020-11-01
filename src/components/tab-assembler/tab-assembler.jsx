@@ -8,12 +8,12 @@ import withChangingActiveFilm from "../../hocs/with-changing-active-film/with-ch
 import FilmsList from "../films-list/films-list";
 
 import ButtonPlay from "../button-play/button-play";
-import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
+import {filmPropStructure} from "../../utils/validator.prop";
 
 const FilmsListWrapped = withChangingActiveFilm(FilmsList);
 const TabSwitcherWrapped = withChangingActiveTab(TabSwitcher);
 
-const TabAssembler = ({film, films, reviews, handleButtonPlayClick}) => {
+const TabAssembler = ({film, films, handleButtonPlayClick}) => {
   const {id, title, genre, released, poster, posterBig} = film;
   const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, 4);
 
@@ -67,11 +67,11 @@ const TabAssembler = ({film, films, reviews, handleButtonPlayClick}) => {
       <div className="movie-card__wrap movie-card__translate-top">
         <div className="movie-card__info">
           <div className="movie-card__poster movie-card__poster--big">
-            <img src={posterBig} alt={`${title} poster`} width="218" height="327" />
+            <img src={poster} alt={`${title} poster`} width="218" height="327" />
           </div>
 
           <div className="movie-card__desc">
-            <TabSwitcherWrapped film={film} reviews={reviews} />
+            <TabSwitcherWrapped film={film} />
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@ const TabAssembler = ({film, films, reviews, handleButtonPlayClick}) => {
 TabAssembler.propTypes = {
   film: PropTypes.shape(filmPropStructure).isRequired,
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
-  reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
+  // reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
   handleButtonPlayClick: PropTypes.func.isRequired,
 };
 

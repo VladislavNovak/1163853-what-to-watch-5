@@ -5,6 +5,7 @@ export const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   LOAD_DATA_FILMS: `LOAD_DATA_FILMS`,
   SET_GENRES: `SET_GENRES`,
+  GET_REVIEWS: `GET_REVIEWS`,
 };
 
 export const ActionCreator = {
@@ -37,5 +38,10 @@ export const ActionCreator = {
   setGenres: (genres) => ({
     type: ActionType.SET_GENRES,
     payload: genres,
-  })
+  }),
+
+  getReviews: (reviews) => ({
+    type: ActionType.GET_REVIEWS,
+    payload: reviews,
+  }),
 };

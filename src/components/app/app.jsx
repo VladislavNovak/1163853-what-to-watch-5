@@ -11,16 +11,17 @@ import TabAssembler from "../tab-assembler/tab-assembler";
 import Player from "../player/player";
 import withPlayer from "../../hocs/with-player/with-player";
 
-import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
+import {filmPropStructure} from "../../utils/validator.prop";
 
 // isFavoriteType: CHECKED/UNCHECKED
 // getMatchingFilm: находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
 // filterFavoriteFilms: фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
-import {isFavoriteType, getMatchingFilm, getMatchingReview, filterFavoriteFilms} from "../../utils/utils";
+import {isFavoriteType, getMatchingFilm, filterFavoriteFilms} from "../../utils/utils";
 
 const PlayerWrapped = withPlayer(Player);
 
-const App = ({films, reviews}) => {
+// const App = ({films, reviews}) => {
+const App = ({films}) => {
   return (
     <BrowserRouter>
       <Switch>
@@ -47,7 +48,6 @@ const App = ({films, reviews}) => {
             <TabAssembler
               film={getMatchingFilm(films, match)}
               films={films}
-              reviews={getMatchingReview(reviews, match)}
               handleButtonPlayClick={(id) => history.push(`/player/${id}`)}
             />
           )}
@@ -76,7 +76,6 @@ const App = ({films, reviews}) => {
 
 App.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
-  reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
 };
 
 const mapStateToProps = (state) => ({films: getFilms(state)});

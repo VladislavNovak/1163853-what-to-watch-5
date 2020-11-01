@@ -5,7 +5,7 @@ const PreviewScreen = ({trailer, posterBig}) => {
   return (
     <video
       src={trailer}
-      posterBig={posterBig}
+      posterbig={posterBig}
       autoPlay
       muted
       width="280"

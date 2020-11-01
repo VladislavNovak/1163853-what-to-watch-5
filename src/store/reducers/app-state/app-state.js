@@ -1,11 +1,12 @@
 import {ActionType} from "../../action";
 import {FILMS_COUNT_PER_CLICK, extend} from "../../../utils/utils";
-import {genre} from "../../../utils/genre";
+import {ALL_GENRE} from "../../../utils/utils";
 
 const initialState = {
-  activeGenre: genre.getItemAllGenres(),
+  activeGenre: ALL_GENRE,
   genres: [],
   films: [],
+  reviews: [],
   filteredFilms: [],
   visibleFilmsCount: FILMS_COUNT_PER_CLICK,
 };
@@ -35,6 +36,11 @@ const appState = (state = initialState, action) => {
     case ActionType.SET_GENRES:
       return extend(state, {
         genres: action.payload,
+      });
+
+    case ActionType.GET_REVIEWS:
+      return extend(state, {
+        reviews: action.payload,
       });
   }
 
