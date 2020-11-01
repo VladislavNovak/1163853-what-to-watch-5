@@ -25,7 +25,7 @@ const api = createAPI(
 const store = createStore(
     rootReducer,
     composeWithDevTools(
-      applyMiddleware(thunk.withExtraArgument(api))
+        applyMiddleware(thunk.withExtraArgument(api))
     )
 );
 
@@ -35,12 +35,12 @@ Promise.all([
 ])
   .then(() => {
     ReactDOM.render(
-      <Provider store={store}>
-        <App
-          reviews={reviews}
-        />
-      </Provider>,
+        <Provider store={store}>
+          <App
+            reviews={reviews}
+          />
+        </Provider>,
 
-    document.querySelector(`#root`)
+        document.querySelector(`#root`)
     );
-});
+  });

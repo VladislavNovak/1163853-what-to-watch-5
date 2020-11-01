@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {loadDataFilms} from "../../store/reducers/app-state/selectors";
+import {getFilms} from "../../store/reducers/app-state/selectors";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyFilmsList from "../my-films-list/my-films-list";
@@ -79,7 +79,7 @@ App.propTypes = {
   reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
 };
 
-const mapStateToProps = (state) => ({films: loadDataFilms(state)});
+const mapStateToProps = (state) => ({films: getFilms(state)});
 
 export {App};
 export default connect(mapStateToProps)(App);
