@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import moment from 'moment';
 
 const TabDetails = ({director, starring, runtime, genre, released}) => {
   const formattingList = (list) => {
@@ -25,7 +26,7 @@ const TabDetails = ({director, starring, runtime, genre, released}) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">{runtime}</span>
+          <span className="movie-card__details-value">{moment().startOf('day').add(runtime, 'minutes').format('h[h] m[m]')}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>

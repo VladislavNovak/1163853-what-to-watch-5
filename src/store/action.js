@@ -4,9 +4,10 @@ export const ActionType = {
   CHANGE_FILMS_COUNT: `CHANGE_FILMS_COUNT`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   SET_FILMS: `SET_FILMS`,
+  SET_PROMO: `SET_PROMO`,
   SET_GENRES: `SET_GENRES`,
   SET_REVIEWS: `SET_REVIEWS`,
-  SET_PROMO: `SET_PROMO`,
+  SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
 };
 
 export const ActionCreator = {
@@ -35,6 +36,11 @@ export const ActionCreator = {
     payload: films,
   }),
 
+  setPromo: (promo) => ({
+    type: ActionType.SET_PROMO,
+    payload: promo,
+  }),
+
   setGenres: (genres) => ({
     type: ActionType.SET_GENRES,
     payload: genres,
@@ -45,8 +51,8 @@ export const ActionCreator = {
     payload: reviews,
   }),
 
-  setPromo: (promo) => ({
-    type: ActionType.SET_PROMO,
-    payload: promo,
+  setActiveFilm: (activeFilm) => ({
+    type: ActionType.SET_ACTIVE_FILM,
+    payload: activeFilm,
   }),
 };

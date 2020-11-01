@@ -35,6 +35,11 @@ const appState = (state = initialState, action) => {
         films: action.payload,
       });
 
+      case ActionType.SET_PROMO:
+        return extend(state, {
+          promo: action.payload,
+        });
+
     case ActionType.SET_GENRES:
       return extend(state, {
         genres: action.payload,
@@ -45,15 +50,10 @@ const appState = (state = initialState, action) => {
         reviews: action.payload,
       });
 
-    case ActionType.SET_PROMO:
+    case ActionType.SET_ACTIVE_FILM:
       return extend(state, {
-        promo: action.payload,
+        activeFilm: action.payload,
       });
-
-    // case ActionType.SET_PROMO:
-    //   return extend(state, {
-    //     promo: action.payload,
-    //   });
   }
 
   return state;

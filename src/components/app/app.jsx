@@ -21,6 +21,7 @@ import {isFavoriteType, getMatchingFilm, filterFavoriteFilms} from "../../utils/
 const PlayerWrapped = withPlayer(Player);
 
 const App = ({films, promo}) => {
+
   return (
     <BrowserRouter>
       <Switch>
