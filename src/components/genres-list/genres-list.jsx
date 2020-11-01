@@ -13,7 +13,7 @@ const GenresList = ({activeGenre, genres, changeActiveGenre, filterFilmsListByGe
           key={`genre-${index}`}
           onClick={() => {
             changeActiveGenre(genre);
-            filterFilmsListByGenre(genre);
+            filterFilmsListByGenre([], genre);
           }}
           className={`catalog__genres-item ${
             activeGenre === genre ? `catalog__genres-item--active` : ``
@@ -43,8 +43,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.changeActiveGenre(newSelectedGenre));
   },
 
-  filterFilmsListByGenre(newSelectedGenre) {
-    dispatch(ActionCreator.filterFilmsListByGenre(newSelectedGenre));
+  filterFilmsListByGenre(films, newSelectedGenre) {
+    dispatch(ActionCreator.filterFilmsListByGenre(getFilteredFilmsByGenre(films, newSelectedGenre)));
   },
 });
 

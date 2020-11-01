@@ -22,7 +22,7 @@ const appState = (state = initialState, action) => {
 
     case ActionType.FILTER_FILMS_LIST_BY_GENRE:
       return extend(state, {
-        filteredFilms: getFilteredFilmsByGenre(films, action.payload),
+        filteredFilms: action.payload,
       });
 
     case ActionType.CHANGE_FILMS_COUNT:
