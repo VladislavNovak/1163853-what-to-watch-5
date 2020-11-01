@@ -8,6 +8,6 @@ const getGenres = (state) => state[NameSpace.APP_STATE].genres;
 
 const getFilteredFilms = (state) => state[NameSpace.APP_STATE].filteredFilms;
 
-const loadDataFilms = (state) => state[NameSpace.APP_STATE].films;
+const getFilms = (state) => state[NameSpace.APP_STATE].films;
 
-export {getVisibleFilmsCount, getActiveGenre, getGenres, getFilteredFilms, loadDataFilms};
+export {getVisibleFilmsCount, getActiveGenre, getGenres, getFilteredFilms, getFilms};

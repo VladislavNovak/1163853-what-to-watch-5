@@ -4,6 +4,7 @@ export const ActionType = {
   CHANGE_FILMS_COUNT: `CHANGE_FILMS_COUNT`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   LOAD_DATA_FILMS: `LOAD_DATA_FILMS`,
+  SET_GENRES: `SET_GENRES`,
 };
 
 export const ActionCreator = {
@@ -27,8 +28,14 @@ export const ActionCreator = {
     payload: status
   }),
 
-  loadDataFilms: (films) => ({
+  // loadDataFilms: (films) => ({
+  getFilms: (films) => ({
     type: ActionType.LOAD_DATA_FILMS,
     payload: films,
+  }),
+
+  setGenres: (genres) => ({
+    type: ActionType.SET_GENRES,
+    payload: genres,
   })
 };

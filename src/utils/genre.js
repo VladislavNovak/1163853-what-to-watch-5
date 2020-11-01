@@ -22,4 +22,4 @@ class Genre {
 
 const genre = new Genre(mockFilms);
 
-export {genre};
+export {genre, Genre};

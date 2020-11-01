@@ -2,9 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
-import {getActiveGenre, getGenres} from "../../store/reducers/app-state/selectors";
+import {getActiveGenre, getFilms, getGenres} from "../../store/reducers/app-state/selectors";
+import {getFilteredFilmsByGenre} from "../../utils/utils";
+import {filmPropStructure} from "../../utils/validator.prop";
 
-const GenresList = ({activeGenre, genres, changeActiveGenre, filterFilmsListByGenre}) => {
+const GenresList = ({films, activeGenre, genres, changeActiveGenre, filterFilmsListByGenre}) => {
 
   return (
     <ul className="catalog__genres-list">
@@ -13,7 +15,7 @@ const GenresList = ({activeGenre, genres, changeActiveGenre, filterFilmsListByGe
           key={`genre-${index}`}
           onClick={() => {
             changeActiveGenre(genre);
-            filterFilmsListByGenre([], genre);
+            filterFilmsListByGenre(films, genre);
           }}
           className={`catalog__genres-item ${
             activeGenre === genre ? `catalog__genres-item--active` : ``
@@ -27,6 +29,7 @@ const GenresList = ({activeGenre, genres, changeActiveGenre, filterFilmsListByGe
 };
 
 GenresList.propTypes = {
+  films: PropTypes.arrayOf(filmPropStructure).isRequired,
   activeGenre: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   changeActiveGenre: PropTypes.func.isRequired,
@@ -34,6 +37,7 @@ GenresList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  films: getFilms(state),
   activeGenre: getActiveGenre(state),
   genres: getGenres(state),
 });
@@ -44,7 +48,8 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   filterFilmsListByGenre(films, newSelectedGenre) {
-    dispatch(ActionCreator.filterFilmsListByGenre(getFilteredFilmsByGenre(films, newSelectedGenre)));
+    const newFilms = getFilteredFilmsByGenre(films, newSelectedGenre);
+    dispatch(ActionCreator.filterFilmsListByGenre(newFilms));
   },
 });
 
