@@ -23,7 +23,8 @@ const FilmsList = ({
           key={film.id}
           isActiveFilm={currentActiveFilm === film.id}
           id={film.id}
-          poster={film.poster}
+          // poster={film.poster}
+          posterBig={film.posterBig}
           title={film.title}
           trailer={film.trailer}
           handleMouseOverFilm={handleMouseOverFilm}

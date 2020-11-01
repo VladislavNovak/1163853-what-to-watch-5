@@ -7,7 +7,7 @@ import Preview from "../preview/preview";
 const Film = ({
   isActiveFilm,
   id,
-  poster,
+  posterBig,
   title,
   trailer,
   handleMouseOverFilm,
@@ -21,9 +21,9 @@ const Film = ({
     >
       <div className="small-movie-card__image">
         {isActiveFilm ? (
-          <Preview trailer={trailer} poster={poster} />
+          <Preview trailer={trailer} posterBig={posterBig} />
         ) : (
-          <img src={poster} alt={title} width="280" height="175" />
+          <img src={posterBig} alt={title} width="280" height="175" />
         )}
       </div>
       <h3 className="small-movie-card__title">
@@ -38,7 +38,7 @@ const Film = ({
 Film.propTypes = {
   id: PropTypes.number.isRequired,
   isActiveFilm: PropTypes.bool.isRequired,
-  poster: PropTypes.string.isRequired,
+  posterBig: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   trailer: PropTypes.string.isRequired,
   handleMouseOverFilm: PropTypes.func.isRequired,

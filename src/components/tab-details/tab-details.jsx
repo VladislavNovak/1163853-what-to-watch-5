@@ -43,7 +43,7 @@ const TabDetails = ({director, starring, runtime, genre, released}) => {
 TabDetails.propTypes = {
   director: PropTypes.string.isRequired,
   starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-  runtime: PropTypes.string.isRequired,
+  runtime: PropTypes.number.isRequired,
   genre: PropTypes.string.isRequired,
   released: PropTypes.number.isRequired,
 };

@@ -29,7 +29,7 @@ const TabOverview = ({score, level, rating, description, director, starring}) =>
 TabOverview.propTypes = {
   score: PropTypes.number.isRequired,
   level: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
   starring: PropTypes.arrayOf(PropTypes.string).isRequired,

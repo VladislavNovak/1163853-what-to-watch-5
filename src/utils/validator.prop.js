@@ -7,14 +7,14 @@ export const filmPropStructure = PropTypes.shape({
   released: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
   level: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
   starring: PropTypes.arrayOf(PropTypes.string),
   poster: PropTypes.string.isRequired,
   posterBig: PropTypes.string.isRequired,
   trailer: PropTypes.string.isRequired,
-  runtime: PropTypes.string.isRequired,
+  runtime: PropTypes.number.isRequired,
   inMyFavoriteList: PropTypes.bool.isRequired,
 }).isRequired;
 
