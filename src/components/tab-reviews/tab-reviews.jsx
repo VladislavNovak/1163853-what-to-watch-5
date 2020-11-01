@@ -4,7 +4,7 @@ import {reviewPropStructure} from "../../utils/validator.prop";
 import {fetchReviews} from "../../store/api-action";
 
 import Review from "../review/review";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 class TabReviews extends PureComponent {
   // constructor() {}
@@ -24,30 +24,26 @@ class TabReviews extends PureComponent {
     return (
       <div className="movie-card__reviews movie-card__row">
         <div className="movie-card__reviews-col">
-          {colLeft.length
-            ? colLeft.map(({id, user, rating, comment, date}) => (
-              <Review
-                key={`${id}`}
-                quote={comment}
-                author={`${user.id} ${user.name}`}
-                datetime={date}
-                rating={rating}
-              />
-            ))
-            : ``}
+          {colLeft.map(({ id, user, rating, comment, date }) => (
+            <Review
+              key={`${id}`}
+              quote={comment}
+              author={`${user.id} ${user.name}`}
+              datetime={date}
+              rating={rating}
+            />
+          ))}
         </div>
         <div className="movie-card__reviews-col">
-          {colRight.length
-            ? colLeft.map(({id, user, rating, comment, date}) => (
-              <Review
-                key={`${id}`}
-                quote={comment}
-                author={`${user.id} ${user.name}`}
-                datetime={date}
-                rating={rating}
-              />
-            ))
-            : ``}
+          {colRight.map(({ id, user, rating, comment, date }) => (
+            <Review
+              key={`${id}`}
+              quote={comment}
+              author={`${user.id} ${user.name}`}
+              datetime={date}
+              rating={rating}
+            />
+          ))}
         </div>
       </div>
     );
@@ -60,12 +56,12 @@ TabReviews.propTypes = {
   getReviews: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({reviews}) => ({reviews});
+const mapStateToProps = ({ reviews }) => ({ reviews });
 
 const mapDispatchToProps = (dispatch) => ({
   getReviews(id) {
     dispatch(fetchReviews(id));
-  }
+  },
 });
 
 // export default TabReviews;
