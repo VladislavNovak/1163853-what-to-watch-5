@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {loadDataFilms} from "../../store/reducers/appState/selectors";
+import {loadDataFilms} from "../../store/reducers/app-state/selectors";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyFilmsList from "../my-films-list/my-films-list";

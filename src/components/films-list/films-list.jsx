@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {getVisibleFilmsCount} from "../../store/reducers/appState/selectors";
+import {getVisibleFilmsCount} from "../../store/reducers/app-state/selectors";
 import Film from "../film/film";
 
 import {filmPropStructure} from "../../utils/validator.prop";
@@ -23,7 +23,6 @@ const FilmsList = ({
           key={film.id}
           isActiveFilm={currentActiveFilm === film.id}
           id={film.id}
-          // poster={film.poster}
           posterBig={film.posterBig}
           title={film.title}
           trailer={film.trailer}
