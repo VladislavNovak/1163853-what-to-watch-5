@@ -10,11 +10,6 @@ import {ActionCreator} from "./store/action";
 import {fetchFilms, checkAuth} from "./store/api-action";
 import {AuthorizationStatus} from "./utils/utils";
 import App from './components/app/app';
-import {mockFilms} from "./mocks/film";
-import {generateReviews} from "./mocks/review";
-
-const films = mockFilms;
-const reviews = generateReviews(films, 150);
 
 const api = createAPI(
     () => store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH))
@@ -37,7 +32,6 @@ Promise.all([
     ReactDOM.render(
         <Provider store={store}>
           <App
-            reviews={reviews}
           />
         </Provider>,
 

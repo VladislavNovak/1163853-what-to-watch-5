@@ -3,14 +3,19 @@ import {AuthorizationStatus, getUniqueGenres} from '../utils/utils';
 import {adaptFilmsToClient} from '../services/adapter';
 
 export const fetchFilms = () => (dispatch, _getState, api) =>
-  api.get(`/films`).then((response) => {
-    const adaptedFilms = adaptFilmsToClient(response.data);
+  api.get(`/films`).then(({data}) => {
+    const adaptedFilms = adaptFilmsToClient(data);
 
-    // dispatch(ActionCreator.loadDataFilms(adaptedFilms));
     dispatch(ActionCreator.getFilms(adaptedFilms));
     dispatch(ActionCreator.filterFilmsListByGenre(adaptedFilms));
     const genres = getUniqueGenres(adaptedFilms);
     dispatch(ActionCreator.setGenres(genres));
+  });
+
+export const fetchReviews = (id) => (dispatch, _getState, api) =>
+  api.get(`/comments/${id}`).then(({data}) => {
+    console.log(data)
+    dispatch(ActionCreator.getReviews(data));
   });
 
 export const checkAuth = () => (dispatch, _getState, api) =>

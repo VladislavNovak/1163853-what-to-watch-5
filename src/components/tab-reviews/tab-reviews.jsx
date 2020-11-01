@@ -1,47 +1,72 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {reviewPropStructure} from "../../utils/validator.prop";
+import {fetchReviews} from "../../store/api-action";
 
 import Review from "../review/review";
+import {connect} from "react-redux";
 
-const TabReviews = ({reviews}) => {
-  const colLeft = reviews.filter((_, index) => index % 2 === 0);
-  const colRight = reviews.filter((_, index) => index % 2 !== 0);
+class TabReviews extends PureComponent {
+  // constructor() {}
 
-  return (
-    <div className="movie-card__reviews movie-card__row">
-      <div className="movie-card__reviews-col">
-        {colLeft.length
-          ? colLeft.map(({filmID, quote, author, datetime, rating}, index) => (
-            <Review
-              key={`${filmID} - ${index}`}
-              quote={quote}
-              author={author}
-              datetime={datetime}
-              rating={rating}
-            />
-          ))
-          : ``}
+  componentDidMount() {
+    // Отправить запрос к серверу на получение reviews
+    const {getReviews, id} = this.props;
+    getReviews(id);
+  }
+
+  render() {
+    const {reviews} = this.props;
+
+    const colLeft = reviews.filter((_, index) => index % 2 === 0);
+    const colRight = reviews.filter((_, index) => index % 2 !== 0);
+
+    return (
+      <div className="movie-card__reviews movie-card__row">
+        <div className="movie-card__reviews-col">
+          {colLeft.length
+            ? colLeft.map(({id, user, rating, comment, date}) => (
+              <Review
+                key={`${id}`}
+                quote={comment}
+                author={`${user.id} ${user.name}`}
+                datetime={date}
+                rating={rating}
+              />
+            ))
+            : ``}
+        </div>
+        <div className="movie-card__reviews-col">
+          {colRight.length
+            ? colLeft.map(({id, user, rating, comment, date}) => (
+              <Review
+                key={`${id}`}
+                quote={comment}
+                author={`${user.id} ${user.name}`}
+                datetime={date}
+                rating={rating}
+              />
+            ))
+            : ``}
+        </div>
       </div>
-      <div className="movie-card__reviews-col">
-        {colRight.length
-          ? colRight.map(({filmID, quote, author, datetime, rating}, index) => (
-            <Review
-              key={`${filmID} - ${index}`}
-              quote={quote}
-              author={author}
-              datetime={datetime}
-              rating={rating}
-            />
-          ))
-          : ``}
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 TabReviews.propTypes = {
+  id: PropTypes.number.isRequired,
   reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
+  getReviews: PropTypes.func.isRequired,
 };
 
-export default TabReviews;
+const mapStateToProps = ({reviews}) => ({reviews});
+
+const mapDispatchToProps = (dispatch) => ({
+  getReviews(id) {
+    dispatch(fetchReviews(id));
+  }
+});
+
+// export default TabReviews;
+export default connect(mapStateToProps, mapDispatchToProps)(TabReviews);
