@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
-import {getActiveGenre, getGenres} from "../../store/reducers/appState/selectors";
+import {getActiveGenre, getGenres} from "../../store/reducers/app-state/selectors";
 
 const GenresList = ({activeGenre, genres, changeActiveGenre, filterFilmsListByGenre}) => {
 
