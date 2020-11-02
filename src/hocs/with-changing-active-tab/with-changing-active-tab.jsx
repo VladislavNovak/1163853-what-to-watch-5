@@ -28,7 +28,6 @@ const withChangingActiveTab = (Component) => {
     }
 
     _renderTabContent() {
-      // const {film, reviews} = this.props;
       const {film} = this.props;
       const {id, score, level, rating, description, director, starring, runtime, genre, released} = film;
 
@@ -57,7 +56,6 @@ const withChangingActiveTab = (Component) => {
         case TabsType.REVIEWS:
           return (
             <TabReviews
-              // reviews={reviews}
               id={id}
             />
           );
@@ -81,7 +79,6 @@ const withChangingActiveTab = (Component) => {
 
   WithChangingActiveTab.propTypes = {
     film: PropTypes.shape(filmPropStructure).isRequired,
-    // reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
   };
 
   return WithChangingActiveTab;

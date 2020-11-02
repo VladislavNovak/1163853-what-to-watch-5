@@ -47,7 +47,8 @@ const App = ({films, promo}) => {
           path="/films/:id"
           render={({match, history}) => (
             <TabAssembler
-              film={getMatchingFilm(films, match)}
+              // film={getMatchingFilm(films, match)}
+              id={Number(match.params.id)}
               films={films}
               handleButtonPlayClick={(id) => history.push(`/player/${id}`)}
             />
