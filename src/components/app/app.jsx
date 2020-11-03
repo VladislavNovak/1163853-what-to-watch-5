@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-
+import {connect} from "react-redux";
+import {selectsFilms, selectsPromo} from "../../store/reducers/app-state/selectors";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyFilmsList from "../my-films-list/my-films-list";
@@ -10,16 +11,17 @@ import TabAssembler from "../tab-assembler/tab-assembler";
 import Player from "../player/player";
 import withPlayer from "../../hocs/with-player/with-player";
 
-import {filmPropStructure, reviewPropStructure} from "../../utils/validator.prop";
+import {filmPropStructure} from "../../utils/validator.prop";
 
 // isFavoriteType: CHECKED/UNCHECKED
 // getMatchingFilm: находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
 // filterFavoriteFilms: фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
-import {isFavoriteType, getMatchingFilm, getMatchingReview, filterFavoriteFilms} from "../../utils/utils";
+import {isFavoriteType, getMatchingFilm, filterFavoriteFilms} from "../../utils/utils";
 
 const PlayerWrapped = withPlayer(Player);
 
-const App = ({films, reviews}) => {
+const App = ({films, promo}) => {
+
   return (
     <BrowserRouter>
       <Switch>
@@ -28,6 +30,7 @@ const App = ({films, reviews}) => {
           path="/"
           render={({history}) => (
             <Main
+              promo={promo}
               handleButtonPlayClick={(id) => history.push(`/player/${id}`)}
             />
           )}
@@ -44,9 +47,9 @@ const App = ({films, reviews}) => {
           path="/films/:id"
           render={({match, history}) => (
             <TabAssembler
-              film={getMatchingFilm(films, match)}
+              // film={getMatchingFilm(films, match)}
+              id={Number(match.params.id)}
               films={films}
-              reviews={getMatchingReview(reviews, match)}
               handleButtonPlayClick={(id) => history.push(`/player/${id}`)}
             />
           )}
@@ -75,7 +78,13 @@ const App = ({films, reviews}) => {
 
 App.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
-  reviews: PropTypes.arrayOf(reviewPropStructure).isRequired,
+  promo: PropTypes.shape(filmPropStructure).isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  films: selectsFilms(state),
+  promo: selectsPromo(state),
+});
+
+export {App};
+export default connect(mapStateToProps)(App);

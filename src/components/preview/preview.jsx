@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const PreviewScreen = ({trailer, poster}) => {
+const PreviewScreen = ({trailer, posterBig}) => {
   return (
     <video
       src={trailer}
-      poster={poster}
+      posterbig={posterBig}
       autoPlay
       muted
       width="280"
@@ -18,7 +18,7 @@ const PreviewScreen = ({trailer, poster}) => {
 
 PreviewScreen.propTypes = {
   trailer: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  posterBig: PropTypes.string.isRequired,
 };
 
 export default PreviewScreen;

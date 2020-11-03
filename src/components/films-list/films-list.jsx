@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-
+import {selectsVisibleFilmsCount} from "../../store/reducers/app-state/selectors";
 import Film from "../film/film";
 
 import {filmPropStructure} from "../../utils/validator.prop";
@@ -23,7 +23,7 @@ const FilmsList = ({
           key={film.id}
           isActiveFilm={currentActiveFilm === film.id}
           id={film.id}
-          poster={film.poster}
+          posterBig={film.posterBig}
           title={film.title}
           trailer={film.trailer}
           handleMouseOverFilm={handleMouseOverFilm}
@@ -42,7 +42,7 @@ FilmsList.propTypes = {
   handleMouseLeaveFilm: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({visibleFilmsCount}) => ({visibleFilmsCount});
+const mapStateToProps = (state) => ({visibleFilmsCount: selectsVisibleFilmsCount(state)});
 
 export {FilmsList};
 export default connect(mapStateToProps)(FilmsList);

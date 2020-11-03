@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from 'moment';
 
-const ReviewScreen = ({quote, author, datetime, rating}) => {
+const Review = ({quote, author, datetime, rating}) => {
 
   return (
     <div className="review">
@@ -20,11 +20,11 @@ const ReviewScreen = ({quote, author, datetime, rating}) => {
   );
 };
 
-ReviewScreen.propTypes = {
+Review.propTypes = {
   quote: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   datetime: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
 };
 
-export default ReviewScreen;
+export default Review;
