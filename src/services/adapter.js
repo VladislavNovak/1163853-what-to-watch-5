@@ -20,6 +20,4 @@ export const adaptOneFilmToClient = (film) => ({
   backgroundImage: film[`background_image`],
 });
 
-export const adaptFilmsToClient = (data) => {
-  return data.map(adaptOneFilmToClient);
-};
+export const adaptFilmsToClient = (data) => data.map(adaptOneFilmToClient);
