@@ -33,4 +33,5 @@ export const JumpTo = {
   PLAYER_ID_URL: `/player/:id`,
   PROMO: `/films/promo`,
   REVIEW_ID_URL: `/films/:id/review`,
+  reviewBy: (params) => `/films/${params}/review`,
 };

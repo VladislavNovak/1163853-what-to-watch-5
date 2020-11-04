@@ -6,6 +6,7 @@ import AddReviewForm from "../add-review-form/add-review-form";
 import withChangingValues from "../../hocs/with-changing-values/with-changing-values";
 
 import {filmPropStructure} from "../../utils/validator.prop";
+import {JumpTo} from "../../utils/constants";
 
 const AddReviewFormWrapped = withChangingValues(AddReviewForm);
 
@@ -21,7 +22,7 @@ const AddReview = ({film}) => {
 
         <header className="page-header">
           <div className="logo">
-            <Link to="/" className="logo__link">
+            <Link to={JumpTo.MAIN} className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
@@ -31,7 +32,7 @@ const AddReview = ({film}) => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to={`/films/${film.id}`} className="breadcrumbs__link">{film.title}</Link>
+                <Link to={JumpTo.FILMS + film.id} className="breadcrumbs__link">{film.title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>

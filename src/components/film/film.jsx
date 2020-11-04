@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 import Preview from "../preview/preview";
+import {JumpTo} from "../../utils/constants";
 
 const Film = ({
   isActiveFilm,
@@ -27,7 +28,7 @@ const Film = ({
         )}
       </div>
       <h3 className="small-movie-card__title">
-        <Link to={`/films/${id}`} className="small-movie-card__link">
+        <Link to={JumpTo.FILMS + id} className="small-movie-card__link">
           {title}
         </Link>
       </h3>

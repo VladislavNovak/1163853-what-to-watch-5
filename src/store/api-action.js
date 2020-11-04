@@ -4,7 +4,6 @@ import {AuthorizationStatus, JumpTo} from "../utils/constants";
 import {adaptOneFilmToClient, adaptFilmsToClient} from "../services/adapter";
 
 export const fetchFilms = () => (dispatch, _getState, api) =>
-  // api.get(`/films`).then(({data}) => {
   api.get(JumpTo.FILMS).then(({data}) => {
     const adaptedFilms = adaptFilmsToClient(data);
 

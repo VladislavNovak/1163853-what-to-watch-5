@@ -12,6 +12,7 @@ import {filmPropStructure} from "../../utils/validator.prop";
 import {fetchActiveFilm} from "../../store/api-action";
 
 import {connect} from "react-redux";
+import {JumpTo} from "../../utils/constants";
 
 const FilmsListWrapped = withChangingActiveFilm(FilmsList);
 const TabSwitcherWrapped = withChangingActiveTab(TabSwitcher);
@@ -53,7 +54,7 @@ class TabAssembler extends PureComponent {
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <Link to="/" className="logo__link">
+              <Link to={JumpTo.MAIN} className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
@@ -83,7 +84,7 @@ class TabAssembler extends PureComponent {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
+                <Link to={JumpTo.reviewBy(id)} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
