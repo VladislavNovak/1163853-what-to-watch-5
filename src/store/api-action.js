@@ -1,10 +1,11 @@
 import {ActionCreator} from "./action";
 import {getUniqueGenres} from "../utils/utils";
-import {AuthorizationStatus} from "../utils/constants";
+import {AuthorizationStatus, JumpTo} from "../utils/constants";
 import {adaptOneFilmToClient, adaptFilmsToClient} from "../services/adapter";
 
 export const fetchFilms = () => (dispatch, _getState, api) =>
-  api.get(`/films`).then(({data}) => {
+  // api.get(`/films`).then(({data}) => {
+  api.get(JumpTo.FILMS).then(({data}) => {
     const adaptedFilms = adaptFilmsToClient(data);
 
     dispatch(ActionCreator.setFilms(adaptedFilms));
@@ -15,26 +16,25 @@ export const fetchFilms = () => (dispatch, _getState, api) =>
   });
 
 export const fetchPromo = () => (dispatch, _getState, api) =>
-  api.get(`/films/promo`).then(({data}) => {
+  api.get(JumpTo.PROMO).then(({data}) => {
     const adaptedPromo = adaptOneFilmToClient(data);
     dispatch(ActionCreator.setPromo(adaptedPromo));
   });
 
 export const fetchActiveFilm = (id) => (dispatch, _getState, api) =>
-  api.get(`/films/${id}`).then(({data}) => {
+  api.get(JumpTo.FILMS + id).then(({data}) => {
     const adaptedActiveFilm = adaptOneFilmToClient(data);
 
     dispatch(ActionCreator.setActiveFilm(adaptedActiveFilm));
   });
 
 export const fetchReviews = (id) => (dispatch, _getState, api) =>
-  api.get(`/comments/${id}`).then(({data}) => {
+  api.get(JumpTo.COMMENTS + id).then(({data}) => {
     dispatch(ActionCreator.setReviews(data));
   });
 
 export const checkAuth = () => (dispatch, _getState, api) =>
-  api
-    .get(`/login`)
+  api.get(JumpTo.LOGIN)
     .then(() =>
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH))
     )
@@ -43,8 +43,7 @@ export const checkAuth = () => (dispatch, _getState, api) =>
     });
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) =>
-  api
-    .post(`/login`, {email, password})
+  api.post(JumpTo.LOGIN, {email, password})
     .then(() =>
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH))
     );
