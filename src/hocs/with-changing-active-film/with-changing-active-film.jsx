@@ -12,6 +12,7 @@ const withChangingActiveFilm = (Component) => {
 
       this.state = {
         currentActiveFilm: -1,
+        blaBla: 0,
       };
 
       this._handleMouseOverFilm = this._handleMouseOverFilm.bind(this);
