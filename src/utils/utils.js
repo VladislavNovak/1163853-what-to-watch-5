@@ -1,28 +1,7 @@
-export const ALL_GENRE = `All genres`;
-export const FILMS_COUNT_PER_CLICK = 8;
+import {ALL_GENRE} from "./constants";
+
 const SEC_PER_MINUTE = 60;
 const VISIBLE_AMOUNT_OF_GENRES = 9;
-
-export const isFavoriteType = {
-  CHECKED: true,
-  UNCHECKED: false,
-};
-
-export const TabsType = {
-  OVERVIEW: `Overview`,
-  DETAILS: `Details`,
-  REVIEWS: `Reviews`
-};
-
-export const NameSpace = {
-  APP_STATE: `APP_STATE`,
-  USER: `USER`
-};
-
-export const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
-};
 
 export const getRandomInteger = (a = 0, b = 1) => {
   const lower = Math.ceil(Math.min(a, b));

@@ -8,7 +8,7 @@ import TabDetails from "../../components/tab-details/tab-details";
 import TabReviews from "../../components/tab-reviews/tab-reviews";
 
 // TabsType: OVERVIEW/DETAILS/REVIEWS
-import {TabsType} from "../../utils/utils";
+import {TabsType} from "../../utils/constants";
 
 const withChangingActiveTab = (Component) => {
   class WithChangingActiveTab extends PureComponent {

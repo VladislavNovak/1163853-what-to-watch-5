@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {FILMS_COUNT_PER_CLICK} from "../../utils/utils";
+import {FILMS_COUNT_PER_CLICK} from "../../utils/constants";
 
 const ButtonShowMore = ({handleMoreButtonClick}) => {
 

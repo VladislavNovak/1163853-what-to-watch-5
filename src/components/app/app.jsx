@@ -16,7 +16,8 @@ import {filmPropStructure} from "../../utils/validator.prop";
 // isFavoriteType: CHECKED/UNCHECKED
 // getMatchingFilm: находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
 // filterFavoriteFilms: фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
-import {isFavoriteType, getMatchingFilm, filterFavoriteFilms} from "../../utils/utils";
+import {isFavoriteType} from "../../utils/constants";
+import {getMatchingFilm, filterFavoriteFilms} from "../../utils/utils";
 
 const PlayerWrapped = withPlayer(Player);
 

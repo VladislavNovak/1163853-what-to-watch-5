@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {TabsType} from "../../utils/utils";
+import {TabsType} from "../../utils/constants";
 
 const TabSwitcher = ({activeTab, renderTabContent, handleTabClick}) => {
   return <React.Fragment>

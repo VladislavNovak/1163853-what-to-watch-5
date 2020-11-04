@@ -1,6 +1,6 @@
 import {ActionType} from "../../action";
-import {FILMS_COUNT_PER_CLICK, extend} from "../../../utils/utils";
-import {ALL_GENRE} from "../../../utils/utils";
+import {extend} from "../../../utils/utils";
+import {ALL_GENRE, FILMS_COUNT_PER_CLICK} from "../../../utils/constants";
 
 const initialState = {
   activeGenre: ALL_GENRE,

@@ -1,6 +1,7 @@
-import {ActionCreator} from './action';
-import {AuthorizationStatus, getUniqueGenres} from '../utils/utils';
-import {adaptOneFilmToClient, adaptFilmsToClient} from '../services/adapter';
+import {ActionCreator} from "./action";
+import {getUniqueGenres} from "../utils/utils";
+import {AuthorizationStatus} from "../utils/constants";
+import {adaptOneFilmToClient, adaptFilmsToClient} from "../services/adapter";
 
 export const fetchFilms = () => (dispatch, _getState, api) =>
   api.get(`/films`).then(({data}) => {

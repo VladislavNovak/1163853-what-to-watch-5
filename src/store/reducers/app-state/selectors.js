@@ -1,4 +1,4 @@
-import {NameSpace} from '../../../utils/utils';
+import {NameSpace} from "../../../utils/constants";
 
 const selectsVisibleFilmsCount = (state) =>state[NameSpace.APP_STATE].visibleFilmsCount;
 

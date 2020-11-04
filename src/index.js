@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import rootReducer from "./store/reducers";
@@ -9,8 +9,8 @@ import {createAPI} from "./services/api";
 import {ActionCreator} from "./store/action";
 import {fetchFilms, fetchPromo} from "./store/api-action";
 // import {checkAuth} from "./store/api-action";
-import {AuthorizationStatus} from "./utils/utils";
-import App from './components/app/app';
+import {AuthorizationStatus} from "./utils/constants";
+import App from "./components/app/app";
 
 const api = createAPI(
     () => store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH))
