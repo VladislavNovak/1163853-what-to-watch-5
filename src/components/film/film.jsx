@@ -28,7 +28,7 @@ const Film = ({
         )}
       </div>
       <h3 className="small-movie-card__title">
-        <Link to={JumpTo.FILMS + id} className="small-movie-card__link">
+        <Link to={`${JumpTo.FILMS}${id}`} className="small-movie-card__link">
           {title}
         </Link>
       </h3>

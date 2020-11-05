@@ -31,8 +31,6 @@ export const filterFavoriteFilms = (films, type) => (type) ? films.filter((item)
 
 export const extend = (a, b) => Object.assign({}, a, b);
 
-export const getFilteredFilmsByGenre = (films, genre) => (genre === ALL_GENRE) ? films : films.filter((film) => film.genre === genre);
-
 // Рассчитываем время в секундах и минутах
 export const getFormattedTime = (time) => {
   time = Math.floor(time);

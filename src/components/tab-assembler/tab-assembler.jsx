@@ -12,7 +12,7 @@ import {filmPropStructure} from "../../utils/validator.prop";
 import {fetchActiveFilm} from "../../store/api-action";
 
 import {connect} from "react-redux";
-import {JumpTo} from "../../utils/constants";
+import {JumpTo, SIMILAR_FILMS} from "../../utils/constants";
 
 const FilmsListWrapped = withChangingActiveFilm(FilmsList);
 const TabSwitcherWrapped = withChangingActiveTab(TabSwitcher);
@@ -41,7 +41,7 @@ class TabAssembler extends PureComponent {
     const {film, films, handleButtonPlayClick} = this.props;
 
     const {id, title, genre, released, poster} = film;
-    const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, 4);
+    const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, SIMILAR_FILMS);
 
     return <React.Fragment>
       <section className="movie-card movie-card--full">
@@ -84,7 +84,7 @@ class TabAssembler extends PureComponent {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to={JumpTo.reviewBy(id)} className="btn movie-card__button">Add review</Link>
+                <Link to={`${JumpTo.FILMS}${id}${JumpTo.REVIEW}`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>

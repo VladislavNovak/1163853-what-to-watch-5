@@ -1,5 +1,6 @@
 export const ALL_GENRE = `All genres`;
 export const FILMS_COUNT_PER_CLICK = 8;
+export const SIMILAR_FILMS = 4;
 
 export const isFavoriteType = {
   CHECKED: true,
@@ -34,4 +35,5 @@ export const JumpTo = {
   PROMO: `/films/promo`,
   REVIEW_ID_URL: `/films/:id/review`,
   reviewBy: (params) => `/films/${params}/review`,
+  REVIEW: `/review/`
 };

@@ -9,21 +9,18 @@ const FilmsList = ({
   currentActiveFilm,
   handleMouseOverFilm,
   handleMouseLeaveFilm,
-  visibleFilmsCount,
 }) => {
-
-  const visibleFilms = films.slice(0, visibleFilmsCount);
 
   return (
     <div className={`catalog__movies-list`}>
-      {visibleFilms.map((film) => (
+      {films.map(({id, posterBig, title, trailer}) => (
         <Film
-          key={film.id}
-          isActiveFilm={currentActiveFilm === film.id}
-          id={film.id}
-          posterBig={film.posterBig}
-          title={film.title}
-          trailer={film.trailer}
+          key={id}
+          isActiveFilm={currentActiveFilm === id}
+          id={id}
+          posterBig={posterBig}
+          title={title}
+          trailer={trailer}
           handleMouseOverFilm={handleMouseOverFilm}
           handleMouseLeaveFilm={handleMouseLeaveFilm}
         />
@@ -34,7 +31,6 @@ const FilmsList = ({
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
-  visibleFilmsCount: PropTypes.number.isRequired,
   currentActiveFilm: PropTypes.number.isRequired,
   handleMouseOverFilm: PropTypes.func.isRequired,
   handleMouseLeaveFilm: PropTypes.func.isRequired,

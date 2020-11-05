@@ -16,11 +16,6 @@ export const ActionCreator = {
     payload: genre
   }),
 
-  filterFilmsListByGenre: (films) => ({
-    type: ActionType.FILTER_FILMS_LIST_BY_GENRE,
-    payload: films
-  }),
-
   addNewVisibleFilms: (filmsCountPerClick) => ({
     type: ActionType.CHANGE_FILMS_COUNT,
     payload: filmsCountPerClick

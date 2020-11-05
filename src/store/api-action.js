@@ -8,7 +8,6 @@ export const fetchFilms = () => (dispatch, _getState, api) =>
     const adaptedFilms = adaptFilmsToClient(data);
 
     dispatch(ActionCreator.setFilms(adaptedFilms));
-    dispatch(ActionCreator.filterFilmsListByGenre(adaptedFilms));
 
     const genres = getUniqueGenres(adaptedFilms);
     dispatch(ActionCreator.setGenres(genres));
@@ -21,14 +20,14 @@ export const fetchPromo = () => (dispatch, _getState, api) =>
   });
 
 export const fetchActiveFilm = (id) => (dispatch, _getState, api) =>
-  api.get(JumpTo.FILMS + id).then(({data}) => {
+  api.get(`${JumpTo.FILMS}${id}`).then(({data}) => {
     const adaptedActiveFilm = adaptOneFilmToClient(data);
 
     dispatch(ActionCreator.setActiveFilm(adaptedActiveFilm));
   });
 
 export const fetchReviews = (id) => (dispatch, _getState, api) =>
-  api.get(JumpTo.COMMENTS + id).then(({data}) => {
+  api.get(`${JumpTo.COMMENTS}${id}`).then(({data}) => {
     dispatch(ActionCreator.setReviews(data));
   });
 

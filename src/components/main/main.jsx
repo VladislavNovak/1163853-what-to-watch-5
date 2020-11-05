@@ -20,7 +20,7 @@ class Main extends React.PureComponent {
 
     this.state = {
       visibleFilmsCount: FILMS_COUNT_PER_CLICK,
-      isAllGenres: true,
+      ACTIVE_GENRE: ALL_GENRE,
     };
 
     this.handleMoreButtonClick = this.handleMoreButtonClick.bind(this);
@@ -35,16 +35,23 @@ class Main extends React.PureComponent {
   }
 
   handleMoreButtonClick(params) {
-    this.setState({visibleFilmsCount: this.state.visibleFilmsCount + params});
+    const {visibleFilmsCount} = this.state;
+
+    this.setState({visibleFilmsCount: visibleFilmsCount + params});
   }
 
   render() {
+
     const {promo, handleButtonPlayClick, filteredFilms} = this.props;
+    const {backgroundImage, title, poster, genre, released, id} = promo;
+    const {visibleFilmsCount} = this.state;
+
+    const films = filteredFilms.slice(0, visibleFilmsCount);
 
     return <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={promo.backgroundImage} alt={promo.title} />
+          <img src={backgroundImage} alt={title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -73,18 +80,18 @@ class Main extends React.PureComponent {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={promo.poster} alt={`${promo.title} poster`} width="218" height="327" />
+              <img src={poster} alt={`${title} poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promo.title}</h2>
+              <h2 className="movie-card__title">{title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promo.genre}</span>
-                <span className="movie-card__year">{promo.released}</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{released}</span>
               </p>
 
               <div className="movie-card__buttons">
-                <ButtonPlay id={promo.id} handleButtonPlayClick={handleButtonPlayClick} />
+                <ButtonPlay id={id} handleButtonPlayClick={handleButtonPlayClick} />
                 <button
                   className="btn btn--list movie-card__button"
                   type="button"
@@ -104,8 +111,8 @@ class Main extends React.PureComponent {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           {<GenresList />}
-          {<FilmsListWrapped films={filteredFilms} visibleFilmsCount={this.state.visibleFilmsCount} />}
-          {filteredFilms.length > this.state.visibleFilmsCount ? <ButtonShowMore handleMoreButtonClick={this.handleMoreButtonClick} /> : ``}
+          {<FilmsListWrapped films={films} />}
+          {filteredFilms.length > visibleFilmsCount ? <ButtonShowMore handleMoreButtonClick={this.handleMoreButtonClick} /> : ``}
         </section>
 
         <footer className="page-footer">
