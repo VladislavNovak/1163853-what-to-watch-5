@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import {connect} from "react-redux";
-import {selectsFilteredFilms} from "../../store/reducers/app-state/selectors";
+import {selectsActiveGenre, selectsFilteredFilms} from "../../store/reducers/app-state/selectors";
 import ButtonShowMore from "../button-show-more/button-show-more";
 import ButtonPlay from "../button-play/button-play";
 import GenresList from "../genres-list/genres-list";
@@ -10,7 +10,7 @@ import withChangingActiveFilm from "../../hocs/with-changing-active-film/with-ch
 import FilmsList from "../films-list/films-list";
 
 import {filmPropStructure} from "../../utils/validator.prop";
-import {FILMS_COUNT_PER_CLICK} from "../../utils/constants";
+import {ALL_GENRE, FILMS_COUNT_PER_CLICK} from "../../utils/constants";
 
 const FilmsListWrapped = withChangingActiveFilm(FilmsList);
 
@@ -20,9 +20,18 @@ class Main extends React.PureComponent {
 
     this.state = {
       visibleFilmsCount: FILMS_COUNT_PER_CLICK,
+      isAllGenres: true,
     };
 
     this.handleMoreButtonClick = this.handleMoreButtonClick.bind(this);
+  }
+
+  componentDidUpdate() {
+    const {activeGenre} = this.props;
+
+    if (activeGenre !== ALL_GENRE) {
+      this.setState({visibleFilmsCount: FILMS_COUNT_PER_CLICK});
+    }
   }
 
   handleMoreButtonClick(params) {
@@ -118,6 +127,7 @@ class Main extends React.PureComponent {
 }
 
 Main.propTypes = {
+  activeGenre: PropTypes.string.isRequired,
   promo: PropTypes.shape(filmPropStructure).isRequired,
   handleButtonPlayClick: PropTypes.func.isRequired,
   filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
@@ -125,6 +135,7 @@ Main.propTypes = {
 
 const mapStateToProps = (state) => ({
   filteredFilms: selectsFilteredFilms(state),
+  activeGenre: selectsActiveGenre(state),
 });
 
 export {Main};
