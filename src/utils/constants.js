@@ -28,7 +28,7 @@ export const JumpTo = {
   FILMS: `/films/`,
   FILMS_ID_URL: `/films/:id`,
   LOGIN: `/login/`,
-  MAIN: `/`,
+  ROOT: `/`,
   MYLIST: `/mylist/`,
   PLAYER: `/player/`,
   PLAYER_ID_URL: `/player/:id`,

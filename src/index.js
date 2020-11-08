@@ -28,7 +28,7 @@ const store = createStore(
 Promise.all([
   store.dispatch(fetchFilms()),
   store.dispatch(fetchPromo()),
-  // store.dispatch(checkAuth()),
+  store.dispatch(checkAuth()),
 ])
   .then(() => {
     ReactDOM.render(

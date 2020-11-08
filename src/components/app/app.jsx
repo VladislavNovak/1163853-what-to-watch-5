@@ -30,7 +30,7 @@ const App = ({films, promo}) => {
       <Switch>
         <Route
           exact
-          path={JumpTo.MAIN}
+          path={JumpTo.ROOT}
           render={({history}) => (
             <MainWrapped
               promo={promo}
@@ -39,7 +39,11 @@ const App = ({films, promo}) => {
           )}
         >
         </Route>
-        <Route exact path={JumpTo.LOGIN} component={SignIn} />
+        <Route
+          exact
+          path={JumpTo.LOGIN} >
+          <SignIn />
+        </Route>
         <Route exact path={JumpTo.MYLIST}>
           <MyFilmsList
             films={filterFavoriteFilms(films, isFavoriteType.CHECKED)}

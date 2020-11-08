@@ -16,7 +16,7 @@ const MyFilmsList = ({films}) => {
     <div className="user-page">
       <header className="page-header user-page__head">
         <div className="logo">
-          <Link to={JumpTo.MAIN} className="logo__link">
+          <Link to={JumpTo.ROOT} className="logo__link">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>
             <span className="logo__letter logo__letter--3">W</span>
@@ -44,7 +44,7 @@ const MyFilmsList = ({films}) => {
 
       <footer className="page-footer">
         <div className="logo">
-          <Link to={JumpTo.MAIN} className="logo__link">
+          <Link to={JumpTo.ROOT} className="logo__link">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>
             <span className="logo__letter logo__letter--3">W</span>
