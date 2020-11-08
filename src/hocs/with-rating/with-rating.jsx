@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 
-const withChangingValues = (Component) => {
-  class WithChangingValues extends PureComponent {
+const withRating = (Component) => {
+  class WithRating extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -41,7 +41,7 @@ const withChangingValues = (Component) => {
     }
   }
 
-  return WithChangingValues;
+  return WithRating;
 };
 
-export default withChangingValues;
+export default withRating;

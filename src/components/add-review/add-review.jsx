@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 import AddReviewForm from "../add-review-form/add-review-form";
-import withChangingValues from "../../hocs/with-changing-values/with-changing-values";
+import withRating from "../../hocs/with-rating/with-rating";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 import {JumpTo} from "../../utils/constants";
 
-const AddReviewFormWrapped = withChangingValues(AddReviewForm);
+const AddReviewFormWrapped = withRating(AddReviewForm);
 
 const AddReview = ({film}) => {
   return (

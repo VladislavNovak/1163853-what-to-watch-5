@@ -4,7 +4,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {selectsFilms, selectsPromo} from "../../store/reducers/app-state/selectors";
 import Main from "../main/main";
-import withChangingVisibleFilms from "../../hocs/with-changing-visible-films/with-changing-visible-films";
+// import withVisibleFilms from "../../hocs/with-visible-films/with-visible-films";
 import SignIn from "../sign-in/sign-in";
 import MyFilmsList from "../my-films-list/my-films-list";
 import AddReview from "../add-review/add-review";
@@ -21,8 +21,7 @@ import {isFavoriteType, JumpTo} from "../../utils/constants";
 import {getMatchingFilm, filterFavoriteFilms} from "../../utils/utils";
 
 const PlayerWrapped = withPlayer(Player);
-const MainWrapped = withChangingVisibleFilms(Main);
-
+// const MainWrapped = withVisibleFilms(Main);
 
 const App = ({films, promo}) => {
 
@@ -33,7 +32,7 @@ const App = ({films, promo}) => {
           exact
           path={JumpTo.MAIN}
           render={({history}) => (
-            <MainWrapped
+            <Main
               promo={promo}
               handleButtonPlayClick={(id) => history.push(JumpTo.PLAYER + id)}
             />

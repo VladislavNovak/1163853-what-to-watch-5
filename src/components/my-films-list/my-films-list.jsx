@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-import withChangingActiveFilm from "../../hocs/with-changing-active-film/with-changing-active-film";
+import withActiveFilm from "../../hocs/with-active-film/with-active-film";
 import FilmsList from "../films-list/films-list";
 
-const FilmsListWrapped = withChangingActiveFilm(FilmsList);
+const FilmsListWrapped = withActiveFilm(FilmsList);
 
 import {filmPropStructure} from "../../utils/validator.prop";
 import {JumpTo} from "../../utils/constants";

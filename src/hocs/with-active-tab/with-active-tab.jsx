@@ -10,8 +10,8 @@ import TabReviews from "../../components/tab-reviews/tab-reviews";
 // TabsType: OVERVIEW/DETAILS/REVIEWS
 import {TabsType} from "../../utils/constants";
 
-const withChangingActiveTab = (Component) => {
-  class WithChangingActiveTab extends PureComponent {
+const withActiveTab = (Component) => {
+  class WithActiveTab extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -77,11 +77,11 @@ const withChangingActiveTab = (Component) => {
     }
   }
 
-  WithChangingActiveTab.propTypes = {
+  WithActiveTab.propTypes = {
     film: PropTypes.shape(filmPropStructure).isRequired,
   };
 
-  return WithChangingActiveTab;
+  return WithActiveTab;
 };
 
-export default withChangingActiveTab;
+export default withActiveTab;

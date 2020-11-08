@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 import TabSwitcher from "../tab-switcher/tab-switcher";
-import withChangingActiveTab from "../../hocs/with-changing-active-tab/with-changing-active-tab";
-import withChangingActiveFilm from "../../hocs/with-changing-active-film/with-changing-active-film";
+import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
+import withActiveFilm from "../../hocs/with-active-film/with-active-film";
 import FilmsList from "../films-list/films-list";
 import {selectsActiveFilm} from "../../store/reducers/app-state/selectors";
 import ButtonPlay from "../button-play/button-play";
@@ -14,8 +14,8 @@ import {fetchActiveFilm} from "../../store/api-action";
 import {connect} from "react-redux";
 import {JumpTo, SIMILAR_FILMS} from "../../utils/constants";
 
-const FilmsListWrapped = withChangingActiveFilm(FilmsList);
-const TabSwitcherWrapped = withChangingActiveTab(TabSwitcher);
+const FilmsListWrapped = withActiveFilm(FilmsList);
+const TabSwitcherWrapped = withActiveTab(TabSwitcher);
 
 class TabAssembler extends PureComponent {
 

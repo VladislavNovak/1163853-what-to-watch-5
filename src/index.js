@@ -8,7 +8,7 @@ import thunk from "redux-thunk";
 import {createAPI} from "./services/api";
 import {ActionCreator} from "./store/action";
 import {fetchFilms, fetchPromo} from "./store/api-action";
-// import {checkAuth} from "./store/api-action";
+import {checkAuth} from "./store/api-action";
 import {AuthorizationStatus} from "./utils/constants";
 import App from "./components/app/app";
 

@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 import {filmPropStructure} from "../../utils/validator.prop";
 
-const withChangingActiveFilm = (Component) => {
-  class WithChangingActiveFilm extends PureComponent {
+const withActiveFilm = (Component) => {
+  class WithActiveFilm extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -12,7 +12,6 @@ const withChangingActiveFilm = (Component) => {
 
       this.state = {
         currentActiveFilm: -1,
-        blaBla: 0,
       };
 
       this._handleMouseOverFilm = this._handleMouseOverFilm.bind(this);
@@ -52,11 +51,11 @@ const withChangingActiveFilm = (Component) => {
     }
   }
 
-  WithChangingActiveFilm.propTypes = {
+  WithActiveFilm.propTypes = {
     films: PropTypes.arrayOf(filmPropStructure).isRequired,
   };
 
-  return WithChangingActiveFilm;
+  return WithActiveFilm;
 };
 
-export default withChangingActiveFilm;
+export default withActiveFilm;
