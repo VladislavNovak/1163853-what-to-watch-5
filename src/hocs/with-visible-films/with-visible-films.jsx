@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {selectsActiveGenre, selectsFilteredFilms} from "../../store/reducers/app-state/selectors";
 
 import {ALL_GENRE, FILMS_COUNT_PER_CLICK} from "../../utils/constants";
+import {filmPropStructure} from "../../utils/validator.prop";
 
 const withVisibleFilms = (Component) => {
   class WithVisibleFilms extends PureComponent {
@@ -32,7 +33,7 @@ const withVisibleFilms = (Component) => {
     }
 
     render() {
-      const {promo, handleButtonPlayClick} = this.props;
+      const {promo, handleButtonPlayClick, filteredFilms} = this.props;
       const {visibleFilmsCount} = this.state;
       const films = filteredFilms.slice(0, visibleFilmsCount);
       const isVisibleButtonShowMore = filteredFilms.length > visibleFilmsCount;
@@ -57,7 +58,7 @@ const withVisibleFilms = (Component) => {
     filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
   };
 
-  return WithVisibleFilms;
+  return connect(mapStateToProps)(WithVisibleFilms);
 };
 
 const mapStateToProps = (state) => ({
@@ -65,5 +66,4 @@ const mapStateToProps = (state) => ({
   activeGenre: selectsActiveGenre(state),
 });
 
-export {withVisibleFilms};
-export default connect(mapStateToProps)(withVisibleFilms);
+export default withVisibleFilms;
