@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
-import {AuthorizationStatus} from "../../utils/constants";
+import {AuthorizationStatus, JumpTo} from "../../utils/constants";
 
 
 const PrivateRoute = (props) => {
@@ -16,7 +16,7 @@ const PrivateRoute = (props) => {
         return (
           authorizationStatus === AuthorizationStatus.AUTH
             ? render(routeProps)
-            : <Redirect to={`/login`} />
+            : <Redirect to={JumpTo.LOGIN} />
         );
       }}
     />
@@ -30,8 +30,8 @@ PrivateRoute.propTypes = {
   render: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: state.USER.authorizationStatus,
+const mapStateToProps = ({USER}) => ({
+  authorizationStatus: USER.AuthorizationStatus,
 });
 
 

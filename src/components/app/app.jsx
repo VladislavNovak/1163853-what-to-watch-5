@@ -11,7 +11,7 @@ import AddReview from "../add-review/add-review";
 import TabAssembler from "../tab-assembler/tab-assembler";
 import Player from "../player/player";
 import withPlayer from "../../hocs/with-player/with-player";
-
+import PrivateRoute from "../private-route/private-route";
 import {filmPropStructure} from "../../utils/validator.prop";
 
 // isFavoriteType: CHECKED/UNCHECKED
@@ -44,6 +44,14 @@ const App = ({films, promo}) => {
           path={JumpTo.LOGIN} >
           <SignIn />
         </Route>
+        <PrivateRoute
+          exact
+          path={JumpTo.MYLIST}
+          render={({match}) => (
+            <MyFilmsList
+              films={getMatchingFilm(films, match)} />
+          )}
+        />
         <Route exact path={JumpTo.MYLIST}>
           <MyFilmsList
             films={filterFavoriteFilms(films, isFavoriteType.CHECKED)}
