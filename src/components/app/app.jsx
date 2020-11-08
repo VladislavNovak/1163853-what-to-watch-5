@@ -20,8 +20,9 @@ import {filmPropStructure} from "../../utils/validator.prop";
 import {isFavoriteType, JumpTo} from "../../utils/constants";
 import {getMatchingFilm, filterFavoriteFilms} from "../../utils/utils";
 
-const MainWrapped = withChangingVisibleFilms(Main);
 const PlayerWrapped = withPlayer(Player);
+const MainWrapped = withChangingVisibleFilms(Main);
+
 
 const App = ({films, promo}) => {
 

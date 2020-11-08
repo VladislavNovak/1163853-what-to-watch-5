@@ -5,8 +5,8 @@ import {selectsActiveGenre, selectsFilteredFilms} from "../../store/reducers/app
 
 import {ALL_GENRE, FILMS_COUNT_PER_CLICK} from "../../utils/constants";
 
-const withChangingVisibleFilsm = (Component) => {
-  class WithChangingVisibleFilsm extends PureComponent {
+const withChangingVisibleFilms = (Component) => {
+  class WithChangingVisibleFilms extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -50,14 +50,14 @@ const withChangingVisibleFilsm = (Component) => {
     }
   }
 
-  WithChangingVisibleFilsm.propTypes = {
+  WithChangingVisibleFilms.propTypes = {
     activeGenre: PropTypes.string.isRequired,
     promo: PropTypes.shape(filmPropStructure).isRequired,
     handleButtonPlayClick: PropTypes.func.isRequired,
     filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
   };
 
-  return WithChangingVisibleFilsm;
+  return WithChangingVisibleFilms;
 };
 
 const mapStateToProps = (state) => ({
@@ -65,5 +65,5 @@ const mapStateToProps = (state) => ({
   activeGenre: selectsActiveGenre(state),
 });
 
-export {withChangingVisibleFilsm};
-export default connect(mapStateToProps)(withChangingVisibleFilsm);
+export {withChangingVisibleFilms};
+export default connect(mapStateToProps)(withChangingVisibleFilms);
