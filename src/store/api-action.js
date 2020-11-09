@@ -43,15 +43,12 @@ export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(JumpTo.LOGIN)
     .then(() =>
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
-    .catch((err) => {
-      // throw err;
-    })
+    .catch(() => {})
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(JumpTo.LOGIN, {email, password})
-    .then(() =>
-      dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH))
-    )
+    .then(() =>dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+    .then(() => dispatch(ActionCreator.redirectToRoute(JumpTo.MYLIST)))
 );
 

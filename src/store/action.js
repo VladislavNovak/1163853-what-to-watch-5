@@ -3,6 +3,7 @@ export const ActionType = {
   FILTER_FILMS_LIST_BY_GENRE: `FILTER_FILMS_LIST_BY_GENRE`,
   CHANGE_FILMS_COUNT: `CHANGE_FILMS_COUNT`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   SET_FILMS: `SET_FILMS`,
   SET_PROMO: `SET_PROMO`,
   SET_GENRES: `SET_GENRES`,
@@ -24,6 +25,11 @@ export const ActionCreator = {
   requireAuthorization: (status) => ({
     type: ActionType.REQUIRED_AUTHORIZATION,
     payload: status
+  }),
+
+  redirectToRoute = (url) => ({
+    type: ActionType.REDIRECT_TO_ROUTE,
+    payload: url,
   }),
 
   setFilms: (films) => ({
