@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {selectsFilms, selectsPromo} from "../../store/reducers/app-state/selectors";
 import Main from "../main/main";
@@ -13,6 +13,7 @@ import Player from "../player/player";
 import withPlayer from "../../hocs/with-player/with-player";
 import PrivateRoute from "../private-route/private-route";
 import {filmPropStructure} from "../../utils/validator.prop";
+import browserHistory from "../../browser-history";
 
 // isFavoriteType: CHECKED/UNCHECKED
 // getMatchingFilm: находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
@@ -26,7 +27,7 @@ const MainWrapped = withVisibleFilms(Main);
 const App = ({films, promo}) => {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route
           exact
