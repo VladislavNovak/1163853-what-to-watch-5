@@ -21,7 +21,7 @@ class SignIn extends PureComponent {
     evt.preventDefault();
 
     onSubmit({
-      login: this.loginRef.current.value,
+      email: this.loginRef.current.value,
       password: this.passwordRef.current.value,
     });
   }

@@ -4,6 +4,7 @@ export const ActionType = {
   CHANGE_FILMS_COUNT: `CHANGE_FILMS_COUNT`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+  GET_USER_DATA: `GET_USER_DATA`,
   SET_FILMS: `SET_FILMS`,
   SET_PROMO: `SET_PROMO`,
   SET_GENRES: `SET_GENRES`,
@@ -14,22 +15,27 @@ export const ActionType = {
 export const ActionCreator = {
   changeActiveGenre: (genre) => ({
     type: ActionType.CHANGE_ACTIVE_GENRE,
-    payload: genre
+    payload: genre,
   }),
 
   addNewVisibleFilms: (filmsCountPerClick) => ({
     type: ActionType.CHANGE_FILMS_COUNT,
-    payload: filmsCountPerClick
+    payload: filmsCountPerClick,
   }),
 
   requireAuthorization: (status) => ({
     type: ActionType.REQUIRED_AUTHORIZATION,
-    payload: status
+    payload: status,
   }),
 
   redirectToRoute: (url) => ({
     type: ActionType.REDIRECT_TO_ROUTE,
     payload: url,
+  }),
+
+  getUserData: (data) => ({
+    type: ActionType.GET_USER_DATA,
+    payload: data,
   }),
 
   setFilms: (films) => ({

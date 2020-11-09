@@ -7,7 +7,6 @@ export const fetchFilms = () => (dispatch, _getState, api) => (
   api.get(JumpTo.FILMS)
     .then(({data}) => {
       const adaptedFilms = adaptFilmsToClient(data);
-
       dispatch(ActionCreator.setFilms(adaptedFilms));
 
       const genres = getUniqueGenres(adaptedFilms);
@@ -27,7 +26,6 @@ export const fetchActiveFilm = (id) => (dispatch, _getState, api) => (
   api.get(`${JumpTo.FILMS}${id}`)
     .then(({data}) => {
       const adaptedActiveFilm = adaptOneFilmToClient(data);
-
       dispatch(ActionCreator.setActiveFilm(adaptedActiveFilm));
     })
 );
@@ -46,9 +44,11 @@ export const checkAuth = () => (dispatch, _getState, api) => (
     .catch(() => {})
 );
 
-export const login = ({login: email, password}) => (dispatch, _getState, api) => (
+export const login = ({email, password}) => (dispatch, _getState, api) => (
   api.post(JumpTo.LOGIN, {email, password})
-    .then(() =>dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
-    .then(() => dispatch(ActionCreator.redirectToRoute(JumpTo.MYLIST)))
+    .then(({data}) => {
+      dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+      dispatch(ActionCreator.redirectToRoute(JumpTo.ROOT));
+      dispatch(ActionCreator.getUserData(data[`avatar_url`]));
+    })
 );
-

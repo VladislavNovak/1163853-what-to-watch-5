@@ -37,8 +37,7 @@ const App = ({films, promo}) => {
               promo={promo}
               handleButtonPlayClick={(id) => history.push(JumpTo.PLAYER + id)}
             />
-          )}
-        >
+          )} >
         </Route>
         <Route
           exact
@@ -53,11 +52,6 @@ const App = ({films, promo}) => {
               films={filterFavoriteFilms(films, isFavoriteType.CHECKED)} />
           )}
         />
-        <Route exact path={JumpTo.MYLIST}>
-          <MyFilmsList
-            films={filterFavoriteFilms(films, isFavoriteType.CHECKED)}
-          />
-        </Route>
         <Route
           exact
           path={JumpTo.FILMS_ID_URL}
