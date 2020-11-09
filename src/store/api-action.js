@@ -44,7 +44,7 @@ export const checkAuth = () => (dispatch, _getState, api) => (
     .then(() =>
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
     .catch((err) => {
-      throw err;
+      // throw err;
     })
 );
 
