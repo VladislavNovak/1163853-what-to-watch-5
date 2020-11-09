@@ -27,7 +27,7 @@ export const ActionCreator = {
     payload: status
   }),
 
-  redirectToRoute = (url) => ({
+  redirectToRoute: (url) => ({
     type: ActionType.REDIRECT_TO_ROUTE,
     payload: url,
   }),

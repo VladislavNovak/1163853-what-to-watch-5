@@ -48,9 +48,9 @@ const App = ({films, promo}) => {
         <PrivateRoute
           exact
           path={JumpTo.MYLIST}
-          render={({match}) => (
+          render={() => (
             <MyFilmsList
-              films={getMatchingFilm(films, match)} />
+              films={filterFavoriteFilms(films, isFavoriteType.CHECKED)} />
           )}
         />
         <Route exact path={JumpTo.MYLIST}>
