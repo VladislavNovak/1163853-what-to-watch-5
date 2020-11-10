@@ -24,7 +24,7 @@ import {getMatchingFilm, filterFavoriteFilms} from "../../utils/utils";
 
 const PlayerWrapped = withPlayer(Player);
 const MainWrapped = withVisibleFilms(Main);
-// const SignInWrapped = withAuth(SignIn);
+const SignInWrapped = withAuth(SignIn);
 
 const App = ({films, promo}) => {
 
@@ -44,8 +44,8 @@ const App = ({films, promo}) => {
         <Route
           exact
           path={JumpTo.LOGIN} >
-          <SignIn />
-          {/* <SignInWrapped /> */}
+          {/* <SignIn /> */}
+          <SignInWrapped />
         </Route>
         {/* <PrivateRoute
           exact
