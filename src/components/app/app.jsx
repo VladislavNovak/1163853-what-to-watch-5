@@ -6,7 +6,7 @@ import {selectsFilms, selectsPromo} from "../../store/reducers/app-state/selecto
 import browserHistory from "../../browser-history";
 import Main from "../main/main";
 import withVisibleFilms from "../../hocs/with-visible-films/with-visible-films";
-// import withAuth from "../../hocs/with-auth/with-auth";
+import withAuth from "../../hocs/with-auth/with-auth";
 import SignIn from "../sign-in/sign-in";
 import MyFilmsList from "../my-films-list/my-films-list";
 import AddReview from "../add-review/add-review";
