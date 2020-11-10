@@ -6,6 +6,7 @@ import {selectsFilms, selectsPromo} from "../../store/reducers/app-state/selecto
 import browserHistory from "../../browser-history";
 import Main from "../main/main";
 import withVisibleFilms from "../../hocs/with-visible-films/with-visible-films";
+// import withAuth from "../../hocs/with-auth/with-auth";
 import SignIn from "../sign-in/sign-in";
 import MyFilmsList from "../my-films-list/my-films-list";
 import AddReview from "../add-review/add-review";
@@ -23,6 +24,7 @@ import {getMatchingFilm, filterFavoriteFilms} from "../../utils/utils";
 
 const PlayerWrapped = withPlayer(Player);
 const MainWrapped = withVisibleFilms(Main);
+// const SignInWrapped = withAuth(SignIn);
 
 const App = ({films, promo}) => {
 
@@ -43,14 +45,20 @@ const App = ({films, promo}) => {
           exact
           path={JumpTo.LOGIN} >
           <SignIn />
+          {/* <SignInWrapped /> */}
         </Route>
-        <PrivateRoute
+        {/* <PrivateRoute
           exact
           path={JumpTo.MYLIST}
           render={() => (
             <MyFilmsList
               films={filterFavoriteFilms(films, isFavoriteType.CHECKED)} />
           )}
+        /> */}
+        <PrivateRoute
+          exact
+          path={JumpTo.MYLIST}
+          render={() => (<MyFilmsList />)}
         />
         <Route
           exact

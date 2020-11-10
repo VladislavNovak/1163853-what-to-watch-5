@@ -4,8 +4,9 @@ export const ActionType = {
   CHANGE_FILMS_COUNT: `CHANGE_FILMS_COUNT`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
-  GET_USER_DATA: `GET_USER_DATA`,
+  SET_USER_DATA: `GET_USER_DATA`,
   SET_FILMS: `SET_FILMS`,
+  SET_MY_FILMS: `SET_MY_FILMS`,
   SET_PROMO: `SET_PROMO`,
   SET_GENRES: `SET_GENRES`,
   SET_REVIEWS: `SET_REVIEWS`,
@@ -33,8 +34,8 @@ export const ActionCreator = {
     payload: url,
   }),
 
-  getUserData: (data) => ({
-    type: ActionType.GET_USER_DATA,
+  setUserData: (data) => ({
+    type: ActionType.SET_USER_DATA,
     payload: data,
   }),
 
@@ -46,6 +47,11 @@ export const ActionCreator = {
   setPromo: (promo) => ({
     type: ActionType.SET_PROMO,
     payload: promo,
+  }),
+
+  setMyFilms: (films) => ({
+    type: ActionType.SET_MY_FILMS,
+    payload: films,
   }),
 
   setGenres: (genres) => ({

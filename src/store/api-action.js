@@ -37,6 +37,14 @@ export const fetchReviews = (id) => (dispatch, _getState, api) => (
     })
 );
 
+export const fetchMyFavoriteFilms = () => (dispatch, _getState, api) => (
+  api.get(JumpTo.MYLIST)
+    .then(({data}) => {
+      const adaptedFilms = adaptFilmsToClient(data);
+      dispatch(ActionCreator.setMyFilms(adaptedFilms));
+    })
+)
+
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(JumpTo.LOGIN)
     .then(() =>
@@ -49,6 +57,6 @@ export const login = ({email, password}) => (dispatch, _getState, api) => (
     .then(({data}) => {
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.redirectToRoute(JumpTo.ROOT));
-      dispatch(ActionCreator.getUserData(data[`avatar_url`]));
+      dispatch(ActionCreator.setUserData(data[`avatar_url`]));
     })
 );

@@ -13,6 +13,8 @@ const selectsPromo = (state) => state[NameSpace.APP_STATE].promo;
 
 const selectsActiveFilm = (state) => state[NameSpace.APP_STATE].activeFilm;
 
+const selectsMyFavoriteFilms = (state) => state[NameSpace.APP_STATE].myFavoriteFilms;
+
 const selectsFilteredFilms = createSelector(
     selectsFilms,
     selectsActiveGenre,
@@ -26,5 +28,6 @@ export {
   selectsFilms,
   selectsReviews,
   selectsPromo,
-  selectsActiveFilm
+  selectsActiveFilm,
+  selectsMyFavoriteFilms
 };

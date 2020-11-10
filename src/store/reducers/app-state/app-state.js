@@ -9,6 +9,7 @@ const initialState = {
   activeFilm: null,
   reviews: [],
   promo: null,
+  myFavoriteFilms: null,
 };
 
 const appState = (state = initialState, action) => {
@@ -42,6 +43,11 @@ const appState = (state = initialState, action) => {
       return extend(state, {
         activeFilm: action.payload,
       });
+
+    case ActionType.SET_MY_FILMS:
+      return extend(state, {
+        myFavoriteFilms: action.payload,
+      })
   }
 
   return state;

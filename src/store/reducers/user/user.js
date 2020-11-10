@@ -14,7 +14,7 @@ const user = (state = initialState, action) => {
         authorizationStatus: action.payload,
       });
 
-    case ActionType.GET_USER_DATA:
+    case ActionType.SET_USER_DATA:
       return extend(state, {
         userEmailPassword: action.payload,
       });
