@@ -35,5 +35,6 @@ export const JumpTo = {
   PROMO: `/films/promo`,
   REVIEW_ID_URL: `/films/:id/review`,
   reviewBy: (params) => `/films/${params}/review`,
-  REVIEW: `/review/`
+  REVIEW: `/review/`,
+  FAVORITE: `/favorite/`
 };

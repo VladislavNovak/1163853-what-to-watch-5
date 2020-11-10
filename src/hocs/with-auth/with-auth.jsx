@@ -10,7 +10,6 @@ const withAuth = (Component) => {
         password: ``,
       };
 
-      this.onSubmitFormClickHandler = this.onSubmitFormClickHandler.bind(this);
       this.onEmailFieldChangeHandler = this.onEmailFieldChangeHandler.bind(this);
       this.onPasswordFieldChangeHandler = this.onPasswordFieldChangeHandler.bind(this);
     }
@@ -27,26 +26,15 @@ const withAuth = (Component) => {
       });
     }
 
-    onSubmitFormClickHandler(evt) {
-      evt.preventDefault();
-
-      const {onSubmitHandler} = this.props;
-      const {email, password} = this.state;
-
-      onSubmitHandler({email, password});
-    }
-
     render() {
 
       return (
         <Component
-          // {...this.props}
+          {...this.props}
           email={this.state.email}
           password ={this.state.password}
-          onSubmitFormClickHandler={this.onSubmitFormClickHandler}
           onEmailFieldChangeHandler={this.onEmailFieldChangeHandler}
           onPasswordFieldChangeHandler={this.onPasswordFieldChangeHandler}
-          onSubmitHandler={onSubmitHandler}
         />
       );
     }

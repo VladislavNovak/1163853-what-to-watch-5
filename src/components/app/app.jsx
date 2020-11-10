@@ -44,7 +44,6 @@ const App = ({films, promo}) => {
         <Route
           exact
           path={JumpTo.LOGIN} >
-          {/* <SignIn /> */}
           <SignInWrapped />
         </Route>
         {/* <PrivateRoute

@@ -38,7 +38,7 @@ export const fetchReviews = (id) => (dispatch, _getState, api) => (
 );
 
 export const fetchMyFavoriteFilms = () => (dispatch, _getState, api) => (
-  api.get(JumpTo.MYLIST)
+  api.get(JumpTo.FAVORITE)
     .then(({data}) => {
       const adaptedFilms = adaptFilmsToClient(data);
       dispatch(ActionCreator.setMyFilms(adaptedFilms));
