@@ -15,7 +15,7 @@ const withVisibleFilms = (Component) => {
         visibleFilmsCount: FILMS_COUNT_PER_CLICK,
       };
 
-      this.onMoreButtonClickHandler = this.onMoreButtonClickHandler.bind(this);
+      this._onMoreButtonClickHandler = this._onMoreButtonClickHandler.bind(this);
     }
 
     componentDidUpdate() {
@@ -26,7 +26,7 @@ const withVisibleFilms = (Component) => {
       }
     }
 
-    onMoreButtonClickHandler(params) {
+    _onMoreButtonClickHandler(params) {
       const {visibleFilmsCount} = this.state;
 
       this.setState({visibleFilmsCount: visibleFilmsCount + params});
@@ -45,7 +45,7 @@ const withVisibleFilms = (Component) => {
           onPlayButtonClickHandler={onPlayButtonClickHandler}
           films={films}
           isVisibleButtonShowMore={isVisibleButtonShowMore}
-          onMoreButtonClickHandler={this.onMoreButtonClickHandler}
+          onMoreButtonClickHandler={this._onMoreButtonClickHandler}
         />
       );
     }
