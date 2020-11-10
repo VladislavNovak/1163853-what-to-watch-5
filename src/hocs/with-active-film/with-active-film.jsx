@@ -14,11 +14,11 @@ const withActiveFilm = (Component) => {
         currentActiveFilm: -1,
       };
 
-      this._handleMouseOverFilm = this._handleMouseOverFilm.bind(this);
-      this._handleMouseLeaveFilm = this._handleMouseLeaveFilm.bind(this);
+      this._onMouseOverFilmHandler = this._onMouseOverFilmHandler.bind(this);
+      this._onMouseLeaveFilmHandler = this._onMouseLeaveFilmHandler.bind(this);
     }
 
-    _handleMouseOverFilm(id) {
+    _onMouseOverFilmHandler(id) {
       if (this.timerID !== null) {
         clearTimeout(this.timerID);
       }
@@ -26,7 +26,7 @@ const withActiveFilm = (Component) => {
       this.timerID = setTimeout(() => this.setState({currentActiveFilm: id}), 1000);
     }
 
-    _handleMouseLeaveFilm() {
+    _onMouseLeaveFilmHandler() {
       this.setState({currentActiveFilm: -1});
       clearTimeout(this.timerID);
       this.timerID = null;
@@ -44,8 +44,8 @@ const withActiveFilm = (Component) => {
         <Component
           {...this.props}
           currentActiveFilm={this.state.currentActiveFilm}
-          handleMouseOverFilm={this._handleMouseOverFilm}
-          handleMouseLeaveFilm={this._handleMouseLeaveFilm}
+          onMouseOverFilmHandler={this._onMouseOverFilmHandler}
+          onMouseLeaveFilmHandler={this._onMouseLeaveFilmHandler}
         />
       );
     }

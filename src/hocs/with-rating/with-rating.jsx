@@ -12,10 +12,10 @@ const withRating = (Component) => {
 
       this._onTextareaChangeHandler = this._onTextareaChangeHandler.bind(this);
       this._onStarChangeHandler = this._onStarChangeHandler.bind(this);
-      this._onSubmitClickHandler = this._onSubmitClickHandler.bind(this);
+      this._onSubmitFieldClickHandler = this._onSubmitFieldClickHandler.bind(this);
     }
 
-    _onSubmitClickHandler(evt) {
+    _onSubmitFieldClickHandler(evt) {
       evt.preventDefault();
     }
 
@@ -33,7 +33,7 @@ const withRating = (Component) => {
           {...this.props}
           reviewText={this.state.reviewText}
           selectedStar={this.state.selectedStar}
-          onSubmitClickHandler={this._onSubmitClickHandler}
+          onSubmitFieldClickHandler={this._onSubmitFieldClickHandler}
           onTextareaChangeHandler={this._onTextareaChangeHandler}
           onStarChangeHandler={this._onStarChangeHandler}
         />

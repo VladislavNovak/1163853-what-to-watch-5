@@ -15,7 +15,7 @@ const withVisibleFilms = (Component) => {
         visibleFilmsCount: FILMS_COUNT_PER_CLICK,
       };
 
-      this.handleMoreButtonClick = this.handleMoreButtonClick.bind(this);
+      this.onMoreButtonClickHandler = this.onMoreButtonClickHandler.bind(this);
     }
 
     componentDidUpdate() {
@@ -26,14 +26,14 @@ const withVisibleFilms = (Component) => {
       }
     }
 
-    handleMoreButtonClick(params) {
+    onMoreButtonClickHandler(params) {
       const {visibleFilmsCount} = this.state;
 
       this.setState({visibleFilmsCount: visibleFilmsCount + params});
     }
 
     render() {
-      const {promo, handleButtonPlayClick, filteredFilms} = this.props;
+      const {promo, onPlayButtonClickHandler, filteredFilms} = this.props;
       const {visibleFilmsCount} = this.state;
       const films = filteredFilms.slice(0, visibleFilmsCount);
       const isVisibleButtonShowMore = filteredFilms.length > visibleFilmsCount;
@@ -42,10 +42,10 @@ const withVisibleFilms = (Component) => {
         <Component
           // {...this.props}
           promo={promo}
-          handleButtonPlayClick={handleButtonPlayClick}
+          onPlayButtonClickHandler={onPlayButtonClickHandler}
           films={films}
           isVisibleButtonShowMore={isVisibleButtonShowMore}
-          handleMoreButtonClick={this.handleMoreButtonClick}
+          onMoreButtonClickHandler={this.onMoreButtonClickHandler}
         />
       );
     }
@@ -54,7 +54,7 @@ const withVisibleFilms = (Component) => {
   WithVisibleFilms.propTypes = {
     activeGenre: PropTypes.string.isRequired,
     promo: PropTypes.shape(filmPropStructure).isRequired,
-    handleButtonPlayClick: PropTypes.func.isRequired,
+    onPlayButtonClickHandler: PropTypes.func.isRequired,
     filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
   };
 

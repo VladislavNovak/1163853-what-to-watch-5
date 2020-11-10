@@ -38,7 +38,7 @@ class TabAssembler extends PureComponent {
       return null;
     }
 
-    const {film, films, handleButtonPlayClick} = this.props;
+    const {film, films, onPlayButtonClickHandler} = this.props;
 
     const {id, title, genre, released, poster} = film;
     const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, SIMILAR_FILMS);
@@ -77,7 +77,7 @@ class TabAssembler extends PureComponent {
               </p>
 
               <div className="movie-card__buttons">
-                <ButtonPlay id={id} handleButtonPlayClick={handleButtonPlayClick} />
+                <ButtonPlay id={id} onPlayButtonClickHandler={onPlayButtonClickHandler} />
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add" />
@@ -131,7 +131,7 @@ TabAssembler.propTypes = {
   getActiveFilm: PropTypes.func.isRequired,
   film: PropTypes.shape(filmPropStructure),
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
-  handleButtonPlayClick: PropTypes.func.isRequired,
+  onPlayButtonClickHandler: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({film: selectsActiveFilm(state)});

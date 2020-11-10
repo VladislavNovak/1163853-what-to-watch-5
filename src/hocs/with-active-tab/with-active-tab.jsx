@@ -19,11 +19,11 @@ const withActiveTab = (Component) => {
         activeTab: TabsType.OVERVIEW,
       };
 
-      this._handleTabClick = this._handleTabClick.bind(this);
+      this._onTabClickHandler = this._onTabClickHandler.bind(this);
       this._renderTabContent = this._renderTabContent.bind(this);
     }
 
-    _handleTabClick(index) {
+    _onTabClickHandler(index) {
       this.setState({activeTab: index});
     }
 
@@ -71,7 +71,7 @@ const withActiveTab = (Component) => {
           {...this.props}
           activeTab={this.state.activeTab}
           renderTabContent={this._renderTabContent}
-          handleTabClick={this._handleTabClick}
+          onTabClickHandler={this._onTabClickHandler}
         />
       );
     }

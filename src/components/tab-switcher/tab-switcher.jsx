@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 
 import {TabsType} from "../../utils/constants";
 
-const TabSwitcher = ({activeTab, renderTabContent, handleTabClick}) => {
+const TabSwitcher = ({activeTab, renderTabContent, onTabClickHandler}) => {
   return <React.Fragment>
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">
         {Object.entries(TabsType).map(([key, value]) => {
           return (
             <li key={key} className={`movie-nav__item ${activeTab === value ? `movie-nav__item--active` : ``}`}>
-              <a className="movie-nav__link" onClick={() => handleTabClick(value)}>{value}</a>
+              <a className="movie-nav__link" onClick={() => onTabClickHandler(value)}>{value}</a>
             </li>
           );
         })}
@@ -23,7 +23,7 @@ const TabSwitcher = ({activeTab, renderTabContent, handleTabClick}) => {
 TabSwitcher.propTypes = {
   activeTab: PropTypes.string.isRequired,
   renderTabContent: PropTypes.func.isRequired,
-  handleTabClick: PropTypes.func.isRequired,
+  onTabClickHandler: PropTypes.func.isRequired,
 };
 
 export default TabSwitcher;

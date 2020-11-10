@@ -11,14 +11,14 @@ const Film = ({
   posterBig,
   title,
   trailer,
-  handleMouseOverFilm,
-  handleMouseLeaveFilm,
+  onMouseOverFilmHandler,
+  onMouseLeaveFilmHandler,
 }) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseOver={() => handleMouseOverFilm(id)}
-      onMouseLeave={handleMouseLeaveFilm}
+      onMouseOver={() => onMouseOverFilmHandler(id)}
+      onMouseLeave={onMouseLeaveFilmHandler}
     >
       <div className="small-movie-card__image">
         {isActiveFilm ? (
@@ -42,8 +42,8 @@ Film.propTypes = {
   posterBig: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   trailer: PropTypes.string.isRequired,
-  handleMouseOverFilm: PropTypes.func.isRequired,
-  handleMouseLeaveFilm: PropTypes.func.isRequired,
+  onMouseOverFilmHandler: PropTypes.func.isRequired,
+  onMouseLeaveFilmHandler: PropTypes.func.isRequired,
 };
 
 export default Film;

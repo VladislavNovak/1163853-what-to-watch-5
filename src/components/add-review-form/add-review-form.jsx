@@ -6,14 +6,14 @@ const FIVE_STARS = [1, 2, 3, 4, 5];
 const AddReviewForm = ({
   reviewText,
   selectedStar,
-  onSubmitClickHandler,
+  onSubmitFieldClickHandler,
   onTextareaChangeHandler,
   onStarChangeHandler,
 }) => {
   return (
     <div className="add-review">
       <form
-        onSubmit={onSubmitClickHandler}
+        onSubmit={onSubmitFieldClickHandler}
         action="#"
         className="add-review__form"
       >
@@ -62,7 +62,7 @@ const AddReviewForm = ({
 AddReviewForm.propTypes = {
   selectedStar: PropTypes.string.isRequired,
   reviewText: PropTypes.string.isRequired,
-  onSubmitClickHandler: PropTypes.func.isRequired,
+  onSubmitFieldClickHandler: PropTypes.func.isRequired,
   onStarChangeHandler: PropTypes.func.isRequired,
   onTextareaChangeHandler: PropTypes.func.isRequired,
 };

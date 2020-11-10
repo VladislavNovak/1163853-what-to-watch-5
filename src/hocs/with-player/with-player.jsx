@@ -16,24 +16,24 @@ const withPlayer = (Component) => {
         progressPosition: 0,
       };
 
-      this._handlePlayerFullscreenClick = this._handlePlayerFullscreenClick.bind(this);
-      this._handlePlayerPlayClick = this._handlePlayerPlayClick.bind(this);
-      this._handlePlayerPauseClick = this._handlePlayerPauseClick.bind(this);
+      this._onPlayerFullscreenClickHandler = this._onPlayerFullscreenClickHandler.bind(this);
+      this._onPlayerPlayClickHandler = this._onPlayerPlayClickHandler.bind(this);
+      this._onPlayerPauseClickHandler = this._onPlayerPauseClickHandler.bind(this);
       this._handleVideoTimeUpdate = this._handleVideoTimeUpdate.bind(this);
     }
 
-    _handlePlayerFullscreenClick() {
+    _onPlayerFullscreenClickHandler() {
       const video = this._videoRef.current;
       video.requestFullscreen();
     }
 
-    _handlePlayerPlayClick() {
+    _onPlayerPlayClickHandler() {
       this.setState({
         isPlaying: true
       });
     }
 
-    _handlePlayerPauseClick() {
+    _onPlayerPauseClickHandler() {
       this.setState({
         isPlaying: false
       });
@@ -80,7 +80,7 @@ const withPlayer = (Component) => {
     }
 
     render() {
-      const {film, handlePlayerExitClick} = this.props;
+      const {film, onPlayerExitClickHandler} = this.props;
       const {isPlaying, videoCurrentTime, progressPosition} = this.state;
 
       return (
@@ -90,10 +90,10 @@ const withPlayer = (Component) => {
           videoCurrentTime={videoCurrentTime}
           progressPosition={progressPosition}
           title={film.title}
-          handlePlayerExitClick={handlePlayerExitClick}
-          handlePlayerFullscreenClick={this._handlePlayerFullscreenClick}
-          handlePlayerPlayClick={this._handlePlayerPlayClick}
-          handlePlayerPauseClick={this._handlePlayerPauseClick}
+          onPlayerExitClickHandler={onPlayerExitClickHandler}
+          onPlayerFullscreenClickHandler={this._onPlayerFullscreenClickHandler}
+          onPlayerPlayClickHandler={this._onPlayerPlayClickHandler}
+          onPlayerPauseClickHandler={this._onPlayerPauseClickHandler}
         >
           <video
             ref={this._videoRef}
@@ -109,7 +109,7 @@ const withPlayer = (Component) => {
 
   WithPlayer.propTypes = {
     film: PropTypes.shape(filmPropStructure).isRequired,
-    handlePlayerExitClick: PropTypes.func.isRequired,
+    onPlayerExitClickHandler: PropTypes.func.isRequired,
   };
 
   return WithPlayer;

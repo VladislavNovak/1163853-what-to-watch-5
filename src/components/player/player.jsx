@@ -8,10 +8,10 @@ const Player = ({
   progressPosition,
   title,
   children,
-  handlePlayerExitClick,
-  handlePlayerFullscreenClick,
-  handlePlayerPlayClick,
-  handlePlayerPauseClick,
+  onPlayerExitClickHandler,
+  onPlayerFullscreenClickHandler,
+  onPlayerPlayClickHandler,
+  onPlayerPauseClickHandler,
 }) => {
   const styleLeft = {left: `${progressPosition}%`};
   return (
@@ -22,7 +22,7 @@ const Player = ({
         <button
           type="button"
           className="player__exit"
-          onClick={handlePlayerExitClick}
+          onClick={onPlayerExitClickHandler}
         >
           Exit
         </button>
@@ -42,7 +42,7 @@ const Player = ({
             <button
               type="button"
               className="player__play"
-              onClick={isPlaying ? handlePlayerPauseClick : handlePlayerPlayClick}
+              onClick={isPlaying ? onPlayerPauseClickHandler : onPlayerPlayClickHandler}
             >
               {!isPlaying && (
                 <React.Fragment>
@@ -66,7 +66,7 @@ const Player = ({
             <button
               type="button"
               className="player__full-screen"
-              onClick={handlePlayerFullscreenClick}
+              onClick={onPlayerFullscreenClickHandler}
             >
               <svg viewBox="0 0 27 27" width="27" height="27">
                 <use xlinkHref="#full-screen" />
@@ -86,10 +86,10 @@ Player.propTypes = {
   progressPosition: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired,
-  handlePlayerExitClick: PropTypes.func.isRequired,
-  handlePlayerFullscreenClick: PropTypes.func.isRequired,
-  handlePlayerPlayClick: PropTypes.func.isRequired,
-  handlePlayerPauseClick: PropTypes.func.isRequired,
+  onPlayerExitClickHandler: PropTypes.func.isRequired,
+  onPlayerFullscreenClickHandler: PropTypes.func.isRequired,
+  onPlayerPlayClickHandler: PropTypes.func.isRequired,
+  onPlayerPauseClickHandler: PropTypes.func.isRequired,
 };
 
 export default Player;

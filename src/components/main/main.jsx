@@ -9,7 +9,7 @@ import {filmPropStructure} from "../../utils/validator.prop";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 
-const Main = ({promo, handleButtonPlayClick, films, isVisibleButtonShowMore, handleMoreButtonClick}) => {
+const Main = ({promo, onPlayButtonClickHandler, films, isVisibleButtonShowMore, onMoreButtonClickHandler}) => {
   const {backgroundImage, title, poster, genre, released, id} = promo;
 
   return <React.Fragment>
@@ -55,7 +55,7 @@ const Main = ({promo, handleButtonPlayClick, films, isVisibleButtonShowMore, han
             </p>
 
             <div className="movie-card__buttons">
-              <ButtonPlay id={id} handleButtonPlayClick={handleButtonPlayClick} />
+              <ButtonPlay id={id} onPlayButtonClickHandler={onPlayButtonClickHandler} />
               <button
                 className="btn btn--list movie-card__button"
                 type="button"
@@ -76,7 +76,7 @@ const Main = ({promo, handleButtonPlayClick, films, isVisibleButtonShowMore, han
         <h2 className="catalog__title visually-hidden">Catalog</h2>
         {<GenresList />}
         {<FilmsListWrapped films={films} />}
-        {isVisibleButtonShowMore ? <ButtonShowMore handleMoreButtonClick={handleMoreButtonClick} /> : ``}
+        {isVisibleButtonShowMore ? <ButtonShowMore onMoreButtonClickHandler={onMoreButtonClickHandler} /> : ``}
       </section>
 
       <footer className="page-footer">
@@ -99,9 +99,9 @@ const Main = ({promo, handleButtonPlayClick, films, isVisibleButtonShowMore, han
 Main.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
   promo: PropTypes.shape(filmPropStructure).isRequired,
-  handleButtonPlayClick: PropTypes.func.isRequired,
+  onPlayButtonClickHandler: PropTypes.func.isRequired,
   isVisibleButtonShowMore: PropTypes.bool.isRequired,
-  handleMoreButtonClick: PropTypes.func.isRequired,
+  onMoreButtonClickHandler: PropTypes.func.isRequired,
 };
 
 export default Main;
