@@ -19,8 +19,8 @@ import {filmPropStructure} from "../../utils/validator.prop";
 // isFavoriteType: CHECKED/UNCHECKED
 // getMatchingFilm: находит в списке фильмов (props.films) сответствие в (match.params.id) и возвращает один найденный объект
 // filterFavoriteFilms: фильтрует список фильмов (props.films) по соответствию true/false (isFavoriteType) и возвращает массив объектов
-import {isFavoriteType, JumpTo} from "../../utils/constants";
-import {getMatchingFilm, filterFavoriteFilms} from "../../utils/utils";
+import {JumpTo} from "../../utils/constants";
+import {getMatchingFilm} from "../../utils/utils";
 
 const PlayerWrapped = withPlayer(Player);
 const MainWrapped = withVisibleFilms(Main);
@@ -46,14 +46,6 @@ const App = ({films, promo}) => {
           path={JumpTo.LOGIN} >
           <SignInWrapped />
         </Route>
-        {/* <PrivateRoute
-          exact
-          path={JumpTo.MYLIST}
-          render={() => (
-            <MyFilmsList
-              films={filterFavoriteFilms(films, isFavoriteType.CHECKED)} />
-          )}
-        /> */}
         <PrivateRoute
           exact
           path={JumpTo.MYLIST}

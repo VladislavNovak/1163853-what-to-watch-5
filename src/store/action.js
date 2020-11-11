@@ -6,7 +6,7 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   SET_USER_DATA: `GET_USER_DATA`,
   SET_FILMS: `SET_FILMS`,
-  SET_MY_FILMS: `SET_MY_FILMS`,
+  SET_MY_FAVORITE_FILMS: `SET_MY_FAVORITE_FILMS`,
   SET_PROMO: `SET_PROMO`,
   SET_GENRES: `SET_GENRES`,
   SET_REVIEWS: `SET_REVIEWS`,
@@ -49,8 +49,8 @@ export const ActionCreator = {
     payload: promo,
   }),
 
-  setMyFilms: (films) => ({
-    type: ActionType.SET_MY_FILMS,
+  setMyFavoriteFilms: (films) => ({
+    type: ActionType.SET_MY_FAVORITE_FILMS,
     payload: films,
   }),
 

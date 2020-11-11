@@ -12,7 +12,9 @@ const GenresList = ({activeGenre, genres, changeActiveGenre}) => {
       {genres.map((genre, index) => (
         <li
           key={`genre-${index}`}
-          onClick={() => {changeActiveGenre(genre)}}
+          onClick={() => {
+            changeActiveGenre(genre);
+          }}
           className={`catalog__genres-item ${
             activeGenre === genre ? `catalog__genres-item--active` : ``
           }`}

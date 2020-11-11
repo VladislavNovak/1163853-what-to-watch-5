@@ -44,10 +44,10 @@ const appState = (state = initialState, action) => {
         activeFilm: action.payload,
       });
 
-    case ActionType.SET_MY_FILMS:
+    case ActionType.SET_MY_FAVORITE_FILMS:
       return extend(state, {
         myFavoriteFilms: action.payload,
-      })
+      });
   }
 
   return state;

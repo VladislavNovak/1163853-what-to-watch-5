@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {JumpTo} from "../../utils/constants";
@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 
 class SignIn extends PureComponent {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.onSubmitFormClickHandler = this.onSubmitFormClickHandler.bind(this);
   }

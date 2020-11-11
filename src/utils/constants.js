@@ -29,12 +29,15 @@ export const JumpTo = {
   FILMS_ID_URL: `/films/:id`,
   LOGIN: `/login/`,
   ROOT: `/`,
-  MYLIST: `/mylist/`,
+  MYLIST: `/mylist`,
   PLAYER: `/player/`,
   PLAYER_ID_URL: `/player/:id`,
   PROMO: `/films/promo`,
   REVIEW_ID_URL: `/films/:id/review`,
   reviewBy: (params) => `/films/${params}/review`,
   REVIEW: `/review/`,
-  FAVORITE: `/favorite/`
+};
+
+export const FetchFrom = {
+  FAVORITE: `/favorite`,
 };
