@@ -41,3 +41,8 @@ export const JumpTo = {
 export const FetchFrom = {
   FAVORITE: `/favorite`,
 };
+
+export const ClassName = {
+  PRELOADER: `preloading__message`,
+  FOOTER_LINK: `logo__link--light`
+};

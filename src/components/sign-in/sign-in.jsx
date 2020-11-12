@@ -1,9 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
-import {JumpTo} from "../../utils/constants";
+import {ClassName, JumpTo} from "../../utils/constants";
 import {login} from "../../store/api-action";
 import {connect} from "react-redux";
+import Logo from "../logo/logo";
 
 class SignIn extends PureComponent {
   constructor(props) {
@@ -26,13 +26,7 @@ class SignIn extends PureComponent {
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
-          <div className="logo">
-            <Link to={JumpTo.ROOT} className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
+          <Logo path={JumpTo.ROOT} />
 
           <h1 className="page-title user-page__title">Sign in</h1>
         </header>
@@ -76,13 +70,7 @@ class SignIn extends PureComponent {
         </div>
 
         <footer className="page-footer">
-          <div className="logo">
-            <Link to={JumpTo.ROOT} className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
+          <Logo path={JumpTo.ROOT} additionalClass={ClassName.FOOTER_LINK} />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>

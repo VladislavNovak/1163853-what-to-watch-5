@@ -1,4 +1,5 @@
 import React from "react";
+import {ClassName} from "../../utils/constants";
 
 const preloadingMessage = {
   textAlign: `center`,
@@ -9,7 +10,7 @@ const preloadingMessage = {
 
 const Preloader = () => {
   return (
-    <div className="preloading__message" style={preloadingMessage}>
+    <div className={ClassName.PRELOADER} style={preloadingMessage}>
       <p>The list is empty. Please select your favorite movies...</p>
     </div>
   );

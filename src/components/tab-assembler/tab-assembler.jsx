@@ -12,7 +12,8 @@ import {filmPropStructure} from "../../utils/validator.prop";
 import {fetchActiveFilm} from "../../store/api-action";
 
 import {connect} from "react-redux";
-import {JumpTo, SIMILAR_FILMS} from "../../utils/constants";
+import {ClassName, JumpTo, SIMILAR_FILMS} from "../../utils/constants";
+import Logo from "../logo/logo";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 const TabSwitcherWrapped = withActiveTab(TabSwitcher);
@@ -53,13 +54,7 @@ class TabAssembler extends PureComponent {
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header movie-card__head">
-            <div className="logo">
-              <Link to={JumpTo.ROOT} className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </Link>
-            </div>
+            <Logo path={JumpTo.ROOT} />
 
             <div className="user-block">
               <div className="user-block__avatar">
@@ -109,13 +104,7 @@ class TabAssembler extends PureComponent {
           {similarFilms.length ? <FilmsListWrapped films={similarFilms} /> : `` }
         </section>
         <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <Logo path={JumpTo.ROOT} additionalClass={ClassName.FOOTER_LINK} />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>
