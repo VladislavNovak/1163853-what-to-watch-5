@@ -10,6 +10,7 @@ import {filmPropStructure} from "../../utils/validator.prop";
 import {ClassName, JumpTo} from "../../utils/constants";
 import Preloader from "../preloader/preloader";
 import Logo from "../logo/logo";
+import {UserBlock} from "../user-block/user-block";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 
@@ -32,7 +33,9 @@ class MyFilmsList extends PureComponent {
 
           <h1 className="page-title user-page__title">My list</h1>
 
-          <div className="user-block">
+          <UserBlock />
+
+          {/* <div className="user-block">
             <div className="user-block__avatar">
               <img
                 src="img/avatar.jpg"
@@ -41,7 +44,7 @@ class MyFilmsList extends PureComponent {
                 height="63"
               />
             </div>
-          </div>
+          </div> */}
         </header>
 
         <section className="catalog">

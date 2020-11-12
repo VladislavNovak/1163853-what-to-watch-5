@@ -44,8 +44,8 @@ RestLogo.propTypes = {
 };
 
 Logo.propTypes = {
-  path: PropTypes.string.isRequired,
-  additionalClass: PropTypes.string.isRequired,
+  path: PropTypes.string,
+  additionalClass: PropTypes.string,
 };
 
 export default Logo;

@@ -14,6 +14,7 @@ import {fetchActiveFilm} from "../../store/api-action";
 import {connect} from "react-redux";
 import {ClassName, JumpTo, SIMILAR_FILMS} from "../../utils/constants";
 import Logo from "../logo/logo";
+import {UserBlock} from "../user-block/user-block";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 const TabSwitcherWrapped = withActiveTab(TabSwitcher);
@@ -55,12 +56,7 @@ class TabAssembler extends PureComponent {
 
           <header className="page-header movie-card__head">
             <Logo path={JumpTo.ROOT} />
-
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
+            <UserBlock />
           </header>
 
           <div className="movie-card__wrap">

@@ -8,6 +8,7 @@ import withRating from "../../hocs/with-rating/with-rating";
 import {filmPropStructure} from "../../utils/validator.prop";
 import {JumpTo} from "../../utils/constants";
 import Logo from "../logo/logo";
+import {UserBlock} from "../user-block/user-block";
 
 const AddReviewFormWrapped = withRating(AddReviewForm);
 
@@ -35,7 +36,9 @@ const AddReview = ({film}) => {
             </ul>
           </nav>
 
-          <div className="user-block">
+          <UserBlock />
+
+          {/* <div className="user-block">
             <div className="user-block__avatar">
               <img
                 src="img/avatar.jpg"
@@ -44,7 +47,7 @@ const AddReview = ({film}) => {
                 height="63"
               />
             </div>
-          </div>
+          </div> */}
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">

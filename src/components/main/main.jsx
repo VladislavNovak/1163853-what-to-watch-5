@@ -11,6 +11,7 @@ import withActiveFilm from "../../hocs/with-active-film/with-active-film";
 import FilmsList from "../films-list/films-list";
 import {filmPropStructure} from "../../utils/validator.prop";
 import Logo from "../logo/logo";
+import UserBlock from "../user-block/user-block";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 
@@ -30,17 +31,7 @@ const Main = ({promo, onPlayButtonClickHandler, visibleFilmsCount, onMoreButtonC
 
       <header className="page-header movie-card__head">
         <Logo />
-
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img
-              src="img/avatar.jpg"
-              alt="User avatar"
-              width="63"
-              height="63"
-            />
-          </div>
-        </div>
+        <UserBlock />
       </header>
 
       <div className="movie-card__wrap">
