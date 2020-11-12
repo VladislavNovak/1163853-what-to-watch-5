@@ -1,8 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {selectsActiveGenre, selectsFilteredFilms} from "../../store/reducers/app-state/selectors";
-
+import {selectsActiveGenre} from "../../store/reducers/app-state/selectors";
 import {ALL_GENRE, FILMS_COUNT_PER_CLICK} from "../../utils/constants";
 import {filmPropStructure} from "../../utils/validator.prop";
 
@@ -26,25 +25,22 @@ const withVisibleFilms = (Component) => {
       }
     }
 
-    _onMoreButtonClickHandler(params) {
+    _onMoreButtonClickHandler(showMoreForViewing) {
       const {visibleFilmsCount} = this.state;
 
-      this.setState({visibleFilmsCount: visibleFilmsCount + params});
+      this.setState({visibleFilmsCount: visibleFilmsCount + showMoreForViewing});
     }
 
     render() {
-      const {promo, onPlayButtonClickHandler, filteredFilms} = this.props;
+      const {promo, onPlayButtonClickHandler} = this.props;
       const {visibleFilmsCount} = this.state;
-      const films = filteredFilms.slice(0, visibleFilmsCount);
-      const isVisibleButtonShowMore = filteredFilms.length > visibleFilmsCount;
 
       return (
         <Component
-          // {...this.props}
+          {...this.props}
           promo={promo}
           onPlayButtonClickHandler={onPlayButtonClickHandler}
-          films={films}
-          isVisibleButtonShowMore={isVisibleButtonShowMore}
+          visibleFilmsCount={visibleFilmsCount}
           onMoreButtonClickHandler={this._onMoreButtonClickHandler}
         />
       );
@@ -55,14 +51,12 @@ const withVisibleFilms = (Component) => {
     activeGenre: PropTypes.string.isRequired,
     promo: PropTypes.shape(filmPropStructure).isRequired,
     onPlayButtonClickHandler: PropTypes.func.isRequired,
-    filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
   };
 
   return connect(mapStateToProps)(WithVisibleFilms);
 };
 
 const mapStateToProps = (state) => ({
-  filteredFilms: selectsFilteredFilms(state),
   activeGenre: selectsActiveGenre(state),
 });
 

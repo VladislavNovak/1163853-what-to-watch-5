@@ -57,6 +57,6 @@ export const login = ({email, password}) => (dispatch, _getState, api) => (
     .then(({data}) => {
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.redirectToRoute(JumpTo.ROOT));
-      dispatch(ActionCreator.setUserData(data[`avatar_url`]));
+      dispatch(ActionCreator.setUserAvatar(data[`avatar_url`]));
     })
 );

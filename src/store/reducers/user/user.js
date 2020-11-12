@@ -4,7 +4,7 @@ import {ActionType} from "../../action";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  userEmailPassword: null,
+  userAvatar: null,
 };
 
 const user = (state = initialState, action) => {
@@ -14,9 +14,9 @@ const user = (state = initialState, action) => {
         authorizationStatus: action.payload,
       });
 
-    case ActionType.SET_USER_DATA:
+    case ActionType.SET_USER_AVATAR:
       return extend(state, {
-        userEmailPassword: action.payload,
+        userAvatar: action.payload,
       });
   }
 

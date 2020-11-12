@@ -4,7 +4,7 @@ export const ActionType = {
   CHANGE_FILMS_COUNT: `CHANGE_FILMS_COUNT`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
-  SET_USER_DATA: `GET_USER_DATA`,
+  SET_USER_AVATAR: `GET_USER_DATA`,
   SET_FILMS: `SET_FILMS`,
   SET_MY_FAVORITE_FILMS: `SET_MY_FAVORITE_FILMS`,
   SET_PROMO: `SET_PROMO`,
@@ -34,8 +34,8 @@ export const ActionCreator = {
     payload: url,
   }),
 
-  setUserData: (data) => ({
-    type: ActionType.SET_USER_DATA,
+  setUserAvatar: (data) => ({
+    type: ActionType.SET_USER_AVATAR,
     payload: data,
   }),
 

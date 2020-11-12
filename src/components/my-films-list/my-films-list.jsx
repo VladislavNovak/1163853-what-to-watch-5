@@ -9,16 +9,9 @@ import withActiveFilm from "../../hocs/with-active-film/with-active-film";
 import FilmsList from "../films-list/films-list";
 import {filmPropStructure} from "../../utils/validator.prop";
 import {JumpTo} from "../../utils/constants";
+import Preloader from "../preloader/preloader";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
-
-function Preloader() {
-  return (
-    <div className={`catalog__movies-list`}>
-      <p>Список пустой!</p>
-    </div>
-  );
-}
 
 class MyFilmsList extends PureComponent {
 
@@ -59,7 +52,7 @@ class MyFilmsList extends PureComponent {
 
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          {!myFavoriteFilms ? (<Preloader />) : (<FilmsListWrapped films={myFavoriteFilms} />)}
+          {!myFavoriteFilms.length ? (<Preloader />) : (<FilmsListWrapped films={myFavoriteFilms} />)}
         </section>
 
         <footer className="page-footer">

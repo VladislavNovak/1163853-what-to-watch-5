@@ -9,7 +9,7 @@ const initialState = {
   activeFilm: null,
   reviews: [],
   promo: null,
-  myFavoriteFilms: null,
+  myFavoriteFilms: [],
 };
 
 const appState = (state = initialState, action) => {

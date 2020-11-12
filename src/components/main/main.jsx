@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {selectsFilteredFilms} from "../../store/reducers/app-state/selectors";
+
 import ButtonShowMore from "../button-show-more/button-show-more";
 import ButtonPlay from "../button-play/button-play";
 import GenresList from "../genres-list/genres-list";
@@ -9,8 +12,11 @@ import {filmPropStructure} from "../../utils/validator.prop";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 
-const Main = ({promo, onPlayButtonClickHandler, films, isVisibleButtonShowMore, onMoreButtonClickHandler}) => {
+const Main = ({promo, onPlayButtonClickHandler, visibleFilmsCount, onMoreButtonClickHandler, filteredFilms}) => {
   const {backgroundImage, title, poster, genre, released, id} = promo;
+
+  const films = filteredFilms.slice(0, visibleFilmsCount);
+  const isVisibleButtonShowMore = filteredFilms.length > visibleFilmsCount;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -97,11 +103,16 @@ const Main = ({promo, onPlayButtonClickHandler, films, isVisibleButtonShowMore, 
 };
 
 Main.propTypes = {
-  films: PropTypes.arrayOf(filmPropStructure).isRequired,
   promo: PropTypes.shape(filmPropStructure).isRequired,
   onPlayButtonClickHandler: PropTypes.func.isRequired,
-  isVisibleButtonShowMore: PropTypes.bool.isRequired,
   onMoreButtonClickHandler: PropTypes.func.isRequired,
+  visibleFilmsCount: PropTypes.number.isRequired,
+  filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  filteredFilms: selectsFilteredFilms(state),
+});
+
+export {Main};
+export default connect(mapStateToProps)(Main);
