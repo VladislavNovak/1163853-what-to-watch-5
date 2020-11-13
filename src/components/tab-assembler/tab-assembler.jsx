@@ -15,6 +15,7 @@ import {connect} from "react-redux";
 import {ClassName, JumpTo, SIMILAR_FILMS} from "../../utils/constants";
 import Logo from "../logo/logo";
 import {UserBlock} from "../user-block/user-block";
+import ButtonAddToMylist from "../button-add-to-mylist/button-add-to-mylist";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 const TabSwitcherWrapped = withActiveTab(TabSwitcher);
@@ -69,12 +70,7 @@ class TabAssembler extends PureComponent {
 
               <div className="movie-card__buttons">
                 <ButtonPlay id={id} onPlayButtonClickHandler={onPlayButtonClickHandler} />
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add" />
-                  </svg>
-                  <span>My list</span>
-                </button>
+                <ButtonAddToMylist />
                 <Link to={`${JumpTo.FILMS}${id}${JumpTo.REVIEW}`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>

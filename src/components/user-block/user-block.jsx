@@ -17,7 +17,7 @@ const UserBlockAuthorized = ({avatar}) => {
     <div className="user-block">
       <div className="user-block__avatar">
         <Link to={JumpTo.MYLIST}>
-        <img src={avatar} alt="User avatar" width="63" height="63" />
+          <img src={avatar} alt="User avatar" width="63" height="63" />
         </Link>
       </div>
     </div>
