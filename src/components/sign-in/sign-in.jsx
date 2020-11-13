@@ -9,19 +9,19 @@ class SignIn extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.onSubmitFormClickHandler = this.onSubmitFormClickHandler.bind(this);
+    this._handleFormSubmitClick = this._handleFormSubmitClick.bind(this);
   }
 
-  onSubmitFormClickHandler(evt) {
+  _handleFormSubmitClick(evt) {
     evt.preventDefault();
 
-    const {onSubmitHandler, email, password} = this.props;
+    const {changeEmailPassword, email, password} = this.props;
 
-    onSubmitHandler({email, password});
+    changeEmailPassword({email, password});
   }
 
   render() {
-    const {email, password, onEmailFieldChangeHandler, onPasswordFieldChangeHandler} = this.props;
+    const {email, password, onInputEmailChange, onInputPasswordChange} = this.props;
 
     return (
       <div className="user-page">
@@ -35,13 +35,13 @@ class SignIn extends PureComponent {
           <form
             action="#"
             className="sign-in__form"
-            onSubmit={this.onSubmitFormClickHandler}
+            onSubmit={this._handleFormSubmitClick}
           >
             <div className="sign-in__fields">
               <div className="sign-in__field">
                 <input
                   value={email}
-                  onChange={onEmailFieldChangeHandler}
+                  onChange={onInputEmailChange}
                   className="sign-in__input"
                   type="email"
                   placeholder="Email address"
@@ -53,7 +53,7 @@ class SignIn extends PureComponent {
               <div className="sign-in__field">
                 <input
                   value={password}
-                  onChange={onPasswordFieldChangeHandler}
+                  onChange={onInputPasswordChange}
                   className="sign-in__input"
                   type="password"
                   placeholder="Password"
@@ -84,13 +84,13 @@ class SignIn extends PureComponent {
 SignIn.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  onEmailFieldChangeHandler: PropTypes.func.isRequired,
-  onPasswordFieldChangeHandler: PropTypes.func.isRequired,
-  onSubmitHandler: PropTypes.func.isRequired,
+  onInputEmailChange: PropTypes.func.isRequired,
+  onInputPasswordChange: PropTypes.func.isRequired,
+  changeEmailPassword: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmitHandler(authData) {
+  changeEmailPassword(authData) {
     dispatch(login(authData));
   }
 });

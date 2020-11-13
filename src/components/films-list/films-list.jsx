@@ -7,8 +7,8 @@ import {filmPropStructure} from "../../utils/validator.prop";
 const FilmsList = ({
   films,
   currentActiveFilm,
-  onMouseOverFilmHandler,
-  onMouseLeaveFilmHandler,
+  onMouseOverFilm,
+  onMouseLeaveFilm,
 }) => {
 
   return (
@@ -21,8 +21,8 @@ const FilmsList = ({
           posterBig={posterBig}
           title={title}
           trailer={trailer}
-          onMouseOverFilmHandler={onMouseOverFilmHandler}
-          onMouseLeaveFilmHandler={onMouseLeaveFilmHandler}
+          onMouseOverFilm={onMouseOverFilm}
+          onMouseLeaveFilm={onMouseLeaveFilm}
         />
       ))}
     </div>
@@ -32,8 +32,8 @@ const FilmsList = ({
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
   currentActiveFilm: PropTypes.number.isRequired,
-  onMouseOverFilmHandler: PropTypes.func.isRequired,
-  onMouseLeaveFilmHandler: PropTypes.func.isRequired,
+  onMouseOverFilm: PropTypes.func.isRequired,
+  onMouseLeaveFilm: PropTypes.func.isRequired,
 };
 
 export default FilmsList;

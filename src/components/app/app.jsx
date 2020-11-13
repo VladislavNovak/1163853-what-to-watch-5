@@ -37,7 +37,7 @@ const App = ({films, promo}) => {
           render={({history}) => (
             <MainWrapped
               promo={promo}
-              onPlayButtonClickHandler={(id) => history.push(JumpTo.PLAYER + id)}
+              onPlayButtonClick={(id) => history.push(JumpTo.PLAYER + id)}
             />
           )} >
         </Route>
@@ -58,7 +58,7 @@ const App = ({films, promo}) => {
             <TabAssembler
               id={Number(match.params.id)}
               films={films}
-              onPlayButtonClickHandler={(id) => history.push(JumpTo.PLAYER + id)}
+              onPlayButtonClick={(id) => history.push(JumpTo.PLAYER + id)}
             />
           )}
         />
@@ -75,7 +75,7 @@ const App = ({films, promo}) => {
           render={({match, history}) => (
             <PlayerWrapped
               film={getMatchingFilm(films, match)}
-              onPlayerExitClickHandler={() => history.goBack()}
+              onPlayerExitClick={() => history.goBack()}
             />
           )}
         />

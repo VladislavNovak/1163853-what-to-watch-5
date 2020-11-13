@@ -10,17 +10,17 @@ const withAuth = (Component) => {
         password: ``,
       };
 
-      this.onEmailFieldChangeHandler = this.onEmailFieldChangeHandler.bind(this);
-      this.onPasswordFieldChangeHandler = this.onPasswordFieldChangeHandler.bind(this);
+      this._handleInputEmailChange = this._handleInputEmailChange.bind(this);
+      this._handleInputPasswordChange = this._handleInputPasswordChange.bind(this);
     }
 
-    onEmailFieldChangeHandler(evt) {
+    _handleInputEmailChange(evt) {
       this.setState({
         email: evt.target.value,
       });
     }
 
-    onPasswordFieldChangeHandler(evt) {
+    _handleInputPasswordChange(evt) {
       this.setState({
         password: evt.target.value,
       });
@@ -33,8 +33,8 @@ const withAuth = (Component) => {
           {...this.props}
           email={this.state.email}
           password ={this.state.password}
-          onEmailFieldChangeHandler={this.onEmailFieldChangeHandler}
-          onPasswordFieldChangeHandler={this.onPasswordFieldChangeHandler}
+          onInputEmailChange={this._handleInputEmailChange}
+          onInputPasswordChange={this._handleInputPasswordChange}
         />
       );
     }

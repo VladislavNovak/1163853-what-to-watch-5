@@ -6,14 +6,14 @@ const FIVE_STARS = [1, 2, 3, 4, 5];
 const AddReviewForm = ({
   reviewText,
   selectedStar,
-  onSubmitFieldClickHandler,
-  onTextareaChangeHandler,
-  onStarChangeHandler,
+  onFormSubmitClick,
+  onTextareaChange,
+  onStarChange,
 }) => {
   return (
     <div className="add-review">
       <form
-        onSubmit={onSubmitFieldClickHandler}
+        onSubmit={onFormSubmitClick}
         action="#"
         className="add-review__form"
       >
@@ -28,7 +28,7 @@ const AddReviewForm = ({
                   type="radio"
                   name="rating"
                   value={`${star}`}
-                  onChange={onStarChangeHandler}
+                  onChange={onStarChange}
                   checked={Number(selectedStar) === star}
                 />
                 <label key={`label-${star}`} className="rating__label" htmlFor={`star-${star}`}>
@@ -46,7 +46,7 @@ const AddReviewForm = ({
             id="review-text"
             placeholder="Review text"
             value={reviewText}
-            onChange={onTextareaChangeHandler}
+            onChange={onTextareaChange}
           />
           <div className="add-review__submit">
             <button className="add-review__btn" type="submit">
@@ -62,9 +62,9 @@ const AddReviewForm = ({
 AddReviewForm.propTypes = {
   selectedStar: PropTypes.string.isRequired,
   reviewText: PropTypes.string.isRequired,
-  onSubmitFieldClickHandler: PropTypes.func.isRequired,
-  onStarChangeHandler: PropTypes.func.isRequired,
-  onTextareaChangeHandler: PropTypes.func.isRequired,
+  onFormSubmitClick: PropTypes.func.isRequired,
+  onStarChange: PropTypes.func.isRequired,
+  onTextareaChange: PropTypes.func.isRequired,
 };
 
 export default AddReviewForm;

@@ -16,7 +16,7 @@ import UserBlock from "../user-block/user-block";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 
-const Main = ({resetVisible, activeGenre, promo, onPlayButtonClickHandler, visibleFilmsCount, onMoreButtonClickHandler, filteredFilms}) => {
+const Main = ({resetVisible, activeGenre, promo, onPlayButtonClick, visibleFilmsCount, onMoreButtonClick, filteredFilms}) => {
   const {backgroundImage, title, poster, genre, released, id} = promo;
 
   if (activeGenre !== ALL_GENRE) {
@@ -53,7 +53,7 @@ const Main = ({resetVisible, activeGenre, promo, onPlayButtonClickHandler, visib
             </p>
 
             <div className="movie-card__buttons">
-              <ButtonPlay id={id} onPlayButtonClickHandler={onPlayButtonClickHandler} />
+              <ButtonPlay id={id} onPlayButtonClick={onPlayButtonClick} />
               <ButtonAddToMylist />
             </div>
           </div>
@@ -66,7 +66,7 @@ const Main = ({resetVisible, activeGenre, promo, onPlayButtonClickHandler, visib
         <h2 className="catalog__title visually-hidden">Catalog</h2>
         {<GenresList />}
         {<FilmsListWrapped films={films} />}
-        {isVisibleButtonShowMore ? <ButtonShowMore onMoreButtonClickHandler={onMoreButtonClickHandler} /> : ``}
+        {isVisibleButtonShowMore ? <ButtonShowMore onMoreButtonClick={onMoreButtonClick} /> : ``}
       </section>
 
       <footer className="page-footer">
@@ -82,8 +82,8 @@ const Main = ({resetVisible, activeGenre, promo, onPlayButtonClickHandler, visib
 
 Main.propTypes = {
   promo: PropTypes.shape(filmPropStructure).isRequired,
-  onPlayButtonClickHandler: PropTypes.func.isRequired,
-  onMoreButtonClickHandler: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
+  onMoreButtonClick: PropTypes.func.isRequired,
   visibleFilmsCount: PropTypes.number.isRequired,
   filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
   activeGenre: PropTypes.string.isRequired,

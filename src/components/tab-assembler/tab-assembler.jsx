@@ -41,7 +41,7 @@ class TabAssembler extends PureComponent {
       return null;
     }
 
-    const {film, films, onPlayButtonClickHandler} = this.props;
+    const {film, films, onPlayButtonClick} = this.props;
 
     const {id, title, genre, released, poster} = film;
     const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, SIMILAR_FILMS);
@@ -69,7 +69,7 @@ class TabAssembler extends PureComponent {
               </p>
 
               <div className="movie-card__buttons">
-                <ButtonPlay id={id} onPlayButtonClickHandler={onPlayButtonClickHandler} />
+                <ButtonPlay id={id} onPlayButtonClick={onPlayButtonClick} />
                 <ButtonAddToMylist />
                 <Link to={`${JumpTo.FILMS}${id}${JumpTo.REVIEW}`} className="btn movie-card__button">Add review</Link>
               </div>
@@ -112,7 +112,7 @@ TabAssembler.propTypes = {
   getActiveFilm: PropTypes.func.isRequired,
   film: PropTypes.shape(filmPropStructure),
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
-  onPlayButtonClickHandler: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({film: selectsActiveFilm(state)});

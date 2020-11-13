@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ButtonPlay = ({id, onPlayButtonClickHandler}) => {
+const ButtonPlay = ({id, onPlayButtonClick}) => {
 
   return (
     <button
       className="btn btn--play movie-card__button"
       type="button"
-      onClick={() => onPlayButtonClickHandler(id)}
+      onClick={() => onPlayButtonClick(id)}
     >
       <svg viewBox="0 0 19 19" width="19" height="19">
         <use xlinkHref="#play-s" />
@@ -19,7 +19,7 @@ const ButtonPlay = ({id, onPlayButtonClickHandler}) => {
 
 ButtonPlay.propTypes = {
   id: PropTypes.number.isRequired,
-  onPlayButtonClickHandler: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
 };
 
 export default ButtonPlay;

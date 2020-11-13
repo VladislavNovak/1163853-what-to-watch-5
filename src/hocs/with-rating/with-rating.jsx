@@ -10,20 +10,20 @@ const withRating = (Component) => {
         selectedStar: ``,
       };
 
-      this._onTextareaChangeHandler = this._onTextareaChangeHandler.bind(this);
-      this._onStarChangeHandler = this._onStarChangeHandler.bind(this);
-      this._onSubmitFieldClickHandler = this._onSubmitFieldClickHandler.bind(this);
+      this._handleTextareaChange = this._handleTextareaChange.bind(this);
+      this._handleStarChange = this._handleStarChange.bind(this);
+      this._handleFormSubmitClick = this._handleFormSubmitClick.bind(this);
     }
 
-    _onSubmitFieldClickHandler(evt) {
+    _handleFormSubmitClick(evt) {
       evt.preventDefault();
     }
 
-    _onTextareaChangeHandler(evt) {
+    _handleTextareaChange(evt) {
       this.setState({reviewText: evt.target.value});
     }
 
-    _onStarChangeHandler(evt) {
+    _handleStarChange(evt) {
       this.setState({selectedStar: evt.target.value});
     }
 
@@ -33,9 +33,9 @@ const withRating = (Component) => {
           {...this.props}
           reviewText={this.state.reviewText}
           selectedStar={this.state.selectedStar}
-          onSubmitFieldClickHandler={this._onSubmitFieldClickHandler}
-          onTextareaChangeHandler={this._onTextareaChangeHandler}
-          onStarChangeHandler={this._onStarChangeHandler}
+          onFormSubmitClick={this._handleFormSubmitClick}
+          onTextareaChange={this._handleTextareaChange}
+          onStarChange={this._handleStarChange}
         />
       );
     }

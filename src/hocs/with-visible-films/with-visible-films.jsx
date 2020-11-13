@@ -12,7 +12,7 @@ const withVisibleFilms = (Component) => {
         visibleFilmsCount: FILMS_COUNT_PER_CLICK,
       };
 
-      this._onMoreButtonClickHandler = this._onMoreButtonClickHandler.bind(this);
+      this._handleMoreButtonClick = this._handleMoreButtonClick.bind(this);
       this.resetVisible = this.resetVisible.bind(this);
     }
 
@@ -20,23 +20,23 @@ const withVisibleFilms = (Component) => {
       this.setState({visibleFilmsCount: FILMS_COUNT_PER_CLICK});
     }
 
-    _onMoreButtonClickHandler(showMoreForViewing) {
+    _handleMoreButtonClick(showMoreForViewing) {
       const {visibleFilmsCount} = this.state;
 
       this.setState({visibleFilmsCount: visibleFilmsCount + showMoreForViewing});
     }
 
     render() {
-      const {promo, onPlayButtonClickHandler} = this.props;
+      const {promo, onPlayButtonClick} = this.props;
       const {visibleFilmsCount} = this.state;
 
       return (
         <Component
           {...this.props}
           promo={promo}
-          onPlayButtonClickHandler={onPlayButtonClickHandler}
+          onPlayButtonClick={onPlayButtonClick}
           visibleFilmsCount={visibleFilmsCount}
-          onMoreButtonClickHandler={this._onMoreButtonClickHandler}
+          onMoreButtonClick={this._handleMoreButtonClick}
           resetVisible = {this.resetVisible}
         />
       );
@@ -45,7 +45,7 @@ const withVisibleFilms = (Component) => {
 
   WithVisibleFilms.propTypes = {
     promo: PropTypes.shape(filmPropStructure).isRequired,
-    onPlayButtonClickHandler: PropTypes.func.isRequired,
+    onPlayButtonClick: PropTypes.func.isRequired,
   };
 
   return WithVisibleFilms;
