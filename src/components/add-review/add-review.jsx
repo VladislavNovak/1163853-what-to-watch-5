@@ -37,17 +37,6 @@ const AddReview = ({film}) => {
           </nav>
 
           <UserBlock />
-
-          {/* <div className="user-block">
-            <div className="user-block__avatar">
-              <img
-                src="img/avatar.jpg"
-                alt="User avatar"
-                width="63"
-                height="63"
-              />
-            </div>
-          </div> */}
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">

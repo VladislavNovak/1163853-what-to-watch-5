@@ -16,12 +16,9 @@ const UserBlockAuthorized = ({avatar}) => {
   return (
     <div className="user-block">
       <div className="user-block__avatar">
-        <img
-          src={avatar}
-          alt="User avatar"
-          width="63"
-          height="63"
-        />
+        <Link to={JumpTo.MYLIST}>
+        <img src={avatar} alt="User avatar" width="63" height="63" />
+        </Link>
       </div>
     </div>
   );
@@ -39,8 +36,8 @@ UserBlockAuthorized.propTypes = {
 };
 
 UserBlock.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  userAvatar: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string,
+  userAvatar: PropTypes.string,
 };
 
 const mapStateToProps = ({USER}) => ({

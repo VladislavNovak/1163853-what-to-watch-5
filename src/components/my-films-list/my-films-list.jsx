@@ -34,17 +34,6 @@ class MyFilmsList extends PureComponent {
           <h1 className="page-title user-page__title">My list</h1>
 
           <UserBlock />
-
-          {/* <div className="user-block">
-            <div className="user-block__avatar">
-              <img
-                src="img/avatar.jpg"
-                alt="User avatar"
-                width="63"
-                height="63"
-              />
-            </div>
-          </div> */}
         </header>
 
         <section className="catalog">
