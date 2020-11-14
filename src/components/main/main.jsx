@@ -16,8 +16,8 @@ import UserBlock from "../user-block/user-block";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 
-const Main = ({resetVisible, promo, onPlayButtonClick, visibleFilmsCount, onMoreButtonClick, filteredFilms}) => {
-  const {backgroundImage, title, poster, genre, released, id} = promo;
+const Main = ({resetFilmsShown, promo, onPlayButtonClick, visibleFilmsCount, onMoreButtonClick, filteredFilms}) => {
+  const {backgroundImage, title, poster, genre, released, id, inMyFavoriteList} = promo;
 
   const films = filteredFilms.slice(0, visibleFilmsCount);
   const isVisibleButtonShowMore = filteredFilms.length > visibleFilmsCount;
@@ -50,7 +50,7 @@ const Main = ({resetVisible, promo, onPlayButtonClick, visibleFilmsCount, onMore
 
             <div className="movie-card__buttons">
               <ButtonPlay id={id} onPlayButtonClick={onPlayButtonClick} />
-              <ButtonAddToMylist />
+              <ButtonAddToMylist id={id} inMyFavoriteList={inMyFavoriteList} />
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ const Main = ({resetVisible, promo, onPlayButtonClick, visibleFilmsCount, onMore
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        {<GenresList resetVisible={resetVisible}/>}
+        {<GenresList resetFilmsShown={resetFilmsShown}/>}
         {<FilmsListWrapped films={films} />}
         {isVisibleButtonShowMore ? <ButtonShowMore onMoreButtonClick={onMoreButtonClick} /> : ``}
       </section>
@@ -82,7 +82,7 @@ Main.propTypes = {
   onMoreButtonClick: PropTypes.func.isRequired,
   visibleFilmsCount: PropTypes.number.isRequired,
   filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
-  resetVisible: PropTypes.func.isRequired,
+  resetFilmsShown: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -1,6 +1,6 @@
 import {ActionCreator} from "./action";
 import {getUniqueGenres} from "../utils/utils";
-import {AuthorizationStatus, FetchFrom, JumpTo} from "../utils/constants";
+import {AuthorizationStatus, SendTo, JumpTo} from "../utils/constants";
 import {adaptOneFilmToClient, adaptFilmsToClient} from "../services/adapter";
 
 export const fetchFilms = () => (dispatch, _getState, api) => (
@@ -38,12 +38,21 @@ export const fetchReviews = (id) => (dispatch, _getState, api) => (
 );
 
 export const fetchMyFavoriteFilms = () => (dispatch, _getState, api) => (
-  api.get(FetchFrom.FAVORITE)
+  api.get(SendTo.FAVORITE)
     .then(({data}) => {
+      console.log(`В гете: ${data}`);
       const adaptedFilms = adaptFilmsToClient(data);
       dispatch(ActionCreator.setMyFavoriteFilms(adaptedFilms));
     })
 );
+
+export const sendUpdatedFavoriteStatus = (id, status) => (dispatch, _getState, api)  =>{
+  api.post(`${SendTo.FAVORITE}${id}/${status}`)
+  .then(({data}) => {
+    const adaptedActiveFilm = adaptOneFilmToClient(data);
+    dispatch(ActionCreator.updateFilm(adaptedActiveFilm));
+  })
+}
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(JumpTo.LOGIN)

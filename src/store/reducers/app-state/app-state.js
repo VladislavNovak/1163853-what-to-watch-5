@@ -1,4 +1,4 @@
-import {ActionType} from "../../action";
+import {ActionCreator, ActionType} from "../../action";
 import {extend} from "../../../utils/utils";
 import {ALL_GENRE} from "../../../utils/constants";
 
@@ -48,6 +48,17 @@ const appState = (state = initialState, action) => {
       return extend(state, {
         myFavoriteFilms: action.payload,
       });
+
+    case ActionType.UPDATE_FILM:
+      const extendedFilm = {
+        activeFilm: action.payload,
+      };
+
+      if (initialState.promo.id === initialState.activeFilm.id) {
+        extendedFilm.promo = promo;
+      };
+
+      return extend(state, extendedFilm)
   }
 
   return state;

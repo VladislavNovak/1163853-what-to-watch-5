@@ -38,7 +38,7 @@ class MyFilmsList extends PureComponent {
 
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          {!myFavoriteFilms.length ? (<Preloader />) : (<FilmsListWrapped films={myFavoriteFilms} />)}
+          {!myFavoriteFilms.length ? <Preloader /> : <FilmsListWrapped films={myFavoriteFilms} />}
         </section>
 
         <footer className="page-footer">

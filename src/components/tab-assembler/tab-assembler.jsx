@@ -43,7 +43,7 @@ class TabAssembler extends PureComponent {
 
     const {film, films, onPlayButtonClick} = this.props;
 
-    const {id, title, genre, released, poster} = film;
+    const {id, inMyFavoriteList, title, genre, released, poster} = film;
     const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, SIMILAR_FILMS);
 
     return <React.Fragment>
@@ -70,7 +70,7 @@ class TabAssembler extends PureComponent {
 
               <div className="movie-card__buttons">
                 <ButtonPlay id={id} onPlayButtonClick={onPlayButtonClick} />
-                <ButtonAddToMylist />
+                <ButtonAddToMylist id={id} inMyFavoriteList={inMyFavoriteList} />
                 <Link to={`${JumpTo.FILMS}${id}${JumpTo.REVIEW}`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>

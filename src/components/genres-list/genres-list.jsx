@@ -8,10 +8,10 @@ import {filmPropStructure} from "../../utils/validator.prop";
 class GenresList extends PureComponent {
 
   componentDidUpdate(prevProps) {
-    const {activeGenre, resetVisible} = this.props;
+    const {activeGenre, resetFilmsShown} = this.props;
 
     if (prevProps.activeGenre !== activeGenre) {
-      resetVisible();
+      resetFilmsShown();
     }
   }
 
@@ -40,7 +40,7 @@ GenresList.propTypes = {
   activeGenre: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   onTabActiveGenreClick: PropTypes.func.isRequired,
-  resetVisible: PropTypes.func.isRequired,
+  resetFilmsShown: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

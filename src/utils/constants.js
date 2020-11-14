@@ -38,8 +38,8 @@ export const JumpTo = {
   REVIEW: `/review/`,
 };
 
-export const FetchFrom = {
-  FAVORITE: `/favorite`,
+export const SendTo = {
+  FAVORITE: `/favorite/`,
 };
 
 export const ClassName = {

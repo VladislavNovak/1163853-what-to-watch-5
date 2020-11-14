@@ -11,6 +11,7 @@ export const ActionType = {
   SET_GENRES: `SET_GENRES`,
   SET_REVIEWS: `SET_REVIEWS`,
   SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
+  UPDATE_FILM: `UPDATE_FILM`,
 };
 
 export const ActionCreator = {
@@ -68,4 +69,9 @@ export const ActionCreator = {
     type: ActionType.SET_ACTIVE_FILM,
     payload: activeFilm,
   }),
+
+  updateFilm: (film) => ({
+    type: ActionType.UPDATE_FILM,
+    payload: film,
+  })
 };
