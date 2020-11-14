@@ -25,6 +25,8 @@ const UserBlockAuthorized = ({avatar}) => {
 };
 
 const UserBlock = ({authorizationStatus, userAvatar}) => {
+  // console.log(`${authorizationStatus} + ${userAvatar}`);
+  console.log(`authorizationStatus = ${authorizationStatus}`);
 
   return (
     (authorizationStatus === AuthorizationStatus.AUTH && userAvatar) ? <UserBlockAuthorized avatar={userAvatar} /> : <UserBlockUnauthorized />

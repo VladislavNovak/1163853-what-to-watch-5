@@ -13,10 +13,10 @@ const withVisibleFilms = (Component) => {
       };
 
       this._handleMoreButtonClick = this._handleMoreButtonClick.bind(this);
-      this.resetVisible = this.resetVisible.bind(this);
+      this._handleResetFilmsShown = this._handleResetFilmsShown.bind(this);
     }
 
-    resetVisible() {
+    _handleResetFilmsShown() {
       this.setState({visibleFilmsCount: FILMS_COUNT_PER_CLICK});
     }
 
@@ -37,7 +37,7 @@ const withVisibleFilms = (Component) => {
           onPlayButtonClick={onPlayButtonClick}
           visibleFilmsCount={visibleFilmsCount}
           onMoreButtonClick={this._handleMoreButtonClick}
-          resetVisible = {this.resetVisible}
+          resetFilmsShown = {this._handleResetFilmsShown}
         />
       );
     }
