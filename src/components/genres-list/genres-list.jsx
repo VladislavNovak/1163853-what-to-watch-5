@@ -1,36 +1,46 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 import {selectsActiveGenre, selectsFilms, selectsGenres} from "../../store/reducers/app-state/selectors";
 import {filmPropStructure} from "../../utils/validator.prop";
 
-const GenresList = ({activeGenre, genres, changeActiveGenre}) => {
+class GenresList extends PureComponent {
 
-  return (
-    <ul className="catalog__genres-list">
-      {genres.map((genre, index) => (
-        <li
-          key={`genre-${index}`}
-          onClick={() => {
-            changeActiveGenre(genre);
-          }}
-          className={`catalog__genres-item ${
-            activeGenre === genre ? `catalog__genres-item--active` : ``
-          }`}
-        >
-          <a className="catalog__genres-link">{genre}</a>
-        </li>
-      ))}
-    </ul>
-  );
-};
+  componentDidUpdate(prevProps) {
+    const {activeGenre, resetVisible} = this.props;
+
+    if (prevProps.activeGenre !== activeGenre) {
+      resetVisible();
+    }
+  }
+
+  render() {
+    const {activeGenre, genres, onTabActiveGenreClick} = this.props;
+    return (
+      <ul className="catalog__genres-list">
+        {genres.map((genre, index) => (
+          <li
+            key={`genre-${index}`}
+            onClick={() => {
+              onTabActiveGenreClick(genre);
+            }}
+            className={`catalog__genres-item ${activeGenre === genre ? `catalog__genres-item--active` : ``}`}
+          >
+            <a className="catalog__genres-link">{genre}</a>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+}
 
 GenresList.propTypes = {
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
   activeGenre: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  changeActiveGenre: PropTypes.func.isRequired,
+  onTabActiveGenreClick: PropTypes.func.isRequired,
+  resetVisible: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -40,7 +50,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeActiveGenre(newSelectedGenre) {
+  onTabActiveGenreClick(newSelectedGenre) {
     dispatch(ActionCreator.changeActiveGenre(newSelectedGenre));
   },
 });

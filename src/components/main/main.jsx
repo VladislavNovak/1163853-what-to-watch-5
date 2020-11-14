@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {selectsActiveGenre, selectsFilteredFilms} from "../../store/reducers/app-state/selectors";
-import {ALL_GENRE, ClassName} from "../../utils/constants";
+import {selectsFilteredFilms} from "../../store/reducers/app-state/selectors";
+import {ClassName} from "../../utils/constants";
 
 import ButtonShowMore from "../button-show-more/button-show-more";
 import ButtonPlay from "../button-play/button-play";
@@ -16,12 +16,8 @@ import UserBlock from "../user-block/user-block";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 
-const Main = ({resetVisible, activeGenre, promo, onPlayButtonClick, visibleFilmsCount, onMoreButtonClick, filteredFilms}) => {
+const Main = ({resetVisible, promo, onPlayButtonClick, visibleFilmsCount, onMoreButtonClick, filteredFilms}) => {
   const {backgroundImage, title, poster, genre, released, id} = promo;
-
-  if (activeGenre !== ALL_GENRE) {
-    resetVisible();
-  }
 
   const films = filteredFilms.slice(0, visibleFilmsCount);
   const isVisibleButtonShowMore = filteredFilms.length > visibleFilmsCount;
@@ -64,7 +60,7 @@ const Main = ({resetVisible, activeGenre, promo, onPlayButtonClick, visibleFilms
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        {<GenresList />}
+        {<GenresList resetVisible={resetVisible}/>}
         {<FilmsListWrapped films={films} />}
         {isVisibleButtonShowMore ? <ButtonShowMore onMoreButtonClick={onMoreButtonClick} /> : ``}
       </section>
@@ -86,12 +82,10 @@ Main.propTypes = {
   onMoreButtonClick: PropTypes.func.isRequired,
   visibleFilmsCount: PropTypes.number.isRequired,
   filteredFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
-  activeGenre: PropTypes.string.isRequired,
   resetVisible: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  activeGenre: selectsActiveGenre(state),
   filteredFilms: selectsFilteredFilms(state),
 });
 
