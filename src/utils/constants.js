@@ -24,7 +24,6 @@ export const AuthorizationStatus = {
 };
 
 export const JumpTo = {
-  COMMENTS: `/comments/`,
   FILMS: `/films/`,
   FILMS_ID_URL: `/films/:id`,
   LOGIN: `/login/`,
@@ -39,6 +38,7 @@ export const JumpTo = {
 };
 
 export const SendTo = {
+  COMMENTS: `/comments/`,
   FAVORITE: `/favorite/`,
 };
 
@@ -46,3 +46,5 @@ export const ClassName = {
   PRELOADER: `preloading__message`,
   FOOTER_LINK: `logo__link--light`
 };
+
+export const RATING_MULTIPLIER = 2;

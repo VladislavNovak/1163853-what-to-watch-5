@@ -12,11 +12,6 @@ const withRating = (Component) => {
 
       this._handleTextareaChange = this._handleTextareaChange.bind(this);
       this._handleStarChange = this._handleStarChange.bind(this);
-      this._handleFormSubmitClick = this._handleFormSubmitClick.bind(this);
-    }
-
-    _handleFormSubmitClick(evt) {
-      evt.preventDefault();
     }
 
     _handleTextareaChange(evt) {
@@ -33,7 +28,6 @@ const withRating = (Component) => {
           {...this.props}
           reviewText={this.state.reviewText}
           selectedStar={this.state.selectedStar}
-          onFormSubmitClick={this._handleFormSubmitClick}
           onTextareaChange={this._handleTextareaChange}
           onStarChange={this._handleStarChange}
         />

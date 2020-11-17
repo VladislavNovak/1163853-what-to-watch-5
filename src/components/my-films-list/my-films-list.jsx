@@ -33,7 +33,7 @@ class MyFilmsList extends PureComponent {
 
           <h1 className="page-title user-page__title">My list</h1>
 
-          <UserBlock />
+          <UserBlock isLink={false} />
         </header>
 
         <section className="catalog">
@@ -55,7 +55,7 @@ class MyFilmsList extends PureComponent {
 
 MyFilmsList.propTypes = {
   loadMyFavoriteFilms: PropTypes.func.isRequired,
-  myFavoriteFilms: PropTypes.arrayOf(filmPropStructure).isRequired,
+  myFavoriteFilms: PropTypes.arrayOf(filmPropStructure),
 };
 
 const mapStateToProps = (state) => ({

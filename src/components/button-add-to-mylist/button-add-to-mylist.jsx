@@ -5,33 +5,24 @@ import {sendUpdatedFavoriteStatus} from "../../store/api-action";
 class ButtonAddToMylist extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isFavoriteFilm: false,
-    }
-
     this._handleChangingStatusButtonClick = this._handleChangingStatusButtonClick.bind(this);
   }
 
   _handleChangingStatusButtonClick() {
-    this.setState({isFavoriteFilm: !this.state.isFavoriteFilm});
+    const {updateFavoriteStatusFilm, id, inMyFavoriteList} = this.props;
 
-    let {updateFavoriteStatusFilm, id, inMyFavoriteList: status} = this.props;
-    status = Number(status);
-    console.log(`id = ${id}`);
-    console.log(`status = ${status}`);
-    updateFavoriteStatusFilm(id, status);
+    updateFavoriteStatusFilm(id, Number(!inMyFavoriteList));
   }
 
   render() {
-    const {isFavoriteFilm} = this.state;
+    const {inMyFavoriteList} = this.props;
     return (
       <button
         className="btn btn--list movie-card__button"
         type="button"
         onClick={this._handleChangingStatusButtonClick}
       >
-        {isFavoriteFilm
+        {inMyFavoriteList
           ? (
             <svg viewBox="0 0 18 14" width="18" height="14">
               <use xlinkHref="#in-list" />

@@ -12,6 +12,7 @@ export const ActionType = {
   SET_REVIEWS: `SET_REVIEWS`,
   SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
   UPDATE_FILM: `UPDATE_FILM`,
+  CREATE_COMMENT: `CREATE_COMMENT`,
 };
 
 export const ActionCreator = {
@@ -73,5 +74,10 @@ export const ActionCreator = {
   updateFilm: (film) => ({
     type: ActionType.UPDATE_FILM,
     payload: film,
+  }),
+
+  createComment: (comment) => ({
+    type: ActionType.CREATE_COMMENT,
+    payload: comment,
   })
 };

@@ -15,7 +15,7 @@ const FilmsList = ({
     <div className={`catalog__movies-list`}>
       {films.map(({id, posterBig, title, trailer}) => (
         <Film
-          key={id}
+          key={`${id}${title}`}
           isActiveFilm={currentActiveFilm === id}
           id={id}
           posterBig={posterBig}

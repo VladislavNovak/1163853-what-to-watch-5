@@ -13,11 +13,12 @@ import {UserBlock} from "../user-block/user-block";
 const AddReviewFormWrapped = withRating(AddReviewForm);
 
 const AddReview = ({film}) => {
+  const {posterBig, title, id, poster} = film;
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
         <div className="movie-card__bg">
-          <img src={film.posterBig} alt={film.title}/>
+          <img src={posterBig} alt={title}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -28,7 +29,7 @@ const AddReview = ({film}) => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to={JumpTo.FILMS + film.id} className="breadcrumbs__link">{film.title}</Link>
+                <Link to={JumpTo.FILMS + id} className="breadcrumbs__link">{title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -40,11 +41,11 @@ const AddReview = ({film}) => {
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">
-          <img src={film.poster} alt={`${film.title} poster`} width="218" height="327" />
+          <img src={poster} alt={`${title} poster`} width="218" height="327" />
         </div>
       </div>
 
-      {<AddReviewFormWrapped />}
+      {<AddReviewFormWrapped filmId={id}/>}
     </section>
   );
 };

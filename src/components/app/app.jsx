@@ -62,7 +62,7 @@ const App = ({films, promo}) => {
             />
           )}
         />
-        <Route
+        <PrivateRoute
           exact
           path={JumpTo.REVIEW_ID_URL}
           render={({match}) => (

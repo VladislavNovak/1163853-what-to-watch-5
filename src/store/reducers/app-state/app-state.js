@@ -1,4 +1,4 @@
-import {ActionCreator, ActionType} from "../../action";
+import {ActionType} from "../../action";
 import {extend} from "../../../utils/utils";
 import {ALL_GENRE} from "../../../utils/constants";
 
@@ -44,21 +44,50 @@ const appState = (state = initialState, action) => {
         activeFilm: action.payload,
       });
 
+    case ActionType.CREATE_COMMENT:
+      return extend(state, {
+        comment: action.payload,
+      });
+
+
     case ActionType.SET_MY_FAVORITE_FILMS:
       return extend(state, {
         myFavoriteFilms: action.payload,
       });
 
-    case ActionType.UPDATE_FILM:
-      const extendedFilm = {
-        activeFilm: action.payload,
+      case ActionType.UPDATE_FILM:
+        const updatedFilm = action.payload;
+
+      let favoriteFilms = state.myFavoriteFilms.slice();
+
+      if (updatedFilm.inMyFavoriteList) {
+        favoriteFilms.push(favoriteFilms);
+      } else {
+        favoriteFilms = favoriteFilms.filter((film) => film.id === updatedFilm.id);
+        console.log(favoriteFilms);
+      }
+
+      let films = state.films.slice();
+
+      const filmIndex = films.findIndex((film) => film.id === updatedFilm.id);
+
+      const updatedFilms = [
+        ...films.slice(0, filmIndex),
+        updatedFilm,
+        ...films.slice(filmIndex + 1)
+      ];
+
+      const extendedState = {
+        activeFilm: updatedFilm,
+        myFavoriteFilms: favoriteFilms,
+        films: updatedFilms,
       };
 
-      if (initialState.promo.id === initialState.activeFilm.id) {
-        extendedFilm.promo = promo;
-      };
+      if (state.promo.id === updatedFilm.id) {
+        extendedState.promo = updatedFilm;
+      }
 
-      return extend(state, extendedFilm)
+      return extend(state, extendedState);
   }
 
   return state;

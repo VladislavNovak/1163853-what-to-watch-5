@@ -24,9 +24,17 @@ const UserBlockAuthorized = ({avatar}) => {
   );
 };
 
-const UserBlock = ({authorizationStatus, userAvatar}) => {
-  // console.log(`${authorizationStatus} + ${userAvatar}`);
-  console.log(`authorizationStatus = ${authorizationStatus}`);
+const UserBlock = ({authorizationStatus, userAvatar, isLink = true}) => {
+
+  if (!isLink) {
+    return (
+      <div className="user-block">
+        <div className="user-block__avatar">
+          <img src={userAvatar} alt="User avatar" width="63" height="63" />
+        </div>
+      </div>
+    )
+  }
 
   return (
     (authorizationStatus === AuthorizationStatus.AUTH && userAvatar) ? <UserBlockAuthorized avatar={userAvatar} /> : <UserBlockUnauthorized />

@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {reviewPropStructure} from "../../utils/validator.prop";
-import {fetchReviews} from "../../store/api-action";
+import {fetchComments} from "../../store/api-action";
 import {selectsReviews} from "../../store/reducers/app-state/selectors";
 
 import Review from "../review/review";
@@ -25,9 +25,9 @@ class TabReviews extends PureComponent {
         <div className="movie-card__reviews-col">
           {colLeft.map(({id, user, rating, comment, date}) => (
             <Review
-              key={`${id}`}
+              key={id}
               quote={comment}
-              author={`${user.id} ${user.name}`}
+              author={user.name}
               datetime={date}
               rating={rating}
             />
@@ -36,9 +36,9 @@ class TabReviews extends PureComponent {
         <div className="movie-card__reviews-col">
           {colRight.map(({id, user, rating, comment, date}) => (
             <Review
-              key={`${id}`}
+              key={id}
               quote={comment}
-              author={`${user.id} ${user.name}`}
+              author={user.name}
               datetime={date}
               rating={rating}
             />
@@ -59,7 +59,7 @@ const mapStateToProps = (state) => ({reviews: selectsReviews(state)});
 
 const mapDispatchToProps = (dispatch) => ({
   getReviews(id) {
-    dispatch(fetchReviews(id));
+    dispatch(fetchComments(id));
   },
 });
 

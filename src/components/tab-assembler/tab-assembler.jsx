@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 import TabSwitcher from "../tab-switcher/tab-switcher";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
@@ -14,7 +14,7 @@ import {fetchActiveFilm} from "../../store/api-action";
 import {connect} from "react-redux";
 import {ClassName, JumpTo, SIMILAR_FILMS} from "../../utils/constants";
 import Logo from "../logo/logo";
-import {UserBlock} from "../user-block/user-block";
+import UserBlock from "../user-block/user-block";
 import ButtonAddToMylist from "../button-add-to-mylist/button-add-to-mylist";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
@@ -43,14 +43,14 @@ class TabAssembler extends PureComponent {
 
     const {film, films, onPlayButtonClick} = this.props;
 
-    const {id, inMyFavoriteList, title, genre, released, poster} = film;
+    const {id, inMyFavoriteList, title, genre, released, poster, backgroundImage, backgroundColor} = film;
     const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, SIMILAR_FILMS);
 
     return <React.Fragment>
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={{backgroundColor}} >
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={poster} alt={title} />
+            <img src={backgroundImage} alt={title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>

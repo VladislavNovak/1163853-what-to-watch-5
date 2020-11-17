@@ -14,6 +14,7 @@ export const filmPropStructure = PropTypes.shape({
   poster: PropTypes.string.isRequired,
   posterBig: PropTypes.string.isRequired,
   trailer: PropTypes.string.isRequired,
+  fullVideo: PropTypes.string.isRequired,
   runtime: PropTypes.number.isRequired,
   inMyFavoriteList: PropTypes.bool.isRequired,
 }).isRequired;

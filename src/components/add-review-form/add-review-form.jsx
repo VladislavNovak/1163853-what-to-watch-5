@@ -1,19 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {RATING_MULTIPLIER} from "../../utils/constants";
+import {sendComment} from "../../store/api-action";
 
 const FIVE_STARS = [1, 2, 3, 4, 5];
 
-const AddReviewForm = ({
-  reviewText,
-  selectedStar,
-  onFormSubmitClick,
-  onTextareaChange,
-  onStarChange,
-}) => {
+const AddReviewForm = ({filmId, reviewText, selectedStar, onTextareaChange, onStarChange, updateComment}) => {
+  const handleSubmitCommit = (evt) => {
+    evt.preventDefault();
+
+    updateComment({
+      id: filmId,
+      rating: Number(selectedStar) * RATING_MULTIPLIER,
+      comment: reviewText
+    })
+  };
+
   return (
     <div className="add-review">
       <form
-        onSubmit={onFormSubmitClick}
+        onSubmit={handleSubmitCommit}
         action="#"
         className="add-review__form"
       >
@@ -60,11 +67,19 @@ const AddReviewForm = ({
 };
 
 AddReviewForm.propTypes = {
+  filmId: PropTypes.number.isRequired,
   selectedStar: PropTypes.string.isRequired,
   reviewText: PropTypes.string.isRequired,
-  onFormSubmitClick: PropTypes.func.isRequired,
   onStarChange: PropTypes.func.isRequired,
   onTextareaChange: PropTypes.func.isRequired,
+  updateComment: PropTypes.func.isRequired,
 };
 
-export default AddReviewForm;
+const mapDispatchToProps = (dispatch) => ({
+  updateComment(comment) {
+    dispatch(sendComment(comment))
+  }
+});
+
+export {AddReviewForm};
+export default connect (null, mapDispatchToProps)(AddReviewForm);

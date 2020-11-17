@@ -18,6 +18,7 @@ export const adaptOneFilmToClient = (film) => ({
   runtime: film[`run_time`],
   inMyFavoriteList: film[`is_favorite`],
   backgroundImage: film[`background_image`],
+  backgroundColor: film[`background_color`],
 });
 
 export const adaptFilmsToClient = (data) => data.map(adaptOneFilmToClient);
