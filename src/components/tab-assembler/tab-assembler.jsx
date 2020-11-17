@@ -12,7 +12,7 @@ import {filmPropStructure} from "../../utils/validator.prop";
 import {fetchActiveFilm} from "../../store/api-action";
 
 import {connect} from "react-redux";
-import {ClassName, JumpTo, SIMILAR_FILMS} from "../../utils/constants";
+import {ClassName, IsLink, JumpTo, SIMILAR_FILMS} from "../../utils/constants";
 import Logo from "../logo/logo";
 import UserBlock from "../user-block/user-block";
 import ButtonAddToMylist from "../button-add-to-mylist/button-add-to-mylist";
@@ -57,7 +57,7 @@ class TabAssembler extends PureComponent {
 
           <header className="page-header movie-card__head">
             <Logo path={JumpTo.ROOT} />
-            <UserBlock />
+            <UserBlock isLink={IsLink.YES} />
           </header>
 
           <div className="movie-card__wrap">

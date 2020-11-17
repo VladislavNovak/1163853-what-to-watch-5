@@ -6,7 +6,7 @@ import AddReviewForm from "../add-review-form/add-review-form";
 import withRating from "../../hocs/with-rating/with-rating";
 
 import {filmPropStructure} from "../../utils/validator.prop";
-import {JumpTo} from "../../utils/constants";
+import {IsLink, JumpTo} from "../../utils/constants";
 import Logo from "../logo/logo";
 import {UserBlock} from "../user-block/user-block";
 
@@ -37,7 +37,7 @@ const AddReview = ({film}) => {
             </ul>
           </nav>
 
-          <UserBlock />
+          <UserBlock isLink={IsLink.YES} />
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">

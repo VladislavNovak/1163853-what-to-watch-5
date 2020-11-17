@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {selectsFilteredFilms} from "../../store/reducers/app-state/selectors";
-import {ClassName} from "../../utils/constants";
+import {ClassName, IsLink} from "../../utils/constants";
 
 import ButtonShowMore from "../button-show-more/button-show-more";
 import ButtonPlay from "../button-play/button-play";
@@ -32,7 +32,7 @@ const Main = ({resetFilmsShown, promo, onPlayButtonClick, visibleFilmsCount, onM
 
       <header className="page-header movie-card__head">
         <Logo />
-        <UserBlock />
+        <UserBlock isLink={IsLink.YES} />
       </header>
 
       <div className="movie-card__wrap">

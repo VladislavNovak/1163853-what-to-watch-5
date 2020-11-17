@@ -24,7 +24,7 @@ const UserBlockAuthorized = ({avatar}) => {
   );
 };
 
-const UserBlock = ({authorizationStatus, userAvatar, isLink = IsLink.YES}) => {
+const UserBlock = ({authorizationStatus, userAvatar, isLink}) => {
 
   if (!isLink) {
     return (
