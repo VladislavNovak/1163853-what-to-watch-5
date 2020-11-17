@@ -48,3 +48,8 @@ export const ClassName = {
 };
 
 export const RATING_MULTIPLIER = 2;
+
+export const IsLink = {
+  YES: `YES`,
+  NO: `NO`
+};

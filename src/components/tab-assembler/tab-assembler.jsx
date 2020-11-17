@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {Link, withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import TabSwitcher from "../tab-switcher/tab-switcher";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";

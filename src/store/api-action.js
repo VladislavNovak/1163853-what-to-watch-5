@@ -37,20 +37,20 @@ export const fetchMyFavoriteFilms = () => (dispatch, _getState, api) => (
     const adaptedFilms = adaptFilmsToClient(data);
     dispatch(ActionCreator.setMyFavoriteFilms(adaptedFilms));
   })
-  );
+);
 
-export const sendUpdatedFavoriteStatus = (id, status) => (dispatch, _getState, api)  =>{
+export const sendUpdatedFavoriteStatus = (id, status) => (dispatch, _getState, api) => (
   api.post(`${SendTo.FAVORITE}${id}/${status}`)
   .then(({data}) => {
     const adaptedActiveFilm = adaptOneFilmToClient(data);
     dispatch(ActionCreator.updateFilm(adaptedActiveFilm));
   })
-}
+);
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(JumpTo.LOGIN)
     .then(({data}) => {
-      dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH))
+      dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.setUserAvatar(data[`avatar_url`]));
     })
     .catch(() => {})
@@ -68,7 +68,6 @@ export const login = ({email, password}) => (dispatch, _getState, api) => (
 export const fetchComments = (id) => (dispatch, _getState, api) => (
   api.get(`${SendTo.COMMENTS}${id}`)
     .then(({data}) => {
-      console.log(data);
       dispatch(ActionCreator.setReviews(data));
     })
 );

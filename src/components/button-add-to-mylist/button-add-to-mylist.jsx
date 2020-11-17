@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {sendUpdatedFavoriteStatus} from "../../store/api-action";
 
@@ -45,7 +46,13 @@ const mapDispatchToProps = (dispatch) => ({
   updateFavoriteStatusFilm(id, status) {
     dispatch(sendUpdatedFavoriteStatus(id, status));
   }
-})
+});
+
+ButtonAddToMylist.propTypes = {
+  updateFavoriteStatusFilm: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  inMyFavoriteList: PropTypes.bool.isRequired,
+};
 
 export {ButtonAddToMylist};
 export default connect(null, mapDispatchToProps)(ButtonAddToMylist);

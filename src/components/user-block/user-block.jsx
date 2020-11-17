@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {AuthorizationStatus, JumpTo} from "../../utils/constants";
+import {AuthorizationStatus, IsLink, JumpTo} from "../../utils/constants";
 
 const UserBlockUnauthorized = () => {
   return (
@@ -24,7 +24,7 @@ const UserBlockAuthorized = ({avatar}) => {
   );
 };
 
-const UserBlock = ({authorizationStatus, userAvatar, isLink = true}) => {
+const UserBlock = ({authorizationStatus, userAvatar, isLink = IsLink.YES}) => {
 
   if (!isLink) {
     return (
@@ -33,7 +33,7 @@ const UserBlock = ({authorizationStatus, userAvatar, isLink = true}) => {
           <img src={userAvatar} alt="User avatar" width="63" height="63" />
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -46,6 +46,7 @@ UserBlockAuthorized.propTypes = {
 };
 
 UserBlock.propTypes = {
+  isLink: PropTypes.bool.isRequired,
   authorizationStatus: PropTypes.string,
   userAvatar: PropTypes.string,
 };

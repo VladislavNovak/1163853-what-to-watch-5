@@ -14,7 +14,7 @@ const AddReviewForm = ({filmId, reviewText, selectedStar, onTextareaChange, onSt
       id: filmId,
       rating: Number(selectedStar) * RATING_MULTIPLIER,
       comment: reviewText
-    })
+    });
   };
 
   return (
@@ -77,9 +77,9 @@ AddReviewForm.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   updateComment(comment) {
-    dispatch(sendComment(comment))
+    dispatch(sendComment(comment));
   }
 });
 
 export {AddReviewForm};
-export default connect (null, mapDispatchToProps)(AddReviewForm);
+export default connect(null, mapDispatchToProps)(AddReviewForm);

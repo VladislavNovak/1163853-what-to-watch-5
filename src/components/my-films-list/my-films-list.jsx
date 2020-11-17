@@ -7,7 +7,7 @@ import {fetchMyFavoriteFilms} from "../../store/api-action";
 import withActiveFilm from "../../hocs/with-active-film/with-active-film";
 import FilmsList from "../films-list/films-list";
 import {filmPropStructure} from "../../utils/validator.prop";
-import {ClassName, JumpTo} from "../../utils/constants";
+import {ClassName, IsLink, JumpTo} from "../../utils/constants";
 import Preloader from "../preloader/preloader";
 import Logo from "../logo/logo";
 import {UserBlock} from "../user-block/user-block";
@@ -33,7 +33,7 @@ class MyFilmsList extends PureComponent {
 
           <h1 className="page-title user-page__title">My list</h1>
 
-          <UserBlock isLink={false} />
+          <UserBlock isLink={IsLink.NO} />
         </header>
 
         <section className="catalog">
