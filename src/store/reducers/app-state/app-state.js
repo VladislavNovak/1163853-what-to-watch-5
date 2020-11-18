@@ -61,7 +61,7 @@ const appState = (state = initialState, action) => {
       let favoriteFilms = state.myFavoriteFilms.slice();
 
       if (updatedFilm.inMyFavoriteList) {
-        favoriteFilms.push(favoriteFilms);
+        favoriteFilms.push(updatedFilm);
       } else {
         favoriteFilms = favoriteFilms.filter((film) => film.id === updatedFilm.id);
       }
