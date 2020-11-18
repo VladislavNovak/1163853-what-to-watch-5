@@ -10,7 +10,7 @@ import {filmPropStructure} from "../../utils/validator.prop";
 import {ClassName, IsLink, JumpTo} from "../../utils/constants";
 import Preloader from "../preloader/preloader";
 import Logo from "../logo/logo";
-import {UserBlock} from "../user-block/user-block";
+import UserBlock from "../user-block/user-block";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 
