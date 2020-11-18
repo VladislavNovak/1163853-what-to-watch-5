@@ -5,33 +5,21 @@ import {Link} from "react-router-dom";
 import Preview from "../preview/preview";
 import {JumpTo} from "../../utils/constants";
 
-const Film = ({
-  isActiveFilm,
-  id,
-  posterBig,
-  title,
-  trailer,
-  onMouseOverFilm,
-  onMouseLeaveFilm,
-}) => {
+const Film = ({isActiveFilm, id, posterBig, title, trailer, onMouseOverFilm, onMouseLeaveFilm}) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
       onMouseOver={() => onMouseOverFilm(id)}
       onMouseLeave={onMouseLeaveFilm}
     >
-      <div className="small-movie-card__image">
-        {isActiveFilm ? (
-          <Preview trailer={trailer} posterBig={posterBig} />
-        ) : (
-          <img src={posterBig} alt={title} width="280" height="175" />
-        )}
-      </div>
-      <h3 className="small-movie-card__title">
-        <Link to={`${JumpTo.FILMS}${id}`} className="small-movie-card__link">
+      <Link to={`${JumpTo.FILMS}${id}`} className="small-movie-card__link">
+        <div className="small-movie-card__image">
+          {isActiveFilm ? <Preview trailer={trailer} posterBig={posterBig} /> : <img src={posterBig} alt={title} width="280" height="175" />}
+        </div>
+        <h3 className="small-movie-card__title">
           {title}
-        </Link>
-      </h3>
+        </h3>
+      </Link>
     </article>
   );
 };
