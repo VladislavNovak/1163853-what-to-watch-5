@@ -17,7 +17,7 @@ const withRating = (Component) => {
       this._handleTextareaChange = this._handleTextareaChange.bind(this);
       this._handleStarChange = this._handleStarChange.bind(this);
       this._handleErrorStatus = this._handleErrorStatus.bind(this);
-      this._handleLoadingStatus = this._handleLoadingStatus.bind(this);
+      this._loadingStatus = this._loadingStatus.bind(this);
     }
 
     _checkingActiveStatus() {
@@ -28,7 +28,7 @@ const withRating = (Component) => {
       });
     }
 
-    _handleLoadingStatus(value) {
+    _loadingStatus(value) {
       this.setState({
         isFormLoading: value
       });
@@ -60,7 +60,7 @@ const withRating = (Component) => {
           isPostActive={isPostActive}
           onErrorStatus={this._handleErrorStatus}
           isFormError={isFormError}
-          onLoadingStatus={this._handleLoadingStatus}
+          onLoadingStatus={this._loadingStatus}
           isFormLoading={isFormLoading}
         />
       );

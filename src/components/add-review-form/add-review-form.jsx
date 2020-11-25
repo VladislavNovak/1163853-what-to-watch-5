@@ -5,7 +5,7 @@ import {sendComment} from "../../store/api-action";
 import Warning from "../warning/warning";
 import {WarningTypes} from "../../utils/constants";
 
-const RAITING = [2, 4, 6, 8, 10];
+const RATING = [2, 4, 6, 8, 10];
 
 const AddReviewForm = ({
   filmId,
@@ -33,7 +33,7 @@ const AddReviewForm = ({
     })
     .catch(() => {
       onErrorStatus(true);
-      onLoadingStatus(true);
+      onLoadingStatus(false);
     });
   };
 
@@ -46,7 +46,7 @@ const AddReviewForm = ({
       >
         <div className="rating">
           <div className="rating__stars">
-            {RAITING.map((star) => (
+            {RATING.map((star) => (
               <React.Fragment key={star}>
                 <input
                   key={`input-${star}`}

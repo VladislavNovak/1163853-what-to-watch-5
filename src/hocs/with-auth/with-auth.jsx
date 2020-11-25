@@ -8,14 +8,14 @@ const withAuth = (Component) => {
       this.state = {
         email: ``,
         password: ``,
-        isEmailNotValid: false,
-        isSubmitNotValid: false,
+        isValidEmail: true,
+        isValidPassword: true,
       };
 
       this._handleInputEmailChange = this._handleInputEmailChange.bind(this);
       this._handleInputPasswordChange = this._handleInputPasswordChange.bind(this);
-      this._handleChangeEmailStatus = this._handleChangeEmailStatus.bind(this);
-      this._handleChangeSubmitStatus = this._handleChangeSubmitStatus.bind(this);
+      this._changeEmailStatus = this._changeEmailStatus.bind(this);
+      this._changePasswordStatus = this._changePasswordStatus.bind(this);
     }
 
     _handleInputEmailChange(evt) {
@@ -30,31 +30,31 @@ const withAuth = (Component) => {
       });
     }
 
-    _handleChangeEmailStatus(value) {
+    _changeEmailStatus(value) {
       this.setState({
-        isEmailNotValid: value,
+        isValidEmail: value,
       });
     }
 
-    _handleChangeSubmitStatus(value) {
+    _changePasswordStatus(value) {
       this.setState({
-        isSubmitNotValid: value,
+        isValidPassword: value,
       });
     }
 
     render() {
-      const {email, password, isEmailNotValid, isSubmitNotValid} = this.state;
+      const {email, password, isValidEmail, isValidPassword} = this.state;
       return (
         <Component
           {...this.props}
           email={email}
           password ={password}
-          isEmailNotValid={isEmailNotValid}
-          isSubmitNotValid={isSubmitNotValid}
+          isValidEmail={isValidEmail}
+          isValidPassword={isValidPassword}
           onInputEmailChange={this._handleInputEmailChange}
           onInputPasswordChange={this._handleInputPasswordChange}
-          onChangeEmailStatus={this._handleChangeEmailStatus}
-          onChangeSubmitStatus={this._handleChangeSubmitStatus}
+          changeEmailStatus={this._changeEmailStatus}
+          changePasswordStatus={this._changePasswordStatus}
         />
       );
     }

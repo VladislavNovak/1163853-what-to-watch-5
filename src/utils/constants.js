@@ -2,6 +2,7 @@ export const ALL_GENRE = `All genres`;
 export const FILMS_COUNT_PER_CLICK = 8;
 export const SIMILAR_FILMS = 4;
 export const LOGO_LINK_LIGHT = `logo__link--light`;
+export const REG = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 export const isFavoriteType = {
   CHECKED: true,

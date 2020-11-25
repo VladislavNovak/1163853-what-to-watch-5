@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const preloadingMessage = {
+const WarningStyle = {
   textAlign: `center`,
   fontSize: `28px`,
   color: `#8B0000`,
@@ -10,7 +10,7 @@ const preloadingMessage = {
 
 const Warning = ({warningType}) => {
   return (
-    <div style={preloadingMessage}>
+    <div style={WarningStyle}>
       <p>{warningType}</p>
     </div>
   );
