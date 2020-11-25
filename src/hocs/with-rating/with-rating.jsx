@@ -9,9 +9,9 @@ const withRating = (Component) => {
       this.state = {
         reviewText: ``,
         selectedStar: ``,
-        isActive: false,
-        isError: false,
-        isLoading: false
+        isPostActive: false,
+        isFormError: false,
+        isFormLoading: false
       };
 
       this._handleTextareaChange = this._handleTextareaChange.bind(this);
@@ -24,19 +24,19 @@ const withRating = (Component) => {
       const {reviewText, selectedStar} = this.state;
 
       this.setState({
-        isActive: Boolean(reviewText.length > CommentLength.MIN && reviewText.length < CommentLength.MAX && selectedStar)
+        isPostActive: Boolean(reviewText.length > CommentLength.MIN && reviewText.length < CommentLength.MAX && selectedStar)
       });
     }
 
-    _handleLoadingStatus(arg) {
+    _handleLoadingStatus(value) {
       this.setState({
-        isLoading: arg
+        isFormLoading: value
       });
     }
 
-    _handleErrorStatus(arg) {
+    _handleErrorStatus(value) {
       this.setState({
-        isError: arg
+        isFormError: value
       });
     }
 
@@ -49,7 +49,7 @@ const withRating = (Component) => {
     }
 
     render() {
-      const {reviewText, selectedStar, isActive, isError, isLoading} = this.state;
+      const {reviewText, selectedStar, isPostActive, isFormError, isFormLoading} = this.state;
       return (
         <Component
           {...this.props}
@@ -57,11 +57,11 @@ const withRating = (Component) => {
           selectedStar={selectedStar}
           onTextareaChange={this._handleTextareaChange}
           onStarChange={this._handleStarChange}
-          isActive={isActive}
+          isPostActive={isPostActive}
           onErrorStatus={this._handleErrorStatus}
-          isError={isError}
+          isFormError={isFormError}
           onLoadingStatus={this._handleLoadingStatus}
-          isLoading={isLoading}
+          isFormLoading={isFormLoading}
         />
       );
     }

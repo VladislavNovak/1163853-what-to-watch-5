@@ -14,11 +14,11 @@ const AddReviewForm = ({
   onTextareaChange,
   onStarChange,
   updateComment,
-  isActive,
+  isPostActive,
   onErrorStatus,
-  isError,
+  isFormError,
   onLoadingStatus,
-  isLoading
+  isFormLoading
 }) => {
 
   const handleSubmitCommit = (evt) => {
@@ -76,12 +76,12 @@ const AddReviewForm = ({
             onChange={onTextareaChange}
           />
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit" disabled={!isActive || isLoading}>
+            <button className="add-review__btn" type="submit" disabled={!isPostActive || isFormLoading}>
               Post
             </button>
           </div>
         </div>
-        {isError && <Warning warningType={WarningTypes.ERROR_SENDING_TO_SERVER} />}
+        {isFormError && <Warning warningType={WarningTypes.ERROR_SENDING_TO_SERVER} />}
       </form>
     </div>
   );
@@ -94,11 +94,11 @@ AddReviewForm.propTypes = {
   onStarChange: PropTypes.func.isRequired,
   onTextareaChange: PropTypes.func.isRequired,
   updateComment: PropTypes.func.isRequired,
-  isActive: PropTypes.bool.isRequired,
+  isPostActive: PropTypes.bool.isRequired,
   onErrorStatus: PropTypes.func.isRequired,
-  isError: PropTypes.bool.isRequired,
+  isFormError: PropTypes.bool.isRequired,
   onLoadingStatus: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isFormLoading: PropTypes.bool.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({

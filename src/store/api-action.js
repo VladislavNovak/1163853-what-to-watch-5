@@ -73,7 +73,7 @@ export const fetchComments = (id) => (dispatch, _getState, api) => (
 );
 
 export const sendComment = ({id, rating, comment}) => (dispatch, _getState, api) => (
-  api.post(`${SendTo.COMMENT}${id}`, {rating, comment})
+  api.post(`${SendTo.COMMENTS}${id}`, {rating, comment})
     .then(({data}) => {
       dispatch(ActionCreator.createComment(data));
       dispatch(ActionCreator.redirectToRoute(`${JumpTo.FILMS}${id}`));

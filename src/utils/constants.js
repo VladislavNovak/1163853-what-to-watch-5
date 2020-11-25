@@ -46,6 +46,8 @@ export const SendTo = {
 export const WarningTypes = {
   EMPTY_FAVORITE_LIST: `The list is empty. Please select your favorite movies...`,
   ERROR_SENDING_TO_SERVER: `Oops! Error sending comments to the server`,
+  INVALID_EMAIL: `Please enter a valid email address`,
+  INVALID_EMAIL_AND_PASSWORD: `We can’t recognize this email and password combination. Please try again.`,
 };
 
 export const IsLink = {
