@@ -12,10 +12,11 @@ import {filmPropStructure} from "../../utils/validator.prop";
 import {fetchActiveFilm} from "../../store/api-action";
 
 import {connect} from "react-redux";
-import {ClassName, IsLink, JumpTo, SIMILAR_FILMS} from "../../utils/constants";
+import {AuthorizationStatus, ClassName, IsLink, JumpTo, SIMILAR_FILMS} from "../../utils/constants";
 import Logo from "../logo/logo";
 import UserBlock from "../user-block/user-block";
 import ButtonAddToMylist from "../button-add-to-mylist/button-add-to-mylist";
+import {selectsAuthorizationStatus} from "../../store/reducers/user/selectors";
 
 const FilmsListWrapped = withActiveFilm(FilmsList);
 const TabSwitcherWrapped = withActiveTab(TabSwitcher);
@@ -41,7 +42,7 @@ class TabAssembler extends PureComponent {
       return null;
     }
 
-    const {film, films, onPlayButtonClick} = this.props;
+    const {film, films, onPlayButtonClick, authorizationStatus} = this.props;
 
     const {id, inMyFavoriteList, title, genre, released, poster, backgroundImage, backgroundColor} = film;
     const similarFilms = films.filter((item) => item.genre === film.genre && item.id !== film.id).slice(0, SIMILAR_FILMS);
@@ -71,7 +72,7 @@ class TabAssembler extends PureComponent {
               <div className="movie-card__buttons">
                 <ButtonPlay id={id} onPlayButtonClick={onPlayButtonClick} />
                 <ButtonAddToMylist id={id} inMyFavoriteList={inMyFavoriteList} />
-                <Link to={`${JumpTo.FILMS}${id}${JumpTo.REVIEW}`} className="btn movie-card__button">Add review</Link>
+                {authorizationStatus === AuthorizationStatus.AUTH ? <Link to={`${JumpTo.FILMS}${id}${JumpTo.REVIEW}`} className="btn movie-card__button">Add review</Link> : ``}
               </div>
             </div>
           </div>
@@ -113,9 +114,13 @@ TabAssembler.propTypes = {
   film: PropTypes.shape(filmPropStructure),
   films: PropTypes.arrayOf(filmPropStructure).isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state) => ({film: selectsActiveFilm(state)});
+const mapStateToProps = (state) => ({
+  film: selectsActiveFilm(state),
+  authorizationStatus: selectsAuthorizationStatus(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getActiveFilm(id) {

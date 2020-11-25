@@ -6,7 +6,15 @@ import {sendComment} from "../../store/api-action";
 
 const FIVE_STARS = [1, 2, 3, 4, 5];
 
-const AddReviewForm = ({filmId, reviewText, selectedStar, onTextareaChange, onStarChange, updateComment}) => {
+const AddReviewForm = ({
+  filmId,
+  reviewText,
+  selectedStar,
+  onTextareaChange,
+  onStarChange,
+  updateComment,
+  isActive
+}) => {
   const handleSubmitCommit = (evt) => {
     evt.preventDefault();
 
@@ -16,6 +24,8 @@ const AddReviewForm = ({filmId, reviewText, selectedStar, onTextareaChange, onSt
       comment: reviewText
     });
   };
+
+  const A = isActive;
 
   return (
     <div className="add-review">
@@ -56,7 +66,7 @@ const AddReviewForm = ({filmId, reviewText, selectedStar, onTextareaChange, onSt
             onChange={onTextareaChange}
           />
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit">
+            <button className="add-review__btn" type="submit" disabled={!isActive}>
               Post
             </button>
           </div>
@@ -73,6 +83,7 @@ AddReviewForm.propTypes = {
   onStarChange: PropTypes.func.isRequired,
   onTextareaChange: PropTypes.func.isRequired,
   updateComment: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

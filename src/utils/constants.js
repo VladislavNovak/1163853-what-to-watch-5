@@ -53,3 +53,8 @@ export const IsLink = {
   YES: true,
   NO: false
 };
+
+export const CommentLength = {
+  MIN: 50,
+  MAX: 400
+}
