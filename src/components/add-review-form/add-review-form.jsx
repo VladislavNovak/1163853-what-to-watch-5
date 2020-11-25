@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {RATING_MULTIPLIER} from "../../utils/constants";
 import {sendComment} from "../../store/api-action";
+import Warning from "../warning/warning";
+import {WarningTypes} from "../../utils/constants";
 
-const FIVE_STARS = [1, 2, 3, 4, 5];
+const RAITING = [2, 4, 6, 8, 10];
 
 const AddReviewForm = ({
   filmId,
@@ -13,19 +14,28 @@ const AddReviewForm = ({
   onTextareaChange,
   onStarChange,
   updateComment,
-  isActive
+  isActive,
+  onErrorStatus,
+  isError,
+  onLoadingStatus,
+  isLoading
 }) => {
+
   const handleSubmitCommit = (evt) => {
     evt.preventDefault();
 
+    onLoadingStatus(true);
+
     updateComment({
       id: filmId,
-      rating: Number(selectedStar) * RATING_MULTIPLIER,
+      rating: Number(selectedStar),
       comment: reviewText
+    })
+    .catch(() => {
+      onErrorStatus(true);
+      onLoadingStatus(true);
     });
   };
-
-  const A = isActive;
 
   return (
     <div className="add-review">
@@ -36,7 +46,7 @@ const AddReviewForm = ({
       >
         <div className="rating">
           <div className="rating__stars">
-            {FIVE_STARS.map((star) => (
+            {RAITING.map((star) => (
               <React.Fragment key={star}>
                 <input
                   key={`input-${star}`}
@@ -66,11 +76,12 @@ const AddReviewForm = ({
             onChange={onTextareaChange}
           />
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit" disabled={!isActive}>
+            <button className="add-review__btn" type="submit" disabled={!isActive || isLoading}>
               Post
             </button>
           </div>
         </div>
+        {isError && <Warning warningType={WarningTypes.ERROR_SENDING_TO_SERVER} />}
       </form>
     </div>
   );
@@ -84,11 +95,15 @@ AddReviewForm.propTypes = {
   onTextareaChange: PropTypes.func.isRequired,
   updateComment: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
+  onErrorStatus: PropTypes.func.isRequired,
+  isError: PropTypes.bool.isRequired,
+  onLoadingStatus: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({
   updateComment(comment) {
-    dispatch(sendComment(comment));
+    return dispatch(sendComment(comment));
   }
 });
 

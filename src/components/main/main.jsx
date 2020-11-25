@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {selectsFilteredFilms} from "../../store/reducers/app-state/selectors";
-import {ClassName, IsLink} from "../../utils/constants";
+import {IsLink, LOGO_LINK_LIGHT} from "../../utils/constants";
 
 import ButtonShowMore from "../button-show-more/button-show-more";
 import ButtonPlay from "../button-play/button-play";
@@ -66,7 +66,7 @@ const Main = ({resetFilmsShown, promo, onPlayButtonClick, visibleFilmsCount, onM
       </section>
 
       <footer className="page-footer">
-        <Logo additionalClass={ClassName.FOOTER_LINK} />
+        <Logo additionalClass={LOGO_LINK_LIGHT} />
 
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>

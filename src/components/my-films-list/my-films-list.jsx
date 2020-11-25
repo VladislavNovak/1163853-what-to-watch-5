@@ -7,8 +7,8 @@ import {fetchMyFavoriteFilms} from "../../store/api-action";
 import withActiveFilm from "../../hocs/with-active-film/with-active-film";
 import FilmsList from "../films-list/films-list";
 import {filmPropStructure} from "../../utils/validator.prop";
-import {ClassName, IsLink, JumpTo} from "../../utils/constants";
-import Preloader from "../preloader/preloader";
+import {WarningTypes, IsLink, JumpTo, LOGO_LINK_LIGHT} from "../../utils/constants";
+import Warning from "../warning/warning";
 import Logo from "../logo/logo";
 import UserBlock from "../user-block/user-block";
 
@@ -38,11 +38,11 @@ class MyFilmsList extends PureComponent {
 
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          {!myFavoriteFilms.length ? <Preloader /> : <FilmsListWrapped films={myFavoriteFilms} />}
+          {myFavoriteFilms.length && <FilmsListWrapped films={myFavoriteFilms} /> || <Warning warningType={WarningTypes.EMPTY_FAVORITE_LIST} />}
         </section>
 
         <footer className="page-footer">
-          <Logo path={JumpTo.ROOT} additionalClass={ClassName.FOOTER_LINK} />
+          <Logo path={JumpTo.ROOT} additionalClass={LOGO_LINK_LIGHT} />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>

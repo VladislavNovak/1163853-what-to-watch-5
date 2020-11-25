@@ -12,7 +12,7 @@ import {filmPropStructure} from "../../utils/validator.prop";
 import {fetchActiveFilm} from "../../store/api-action";
 
 import {connect} from "react-redux";
-import {AuthorizationStatus, ClassName, IsLink, JumpTo, SIMILAR_FILMS} from "../../utils/constants";
+import {AuthorizationStatus, IsLink, JumpTo, LOGO_LINK_LIGHT, SIMILAR_FILMS} from "../../utils/constants";
 import Logo from "../logo/logo";
 import UserBlock from "../user-block/user-block";
 import ButtonAddToMylist from "../button-add-to-mylist/button-add-to-mylist";
@@ -97,7 +97,7 @@ class TabAssembler extends PureComponent {
           {similarFilms.length ? <FilmsListWrapped films={similarFilms} /> : `` }
         </section>
         <footer className="page-footer">
-          <Logo path={JumpTo.ROOT} additionalClass={ClassName.FOOTER_LINK} />
+          <Logo path={JumpTo.ROOT} additionalClass={LOGO_LINK_LIGHT} />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>

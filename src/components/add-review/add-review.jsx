@@ -13,9 +13,9 @@ import UserBlock from "../user-block/user-block";
 const AddReviewFormWrapped = withRating(AddReviewForm);
 
 const AddReview = ({film}) => {
-  const {posterBig, title, id, poster} = film;
+  const {posterBig, title, id, poster, backgroundColor} = film;
   return (
-    <section className="movie-card movie-card--full">
+    <section className="movie-card movie-card--full" style={{backgroundColor}}>
       <div className="movie-card__header">
         <div className="movie-card__bg">
           <img src={posterBig} alt={title}/>

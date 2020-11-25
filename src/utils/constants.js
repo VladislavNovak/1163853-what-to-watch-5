@@ -1,6 +1,7 @@
 export const ALL_GENRE = `All genres`;
 export const FILMS_COUNT_PER_CLICK = 8;
 export const SIMILAR_FILMS = 4;
+export const LOGO_LINK_LIGHT = `logo__link--light`;
 
 export const isFavoriteType = {
   CHECKED: true,
@@ -42,12 +43,10 @@ export const SendTo = {
   FAVORITE: `/favorite/`,
 };
 
-export const ClassName = {
-  PRELOADER: `preloading__message`,
-  FOOTER_LINK: `logo__link--light`
+export const WarningTypes = {
+  EMPTY_FAVORITE_LIST: `The list is empty. Please select your favorite movies...`,
+  ERROR_SENDING_TO_SERVER: `Oops! Error sending comments to the server`,
 };
-
-export const RATING_MULTIPLIER = 2;
 
 export const IsLink = {
   YES: true,
@@ -57,4 +56,4 @@ export const IsLink = {
 export const CommentLength = {
   MIN: 50,
   MAX: 400
-}
+};

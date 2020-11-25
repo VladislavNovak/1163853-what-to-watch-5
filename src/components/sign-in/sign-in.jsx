@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {ClassName, JumpTo} from "../../utils/constants";
+import {JumpTo, LOGO_LINK_LIGHT} from "../../utils/constants";
 import {login} from "../../store/api-action";
 import {connect} from "react-redux";
 import Logo from "../logo/logo";
@@ -70,7 +70,7 @@ class SignIn extends PureComponent {
         </div>
 
         <footer className="page-footer">
-          <Logo path={JumpTo.ROOT} additionalClass={ClassName.FOOTER_LINK} />
+          <Logo path={JumpTo.ROOT} additionalClass={LOGO_LINK_LIGHT} />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>

@@ -1,4 +1,4 @@
-const { NameSpace } = require("../../../utils/constants");
+import {NameSpace} from "../../../utils/constants";
 
 const selectsAuthorizationStatus = (state) => state[NameSpace.USER].authorizationStatus;
 
